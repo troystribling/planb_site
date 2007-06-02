@@ -1,0 +1,3 @@
+#!/bin/bash
+svnserve -d -r /var/www/svn --pid-file /var/run/svnserve-pid
+
