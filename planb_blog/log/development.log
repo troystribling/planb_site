@@ -1,0 +1,185 @@
+allow_concurrency=false
+SitealizerController: missing default helper path sitealizer_helper
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+DEPRECATION WARNING: The inferred foreign_key name will change in Rails 2.0 to use the association name instead of its class name when they differ.  When using :class_name in belongs_to, use the :foreign_key option to explicitly set the key name to avoid problems in the transition.  See http://www.rubyonrails.org/deprecation for details. (called from ./db/migrate//039_serialize_blog_attributes.rb:4)
+  [4;36;1mSQL (0.000366)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000205)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000204)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000196)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000200)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000202)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000195)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000194)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000198)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000192)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000198)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000199)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000192)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000195)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000200)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000195)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000197)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000203)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000195)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000200)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000203)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000196)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000197)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000203)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000197)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000197)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000205)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000196)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000197)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000203)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000198)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000197)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000203)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000195)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000198)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000201)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000195)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000198)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000204)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000190)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000193)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000199)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000193)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000193)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000199)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000192)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000193)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000202)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000195)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000196)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000203)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000196)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000195)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000203)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000201)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000195)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000196)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000196)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000195)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000197)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000195)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.012523)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000322)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.001529)[0m   [0mSELECT name FROM sqlite_master WHERE type = 'table'[0m
+  [4;36;1mSQL (0.000083)[0m   [0;1mPRAGMA index_list(articles_tags)[0m
+  [4;35;1mSQL (0.000227)[0m   [0mPRAGMA index_list(blacklist_patterns)[0m
+  [4;36;1mSQL (0.000214)[0m   [0;1mPRAGMA index_info('index_blacklist_patterns_on_pattern')[0m
+  [4;35;1mSQL (0.000075)[0m   [0mPRAGMA index_list(blogs)[0m
+  [4;36;1mSQL (0.000215)[0m   [0;1mPRAGMA index_list(categories)[0m
+  [4;35;1mSQL (0.000218)[0m   [0mPRAGMA index_info('index_categories_on_permalink')[0m
+  [4;36;1mSQL (0.000082)[0m   [0;1mPRAGMA index_list(categorizations)[0m
+  [4;35;1mSQL (0.000453)[0m   [0mPRAGMA index_list(contents)[0m
+  [4;36;1mSQL (0.000217)[0m   [0;1mPRAGMA index_info('index_contents_on_published')[0m
+  [4;35;1mSQL (0.000214)[0m   [0mPRAGMA index_info('index_contents_on_text_filter_id')[0m
+  [4;36;1mSQL (0.000212)[0m   [0;1mPRAGMA index_info('index_contents_on_blog_id')[0m
+  [4;35;1mSQL (0.000356)[0m   [0mPRAGMA index_list(feedback)[0m
+  [4;36;1mSQL (0.000215)[0m   [0;1mPRAGMA index_info('index_feedback_on_article_id')[0m
+  [4;35;1mSQL (0.000217)[0m   [0mPRAGMA index_info('index_feedback_on_text_filter_id')[0m
+  [4;36;1mSQL (0.000077)[0m   [0;1mPRAGMA index_list(notifications)[0m
+  [4;35;1mSQL (0.000208)[0m   [0mPRAGMA index_list(page_caches)[0m
+  [4;36;1mSQL (0.000210)[0m   [0;1mPRAGMA index_info('index_page_caches_on_name')[0m
+  [4;35;1mSQL (0.000209)[0m   [0mPRAGMA index_list(pings)[0m
+  [4;36;1mSQL (0.000210)[0m   [0;1mPRAGMA index_info('index_pings_on_article_id')[0m
+  [4;35;1mSQL (0.000077)[0m   [0mPRAGMA index_list(redirects)[0m
+  [4;36;1mSQL (0.000081)[0m   [0;1mPRAGMA index_list(resources)[0m
+  [4;35;1mSQL (0.000213)[0m   [0mPRAGMA index_list(sessions)[0m
+  [4;36;1mSQL (0.000209)[0m   [0;1mPRAGMA index_info('index_sessions_on_sessid')[0m
+  [4;35;1mSQL (0.000087)[0m   [0mPRAGMA index_list(sidebars)[0m
+  [4;36;1mSQL (0.000078)[0m   [0;1mPRAGMA index_list(sitealizer)[0m
+  [4;35;1mSQL (0.000079)[0m   [0mPRAGMA index_list(tags)[0m
+  [4;36;1mSQL (0.000077)[0m   [0;1mPRAGMA index_list(text_filters)[0m
+  [4;35;1mSQL (0.000076)[0m   [0mPRAGMA index_list(triggers)[0m
+  [4;36;1mSQL (0.000081)[0m   [0;1mPRAGMA index_list(users)[0m
+allow_concurrency=false
+SitealizerController: missing default helper path sitealizer_helper
+  [4;36;1mPageCache Load (0.001591)[0m   [0;1mSELECT * FROM page_caches [0m
+allow_concurrency=false
+SitealizerController: missing default helper path sitealizer_helper
+  [4;36;1mSQL (0.001554)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.001428)[0m   [0mSELECT name FROM sqlite_master WHERE type = 'table'[0m
+  [4;36;1mSQL (0.000072)[0m   [0;1mPRAGMA index_list(articles_tags)[0m
+  [4;35;1mSQL (0.000199)[0m   [0mPRAGMA index_list(blacklist_patterns)[0m
+  [4;36;1mSQL (0.000210)[0m   [0;1mPRAGMA index_info('index_blacklist_patterns_on_pattern')[0m
+  [4;35;1mSQL (0.000072)[0m   [0mPRAGMA index_list(blogs)[0m
+  [4;36;1mSQL (0.000198)[0m   [0;1mPRAGMA index_list(categories)[0m
+  [4;35;1mSQL (0.000200)[0m   [0mPRAGMA index_info('index_categories_on_permalink')[0m
+  [4;36;1mSQL (0.000079)[0m   [0;1mPRAGMA index_list(categorizations)[0m
+  [4;35;1mSQL (0.000385)[0m   [0mPRAGMA index_list(contents)[0m
+  [4;36;1mSQL (0.000199)[0m   [0;1mPRAGMA index_info('index_contents_on_published')[0m
+  [4;35;1mSQL (0.000207)[0m   [0mPRAGMA index_info('index_contents_on_text_filter_id')[0m
+  [4;36;1mSQL (0.000199)[0m   [0;1mPRAGMA index_info('index_contents_on_blog_id')[0m
+  [4;35;1mSQL (0.000295)[0m   [0mPRAGMA index_list(feedback)[0m
+  [4;36;1mSQL (0.000200)[0m   [0;1mPRAGMA index_info('index_feedback_on_article_id')[0m
+  [4;35;1mSQL (0.000207)[0m   [0mPRAGMA index_info('index_feedback_on_text_filter_id')[0m
+  [4;36;1mSQL (0.000073)[0m   [0;1mPRAGMA index_list(notifications)[0m
+  [4;35;1mSQL (0.000196)[0m   [0mPRAGMA index_list(page_caches)[0m
+  [4;36;1mSQL (0.000200)[0m   [0;1mPRAGMA index_info('index_page_caches_on_name')[0m
+  [4;35;1mSQL (0.000205)[0m   [0mPRAGMA index_list(pings)[0m
+  [4;36;1mSQL (0.000201)[0m   [0;1mPRAGMA index_info('index_pings_on_article_id')[0m
+  [4;35;1mSQL (0.000072)[0m   [0mPRAGMA index_list(redirects)[0m
+  [4;36;1mSQL (0.000073)[0m   [0;1mPRAGMA index_list(resources)[0m
+  [4;35;1mSQL (0.000198)[0m   [0mPRAGMA index_list(sessions)[0m
+  [4;36;1mSQL (0.000201)[0m   [0;1mPRAGMA index_info('index_sessions_on_sessid')[0m
+  [4;35;1mSQL (0.000072)[0m   [0mPRAGMA index_list(sidebars)[0m
+  [4;36;1mSQL (0.000072)[0m   [0;1mPRAGMA index_list(sitealizer)[0m
+  [4;35;1mSQL (0.000072)[0m   [0mPRAGMA index_list(tags)[0m
+  [4;36;1mSQL (0.000072)[0m   [0;1mPRAGMA index_list(text_filters)[0m
+  [4;35;1mSQL (0.000073)[0m   [0mPRAGMA index_list(triggers)[0m
+  [4;36;1mSQL (0.000072)[0m   [0;1mPRAGMA index_list(users)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: articles_tags: DROP TABLE articles_tags[0m
+  [4;36;1mSQL (0.000323)[0m   [0;1mCREATE TABLE articles_tags ("article_id" integer DEFAULT NULL, "tag_id" integer DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: blacklist_patterns: DROP TABLE blacklist_patterns[0m
+  [4;36;1mSQL (0.000203)[0m   [0;1mCREATE TABLE blacklist_patterns ("id" INTEGER PRIMARY KEY NOT NULL, "type" varchar(255) DEFAULT NULL, "pattern" varchar(255) DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000200)[0m   [0mCREATE INDEX "index_blacklist_patterns_on_pattern" ON blacklist_patterns ("pattern")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: blogs: DROP TABLE blogs[0m
+  [4;35;1mSQL (0.000212)[0m   [0mCREATE TABLE blogs ("id" INTEGER PRIMARY KEY NOT NULL, "settings" text DEFAULT NULL, "base_url" varchar(255) DEFAULT NULL) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: categories: DROP TABLE categories[0m
+  [4;35;1mSQL (0.000209)[0m   [0mCREATE TABLE categories ("id" INTEGER PRIMARY KEY NOT NULL, "name" varchar(255) DEFAULT NULL, "position" integer DEFAULT NULL, "permalink" varchar(255) DEFAULT NULL) [0m
+  [4;36;1mSQL (0.000197)[0m   [0;1mCREATE INDEX "index_categories_on_permalink" ON categories ("permalink")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: categorizations: DROP TABLE categorizations[0m
+  [4;36;1mSQL (0.000219)[0m   [0;1mCREATE TABLE categorizations ("id" INTEGER PRIMARY KEY NOT NULL, "article_id" integer DEFAULT NULL, "category_id" integer DEFAULT NULL, "is_primary" boolean DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: contents: DROP TABLE contents[0m
+  [4;36;1mSQL (0.000359)[0m   [0;1mCREATE TABLE contents ("id" INTEGER PRIMARY KEY NOT NULL, "type" varchar(255) DEFAULT NULL, "title" varchar(255) DEFAULT NULL, "author" varchar(255) DEFAULT NULL, "body" text DEFAULT NULL, "extended" text DEFAULT NULL, "excerpt" text DEFAULT NULL, "keywords" varchar(255) DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, "user_id" integer DEFAULT NULL, "permalink" varchar(255) DEFAULT NULL, "guid" varchar(255) DEFAULT NULL, "text_filter_id" integer DEFAULT NULL, "whiteboard" text DEFAULT NULL, "name" varchar(255) DEFAULT NULL, "published" boolean DEFAULT 'f', "allow_pings" boolean DEFAULT NULL, "allow_comments" boolean DEFAULT NULL, "blog_id" integer NOT NULL, "published_at" datetime DEFAULT NULL, "state" text DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000212)[0m   [0mCREATE INDEX "index_contents_on_published" ON contents ("published")[0m
+  [4;36;1mSQL (0.000202)[0m   [0;1mCREATE INDEX "index_contents_on_text_filter_id" ON contents ("text_filter_id")[0m
+  [4;35;1mSQL (0.000180)[0m   [0mCREATE INDEX "index_contents_on_blog_id" ON contents ("blog_id")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: feedback: DROP TABLE feedback[0m
+  [4;35;1mSQL (0.000421)[0m   [0mCREATE TABLE feedback ("id" INTEGER PRIMARY KEY NOT NULL, "type" varchar(255) DEFAULT NULL, "title" varchar(255) DEFAULT NULL, "author" varchar(255) DEFAULT NULL, "body" text DEFAULT NULL, "extended" text DEFAULT NULL, "excerpt" text DEFAULT NULL, "keywords" varchar(255) DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, "user_id" integer DEFAULT NULL, "permalink" varchar(255) DEFAULT NULL, "guid" varchar(255) DEFAULT NULL, "text_filter_id" integer DEFAULT NULL, "whiteboard" text DEFAULT NULL, "article_id" integer DEFAULT NULL, "email" varchar(255) DEFAULT NULL, "url" varchar(255) DEFAULT NULL, "ip" varchar(40) DEFAULT NULL, "blog_name" varchar(255) DEFAULT NULL, "name" varchar(255) DEFAULT NULL, "published" boolean DEFAULT 'f', "allow_pings" boolean DEFAULT NULL, "allow_comments" boolean DEFAULT NULL, "blog_id" integer NOT NULL, "published_at" datetime DEFAULT NULL, "state" text DEFAULT NULL, "status_confirmed" boolean DEFAULT NULL) [0m
+  [4;36;1mSQL (0.000188)[0m   [0;1mCREATE INDEX "index_feedback_on_article_id" ON feedback ("article_id")[0m
+  [4;35;1mSQL (0.000183)[0m   [0mCREATE INDEX "index_feedback_on_text_filter_id" ON feedback ("text_filter_id")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: notifications: DROP TABLE notifications[0m
+  [4;35;1mSQL (0.000232)[0m   [0mCREATE TABLE notifications ("id" INTEGER PRIMARY KEY NOT NULL, "content_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: page_caches: DROP TABLE page_caches[0m
+  [4;35;1mSQL (0.000221)[0m   [0mCREATE TABLE page_caches ("id" INTEGER PRIMARY KEY NOT NULL, "name" varchar(255) DEFAULT NULL) [0m
+  [4;36;1mSQL (0.000205)[0m   [0;1mCREATE INDEX "index_page_caches_on_name" ON page_caches ("name")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: pings: DROP TABLE pings[0m
+  [4;36;1mSQL (0.000227)[0m   [0;1mCREATE TABLE pings ("id" INTEGER PRIMARY KEY NOT NULL, "article_id" integer DEFAULT NULL, "url" varchar(255) DEFAULT NULL, "created_at" datetime DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000188)[0m   [0mCREATE INDEX "index_pings_on_article_id" ON pings ("article_id")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: redirects: DROP TABLE redirects[0m
+  [4;35;1mSQL (0.000215)[0m   [0mCREATE TABLE redirects ("id" INTEGER PRIMARY KEY NOT NULL, "from_path" varchar(255) DEFAULT NULL, "to_path" varchar(255) DEFAULT NULL) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: resources: DROP TABLE resources[0m
+  [4;35;1mSQL (0.000330)[0m   [0mCREATE TABLE resources ("id" INTEGER PRIMARY KEY NOT NULL, "size" integer DEFAULT NULL, "filename" varchar(255) DEFAULT NULL, "mime" varchar(255) DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, "article_id" integer DEFAULT NULL, "itunes_metadata" boolean DEFAULT NULL, "itunes_author" varchar(255) DEFAULT NULL, "itunes_subtitle" varchar(255) DEFAULT NULL, "itunes_duration" integer DEFAULT NULL, "itunes_summary" text DEFAULT NULL, "itunes_keywords" varchar(255) DEFAULT NULL, "itunes_category" varchar(255) DEFAULT NULL, "itunes_explicit" boolean DEFAULT NULL) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: sessions: DROP TABLE sessions[0m
+  [4;35;1mSQL (0.000233)[0m   [0mCREATE TABLE sessions ("id" INTEGER PRIMARY KEY NOT NULL, "sessid" varchar(255) DEFAULT NULL, "data" text DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL) [0m
+  [4;36;1mSQL (0.000188)[0m   [0;1mCREATE INDEX "index_sessions_on_sessid" ON sessions ("sessid")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: sidebars: DROP TABLE sidebars[0m
+  [4;36;1mSQL (0.000257)[0m   [0;1mCREATE TABLE sidebars ("id" INTEGER PRIMARY KEY NOT NULL, "active_position" integer DEFAULT NULL, "config" text DEFAULT NULL, "staged_position" integer DEFAULT NULL, "type" varchar(255) DEFAULT NULL, "blog_id" integer DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: sitealizer: DROP TABLE sitealizer[0m
+  [4;36;1mSQL (0.000258)[0m   [0;1mCREATE TABLE sitealizer ("id" INTEGER PRIMARY KEY NOT NULL, "path" varchar(255) DEFAULT NULL, "ip" varchar(255) DEFAULT NULL, "referer" varchar(255) DEFAULT NULL, "language" varchar(255) DEFAULT NULL, "user_agent" varchar(255) DEFAULT NULL, "created_at" datetime DEFAULT NULL, "created_on" date DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: tags: DROP TABLE tags[0m
+  [4;36;1mSQL (0.000243)[0m   [0;1mCREATE TABLE tags ("id" INTEGER PRIMARY KEY NOT NULL, "name" varchar(255) DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, "display_name" varchar(255) DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: text_filters: DROP TABLE text_filters[0m
+  [4;36;1mSQL (0.000261)[0m   [0;1mCREATE TABLE text_filters ("id" INTEGER PRIMARY KEY NOT NULL, "name" varchar(255) DEFAULT NULL, "description" varchar(255) DEFAULT NULL, "markup" varchar(255) DEFAULT NULL, "filters" text DEFAULT NULL, "params" text DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: triggers: DROP TABLE triggers[0m
+  [4;36;1mSQL (0.000238)[0m   [0;1mCREATE TABLE triggers ("id" INTEGER PRIMARY KEY NOT NULL, "pending_item_id" integer DEFAULT NULL, "pending_item_type" varchar(255) DEFAULT NULL, "due_at" datetime DEFAULT NULL, "trigger_method" varchar(255) DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: users: DROP TABLE users[0m
+  [4;36;1mSQL (0.000296)[0m   [0;1mCREATE TABLE users ("id" INTEGER PRIMARY KEY NOT NULL, "login" varchar(255) DEFAULT NULL, "password" varchar(255) DEFAULT NULL, "email" text DEFAULT NULL, "name" text DEFAULT NULL, "notify_via_email" boolean DEFAULT NULL, "notify_on_new_articles" boolean DEFAULT NULL, "notify_on_comments" boolean DEFAULT NULL, "notify_watch_my_articles" boolean DEFAULT NULL, "notify_via_jabber" boolean DEFAULT NULL, "jabber" varchar(255) DEFAULT NULL) [0m
+  [4;35;1mSQL (0.000210)[0m   [0mCREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000112)[0m   [0;1mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;35;1mSQL (0.000098)[0m   [0mUPDATE schema_info SET version = 62[0m

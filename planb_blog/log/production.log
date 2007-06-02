@@ -1,0 +1,42 @@
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2007-05-27 12:45:00) [GET]
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+Redirected to http://localhost:4995/accounts/signup
+Completed in 0.11847 (8 reqs/sec) | DB: 0.00511 (4%) | 302 Found [http://localhost/]
+
+
+Processing AccountsController#signup (for 127.0.0.1 at 2007-05-27 12:45:00) [GET]
+  Session ID: 87bbe168e2e38ad19a09fc0893b5952c
+  Parameters: {"action"=>"signup", "controller"=>"accounts"}
+Rendering  within layouts/accounts
+Rendering accounts/signup
+Completed in 0.01807 (55 reqs/sec) | Rendering: 0.01402 (77%) | DB: 0.00077 (4%) | 200 OK [http://localhost/accounts/signup]
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2007-05-27 12:49:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+Redirected to http://localhost:4995/accounts/signup
+Completed in 0.00652 (153 reqs/sec) | DB: 0.00151 (23%) | 302 Found [http://localhost/]
+
+
+Processing AccountsController#signup (for 127.0.0.1 at 2007-05-27 12:49:18) [GET]
+  Session ID: 43ab597fb1abea0ae040a7d81efa4490
+  Parameters: {"action"=>"signup", "controller"=>"accounts"}
+Rendering  within layouts/accounts
+Rendering accounts/signup
+Completed in 0.00852 (117 reqs/sec) | Rendering: 0.00599 (70%) | DB: 0.00075 (8%) | 200 OK [http://localhost/accounts/signup]
+
+
+Processing ArticlesController#index (for 68.34.3.69 at 2007-05-27 12:51:58) [GET]
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+Redirected to http://planbblog.strib.ath.cx:2020/accounts/signup
+Completed in 0.00638 (156 reqs/sec) | DB: 0.00150 (23%) | 302 Found [http://planbblog.strib.ath.cx/]
+
+
+Processing AccountsController#signup (for 68.34.3.69 at 2007-05-27 12:51:58) [GET]
+  Session ID: b4fdb3cb988d967eb44056c6f11d07f3
+  Parameters: {"action"=>"signup", "controller"=>"accounts"}
+Rendering  within layouts/accounts
+Rendering accounts/signup
+Completed in 0.00873 (114 reqs/sec) | Rendering: 0.00611 (69%) | DB: 0.00078 (8%) | 200 OK [http://planbblog.strib.ath.cx/accounts/signup]
