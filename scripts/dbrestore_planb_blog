@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd /opt/dbbkup
+svn update
+
+rm /var/www/rails/planb_blog/db/database.sqlite
+cp planb_blog.sqlite /var/www/rails/planb_blog/db/database.sqlite 

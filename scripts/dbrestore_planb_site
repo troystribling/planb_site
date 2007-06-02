@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /opt/dbbkup
+svn update
+
+mysqladmin -u root -p drop planb_site_live
+mysqladmin -u root -p create planb_site_live
+mysql -u root -p planb_site_live < planb_site.sql
+

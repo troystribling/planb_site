@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mysqldump --databases planb_site_live --user=root --password > /opt/dbbkup/planb_site.sql
+cp /var/www/rails/planb_blog/db/database.sqlite /opt/dbbkup/planb_blog.sqlite
+cd /opt/dbbkup
+svn ci -m "database update"
