@@ -1,3 +1,0 @@
-mysqldump --all-databases > /opt/planb_site_dbbkup/planb_site.sql
-echo '.dump' | sqlite /var/www/rails/planb_blog/db/database.sqlite > /opt/planb_site/planb_blog.sql
-
