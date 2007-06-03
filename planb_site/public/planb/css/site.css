@@ -1,0 +1,203 @@
+/******* global style *******/
+a {
+  color: #888;
+  text-decoration: underline;
+}
+a:visited {
+  color: #888;
+  text-decoration: underline;
+}
+a:hover {
+  color: #800;
+  text-decoration: underline;
+}
+a:visited:hover {
+  color: #800;
+  text-decoration: underline;
+}
+body {
+  background: url(/planb/imgages/Paper_Banner_Tile.png) repeat;
+  font-family: Veranda, Arial, sans-serif;
+  font-size: 80%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+h1 {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 1px;
+  font-size: 2.1em;
+  font-weight: normal;
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 200%;
+  letter-spacing: -1px;
+  border-bottom: 1px dotted #888;
+  background: none;
+}
+h3 {
+  color: #999;
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 180%;
+  font-weight: normal;
+  margin-top: 1.5em;
+  margin-bottom: .5em;
+}
+.hidden {
+  display: none;
+}
+.clear {
+  clear: both;
+}
+/******* banner style *******/
+#banner-left {
+  background: url(/planb/imgages/Paper_Banner_Left.png) no-repeat left top;
+  background-color: #000;
+}
+#banner-right {
+  background: url(/planb/imgages/Paper_Banner_Right.png) no-repeat right top;
+  background-color: #000;
+}
+#banner {
+  padding-top: 15px;
+  padding-bottom: 25px;
+  background: url(/planb/imgages/Paper_Banner_Tile.png) repeat-x center top;
+}
+/******* navigation style *******/
+#navigation-wrapper {
+  color: #888;
+  background-color: #222;
+}
+#navigation {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+#navigation h2 {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.75em;
+  font-style: italic;
+  font-weight: normal;
+}
+#navigation h1 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  margin-left: 25px;
+  margin-right: 25px;
+  font-size: 2.6em;
+  letter-spacing: -1px;
+  border-bottom: none;
+}
+#navigation a {
+  color: #888;
+  text-decoration: none;
+}
+#navigation a:visited {
+  color: #888;
+  text-decoration: none;
+}
+#navigation a:hover {
+  color: #800;
+  text-decoration: none;
+}
+#navigation a:visited:hover {
+  color: #800;
+  text-decoration: none;
+}
+/* image_box style */
+div.image-box {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#page div.image-box img {
+  float: left;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 25px;
+}
+#page div.image-box h1 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  font-size: 1.75em;
+}
+/* text_box style */
+#page div.text-box{
+  float: left;
+  width: 175px;
+  margin-left: 0px;
+  margin-right: 25px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+#page div.text-box p {
+  font-size: 1em;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+#page div.text-box h1 {
+  font-size: 1.5em;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  letter-spacing: 0px;
+  font-size: 1.3em;
+}
+//* footer style */
+#footer {
+  color: #666;
+  float: left;
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+/* breadcrumbs style */
+#breadcrumbs  a:visited {
+  color: #a00;
+  text-decoration: none;
+}
+#breadcrumbs a:hover {
+  color: #a00;
+  font-weight: bold;
+  text-decoration: none;
+}
+#breadcrumbs a:visited:hover {
+  color: #a00;
+  font-weight: bold;
+  text-decoration: none;
+}
+#breadcrumbs a{
+  color: #a00;
+  text-decoration: none;
+}
+/* article style */
+#page div.article a {
+  text-decoration: none;
+}
+#page div.article a:visited {
+  text-decoration: none;
+}
+#page div.article a:hover {
+  text-decoration: none;
+}
+#page div.article a:visited:hover {
+  text-decoration: none;
+}
+/* info style */
+#page div.info {
+  font-size: .9em;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
