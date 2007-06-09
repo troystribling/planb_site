@@ -52,11 +52,9 @@ h3 {
 /******* banner style *******/
 #banner-left {
   background: url(/planb/images/Paper_Banner_Left.png) no-repeat left top;
-  background-color: #000;
 }
 #banner-right {
   background: url(/planb/images/Paper_Banner_Right.png) no-repeat right top;
-  background-color: #000;
 }
 #banner {
   padding-top: 15px;
