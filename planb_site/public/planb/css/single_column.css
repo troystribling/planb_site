@@ -1,18 +1,20 @@
-/* page style */
+/******* page style *******/
 #page {
   margin-left: auto;
   margin-right: auto;
   width: 750px;
   text-align: left;
 }
-/* page section style */
+/******* page section style *******/
 #page div.section-wrapper {
-  background-color: #111;
+  background: url(/planb/images/single_column_top.png) no-repeat left top;
+  background-color: #000;
   color: #AAA;
 }
 #page div.section {
   padding-top: 30px;
   padding-bottom: 30px;
+  background: url(/planb/images/single_column_bottom.png) no-repeat left bottom;
 }
 #page div.section p {
   margin-left: 25px;
@@ -26,9 +28,13 @@
   margin-left: 25px;
   margin-right: 25px;
   margin-top: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
+  border-bottom: none;
+  text-indent: 10px;
+  border: 1px solid #111;
+  background: url(/planb/images/navigation_background.png) repeat-x left bottom;
 }
-/* page subsection style */
+/******* page subsection style *******/
 #page div.subsection-wrapper {
   width: 700px;
   margin-left: auto;
@@ -42,9 +48,10 @@
   background-color: #222;
 }
 #page div.subsection p {
+  color: #999;
   margin-left: 15px;
   margin-right: 15px;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 5px;
 }
 #page div.subsection p strong {
