@@ -75,6 +75,11 @@ h3 {
   background-color: #000;
 }
 #navigation {
+  margin-left: auto;
+  margin-right: auto;
+  width: 750px;
+  text-align: left;
+}
   padding-top: 1px;
   padding-bottom: 1px;
 }
