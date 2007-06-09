@@ -50,11 +50,8 @@ h3 {
   clear: both;
 }
 /******* banner style *******/
-#banner-left {
-  background: url(/planb/images/Paper_Banner_Left.png) no-repeat left top;
-}
-#banner-right {
-  background: url(/planb/images/Paper_Banner_Right.png) no-repeat right top;
+#banner-wrapper {
+  background-color: #000;
 }
 #banner {
   padding-top: 15px;
@@ -63,21 +60,12 @@ h3 {
 }
 /******* navigation style *******/
 #navigation-wrapper {
-  color: #888;
-  background-color: #222;
+  color: #600;
+  background-color: #000;
 }
 #navigation {
   padding-top: 1px;
   padding-bottom: 1px;
-}
-#navigation h2 {
-  margin-left: 25px;
-  margin-right: 25px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-size: 1.75em;
-  font-style: italic;
-  font-weight: normal;
 }
 #navigation h1 {
   margin-top: 5px;
