@@ -16,7 +16,7 @@ a:visited:hover {
   text-decoration: underline;
 }
 body {
-  background: url(/planb/imgages/Paper_Banner_Tile.png) repeat;
+  background: url(/planb/images/Paper_Banner_Tile.png) repeat;
   font-family: Veranda, Arial, sans-serif;
   font-size: 80%;
   padding: 0;
@@ -51,17 +51,17 @@ h3 {
 }
 /******* banner style *******/
 #banner-left {
-  background: url(/planb/imgages/Paper_Banner_Left.png) no-repeat left top;
+  background: url(/planb/images/Paper_Banner_Left.png) no-repeat left top;
   background-color: #000;
 }
 #banner-right {
-  background: url(/planb/imgages/Paper_Banner_Right.png) no-repeat right top;
+  background: url(/planb/images/Paper_Banner_Right.png) no-repeat right top;
   background-color: #000;
 }
 #banner {
   padding-top: 15px;
   padding-bottom: 25px;
-  background: url(/planb/imgages/Paper_Banner_Tile.png) repeat-x center top;
+  background: url(/planb/images/Paper_Banner_Tile.png) repeat-x center top;
 }
 /******* navigation style *******/
 #navigation-wrapper {
