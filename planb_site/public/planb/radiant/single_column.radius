@@ -9,11 +9,14 @@
     <r:snippet name="favicon" />
   </head>
   <body>
-    <div id="banner-left">
-      <div id="banner-right">
-        <div id="banner">
-          <r:content part="banner" inherit="true" />
-        </div>
+    <div id="navigation-wrapper">
+      <div id="navigation">
+        <r:content part="navigation" inherit="true" />
+      </div>
+    </div>
+    <div id="banner-wrapper">
+      <div id="banner">
+        <r:content part="banner" inherit="true" />
       </div>
     </div>
     <div id="page">
