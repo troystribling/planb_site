@@ -51,7 +51,9 @@ h3 {
 }
 /******* banner style *******/
 #banner-wrapper {
-  height: 100px;
+  padding-top: 12px;
+  padding-bottom: 5px;
+  height: 50px;
 }
 #banner {
   margin-left: auto;
@@ -74,7 +76,7 @@ h3 {
 #navigation-wrapper {
   color: #CCC;
   background-color: #000;
-  background: url(/planb/images/navigation_background.png) repeat-x left bottom;
+  background: url(/planb/images/grad_bar.png) repeat-x left bottom;
   height: 35px;
 }
 #navigation {

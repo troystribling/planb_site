@@ -32,7 +32,7 @@
   border-bottom: none;
   text-indent: 10px;
   border: 1px solid #111;
-  background: url(/planb/images/navigation_background.png) repeat-x left bottom;
+  background: url(/planb/images/grad_bar.png) repeat-x left bottom;
 }
 /******* page subsection style *******/
 #page div.subsection-wrapper {
@@ -65,6 +65,9 @@
   margin-bottom: 1px;
   font-size: 1.8em;
   font-weight: normal;
+  text-indent: 0px;
+  border: none;
+  background: none;
 }
 /* page highlight style */
 #page div.highlight-wrapper {
