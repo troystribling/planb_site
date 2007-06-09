@@ -4,19 +4,19 @@
   <head>
     <title><r:title /></title>
     <link href="/rss/" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link rel="stylesheet" type="text/css" href="/zgomot/css/single_column.css" />
-    <link rel="stylesheet" type="text/css" href="/zgomot/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="/planb/css/single_column.css" />
+    <link rel="stylesheet" type="text/css" href="/planb/css/site.css" />
     <r:snippet name="favicon" />
   </head>
   <body>
-    <div id="page">
-      <div id="banner-left">
-        <div id="banner-right">
-          <div id="banner">
-            <r:content part="banner" inherit="true" />
-          </div>
+    <div id="banner-left">
+      <div id="banner-right">
+        <div id="banner">
+          <r:content part="banner" inherit="true" />
         </div>
       </div>
+    </div>
+    <div id="page">
       <r:content />
       <r:content part="footer" inherit="true" />
     </div>
