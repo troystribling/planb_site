@@ -24,8 +24,9 @@ body {
 #header { 
 	width: 750px;
 	height: 50px;
-  padding-top: 12px;
-  padding-bottom: 5px;
+	background: url(../../images/theme/hdr.png) left top no-repeat;
+  padding-top: 0px;
+  padding-bottom: 0px;
   margin-left: auto;
   margin-right: auto;
 	text-align: left;
@@ -128,6 +129,7 @@ body {
   #search-container { 
     padding-top: 10px;
     margin-left: 5px;
+    font-size: 90%;
   }
 
   #sform { 
@@ -163,9 +165,9 @@ body {
 	}
 	
   .post h2 {
-    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-family: "Arial narrow", Verdana, Arial, Helvetica, sans-serif;
 	  background: #373737 url(../../images/theme/grad-bar.png);
-    font-size: 1.20em;
+    font-size: 1.3em;
     font-weight: normal;
   	height: 25px;
   	margin-top: 0px;
@@ -173,18 +175,19 @@ body {
   	margin-left: 0px;
   	margin-right: 0px;
   	padding: 0px;
+  	color: 267DB8;
   	text-indent: 5px;
   	border-bottom: 1px solid #000000;
 	}
 	
   .post h2 a {
-  	color: #AAA;
+  	color: #267DB8;
   	text-decoration: none;
   	border: none;
 	}
 	
   .post h2 a:hover {
-  	color: #AAA;
+  	color: #267DB8;
   	text-decoration: underline;
 	}
 
@@ -236,6 +239,7 @@ body {
     font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
  		color: #AAA;
  		font-weight: bold;
+ 		font-size: 100%;
  		margin-top: 10px;
 		margin-left: 5px;
  	}
@@ -422,6 +426,8 @@ body {
   #navigation-wrapper {
     color: #AAA;
     background-color: #000;
+    padding-top: 0px;
+    padding-bottom: 10px;
     background: url(../../images/theme/grad-bar.png) repeat-x left top;
     height: 35px;
   }
@@ -430,18 +436,6 @@ body {
     margin-right: auto;
     width: 750px;
     text-align: left;
-  }
-  #navigation h1 {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 0px;
-    padding-right: 0px;
-    font-size: 1.30em;
-    font-weight: normal;
-    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-    letter-spacing: -1px;
-    word-spacing: 10px;
-    border-bottom: none;
   }
   #navigation strong {
     color: #AA1111;
@@ -462,3 +456,20 @@ body {
     color: #AAA;
     text-decoration: none;
   }
+  #navigation ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  #navigation li {
+    display: inline;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 2px;
+    margin-right: 10px;
+    font-size: 1.30em;
+    font-weight: normal;
+    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    letter-spacing: -1px;
+  }
+  
