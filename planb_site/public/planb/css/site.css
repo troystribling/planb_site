@@ -51,9 +51,10 @@ h3 {
 }
 /******* banner style *******/
 #banner-wrapper {
-  padding-top: 12px;
-  padding-bottom: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   height: 50px;
+  background: url(/planb/images/plan_b_research_banner.png) no-repeat center top;
 }
 #banner {
   margin-left: auto;
@@ -62,12 +63,15 @@ h3 {
   text-align: left;
 } 
 #banner h1 {
+  float: right;
   padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 15px;
-  font-size: 1.75em;
-  font-weight: normal;
-  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  padding-right: 35px;
+  padding-top: 5px;
+  font-size: 2.5em;
+  font-weight: bold;
+  font-style: italic;
+  font-family: "Arial Narrow", Verdana, Arial, Helvetica, sans-serif;
+  color: #267DB8;
   letter-spacing: -1px;
   border-bottom: none;
   background: none;
@@ -77,6 +81,8 @@ h3 {
   color: #AAA;
   background-color: #000;
   background: url(/planb/images/grad_bar.png) repeat-x left top;
+  padding-top: 0px;
+  padding-bottom: 10px;
   height: 35px;
 }
 #navigation {
@@ -85,20 +91,8 @@ h3 {
   width: 750px;
   text-align: left;
 }
-#navigation h1 {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 0px;
-  padding-right: 0px;
-  font-size: 1.65em;
-  font-weight: normal;
-  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-  letter-spacing: -1px;
-  word-spacing: 10px;
-  border-bottom: none;
-}
 #navigation strong {
-  color: #AA1111;
+  color: #A00;
 }
 #navigation a {
   color: #AAA;
@@ -115,6 +109,21 @@ h3 {
 #navigation a:visited:hover {
   color: #AAA;
   text-decoration: none;
+}
+#navigation ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#navigation li {
+  display: inline;
+  padding: 0px;
+  margin: 0px;
+  margin-right: 10px;
+  font-size: 1.65em;
+  font-weight: normal;
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  letter-spacing: -1px;
 }
 /******* image_box style *******/
 div.image-box {
@@ -175,6 +184,9 @@ div.image-box {
   margin-bottom: 0px;
 }
 /******* breadcrumbs style *******/
+#breadcrumbs {
+  
+}
 #breadcrumbs  a:visited {
   color: #a00;
   text-decoration: none;
