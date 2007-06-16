@@ -133,16 +133,31 @@
   font-family: Arial, Verdana, Helvetica, sans-serif;
   background-color: #111;
 }
-/******* feature list definition style *******/
-.feature-list {
-  padding-left: 15px;
-  width: 685px;
-}
-.feature {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;;
+/******* highlight style *******/
+#page div.highlight-wrapper {
+  width: 670px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 5px;
   padding-bottom: 5px;
+}
+#page div.highlight {
+  padding-top: 1px;
+  padding-bottom: 1px;
   background-color: #111;
-  list-style-type: none;
+  color: #888;
+}
+#page div.highlight p {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+  font-weight: normal;
+}
+#page div.highlight h1 {
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 1.15em;
+  font-weight: normal;
 }
