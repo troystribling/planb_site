@@ -112,8 +112,8 @@
 }
 
 .definition {
-  padding-top: 10px;;
   padding-left: 15px;
+  padding-right: 15px;
   padding-top: 5px;;
   padding-bottom: 5px;
   font-size: 1.2em;
@@ -126,16 +126,23 @@
   padding-left: 15px;
   padding-top: 5px;;
   padding-bottom: 5px;
-  padding-right: 25px;
+  padding-right: 15px;
   font-weight: bold;
   color: #9B8903;
   font-size: 1.2em;
   font-family: Arial, Verdana, Helvetica, sans-serif;
   background-color: #111;
 }
-/******* section list definition style *******/
+/******* feature list definition style *******/
+.feature-list {
+  padding-left: 15px;
+  width: 685px;
+}
 .feature {
-  padding-left: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
   background-color: #111;
   list-style-type: none;
 }
