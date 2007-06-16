@@ -1,0 +1,4 @@
+#!/bin/bash
+svk sync //has_ancestor_local
+svk smerge --baseless --incremental --verbatim //has_ancestor_local //has_ancestor_rubyforge
+
