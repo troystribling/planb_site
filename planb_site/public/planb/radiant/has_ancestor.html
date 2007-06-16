@@ -1,0 +1,129 @@
+<div class="section-wrapper">
+  <div class="section">
+
+    <h1>Overview</h1>
+    <div class="subsection-wrapper">
+      <div class="subsection">
+	      <p>
+          has_ancestor is a Ruby on Rails plug-in that adds two class methods to ActiveRecord::Base 
+          that allow specification of inheritance relations between ActiveRecord models. With           
+          the method has_ancestor an ancestor relation is declared between a descendant model and its ancestor and with the 
+          method has_descendants a descendant relation is declared between an          
+          ancestor model and its descendants. Once ancestor and descendant relations are declared between models the models interact 
+          as would be expected from class inheritance, ancestor 
+          instance and class methods may be called from the descendant model, this permits access to ancestor attributes from the 
+          descendant model, and polymorphic methods implemented on both 
+          ancestor and descendant may be called from the ancestor.
+	      </p>
+      </div>
+    </div>	 
+
+    <h1>Install</h1>
+    <div class="subsection-wrapper">
+      <div class="subsection">
+        <p>
+          has_ancestor is a Ruby on Rails plugin that is installed in the <code class="code-sample">vendor/plugins</code> 
+          directory of a Rails project. The source code may be obtained in any the ways listed below.
+        </p>
+        <div class="highlight-wrapper">
+	        <div class="highlight">
+            <p>Download tar file from <a href="http://rubyforge.org/projects/has-ancestor/">RubyForge project page</a>.</p>
+	        </div>
+        </div>
+	      <div class="highlight-wrapper">
+	        <div class="highlight">
+             <p>
+                With svn checkout into vendor/plugins directory of your project,<br>
+                <p><code class="code-sample">svn co svn://rubyforge.org/var/svn/has-ancestor/tags/rel_0_0_0</code></p>
+             </p>
+	        </div>
+        </div>
+	      <div class="highlight-wrapper">
+	        <div class="highlight">
+            <p>
+              Use the Rails plugin installer, <br>
+              <p><code class="code-sample">script/plugin install svn://rubyforge.org/var/svn/has-ancestor/tags/rel_0_0_0</code></p>
+            </p>
+	        </div>
+        </div>
+        
+      </div>
+    </div>
+    	 
+    <h1>Use</h1>
+    <div class="subsection-wrapper">
+      <div class="subsection">
+        <p>See <a href="http://plans.inplanb.com/articles/2007/06/15/construct-model-abstractions-with-has_ancestor">
+           Construct Model Abstractions with has_ancestor</a> for a discussion of an implementation using has_ancestor.</p>
+       </div>
+    </div>   
+    <div class="subsection-wrapper">
+      <div class="subsection">
+        <h1>ActiveRecord::Base class methods</h1>
+	      <p>The following methods are inserted into ActiveRecord::Base.</p>
+        <p>
+          <table class="definitions">
+            <tr>
+              <td class="term">has_descendants</td>
+              <td class="definition">Declare a model has descendants.</td>
+            </tr>
+            <tr>
+              <td class="term">has_ancestor(:named=>:model)</td>
+              <td class="definition">Declare a model ancestor named <strong>:model</strong>.
+              </td>
+            </tr>
+          </table>
+	      </p>
+      </div>
+    </div>	 
+    <div class="subsection-wrapper">
+      <div class="subsection">
+        <h1>ancestor and descendant instance methods</h1>
+	      <p>
+	        If either has_ancestor or has_descendant is called in a ActiveRecord::Base model the following instance methods will be 
+	        available to the model.
+        </p>
+        <p>
+          <table class="definitions">
+            <tr>
+              <td class="term">ancestor</td>
+              <td class="definition">Return ancestor model instance. If model has no ancestor return <strong>nil</strong>.</td>
+            </tr>
+            <tr>
+              <td class="term">descendant</td>
+              <td class="definition">Return descendant model instance. If model has no descendant return <strong>nil</strong>.</td>
+            </tr>
+            <tr>
+              <td class="term">descendant_of?(:model)</td>
+              <td class="definition">Returns <strong>true</strong> if specified model is a descendant of model and <strong>false</strong> if not.</td>
+            </tr>
+            <tr>
+              <td class="term">to_descendant([:model])</td>
+              <td class="definition">Return descendant model if specified and throw Planb::InvalidType if model is not a descendant. 
+                If model is not specified return model 
+                at root of inheritance hierarchy.
+              </td>
+            </tr>
+          </table>
+	      </p>
+      </div>
+    </div>	 
+
+    <h1>Road Map</h1>
+     <div class="subsection-wrapper">
+       <div class="subsection">
+	       <div class="highlight-wrapper">
+	         <div class="highlight">
+             <p>feature</p>
+	         </div>
+         </div>
+	       <div class="highlight-wrapper">
+	         <div class="highlight">
+             <p>feature</p>
+	         </div>
+         </deiv>
+       </div>
+     </div>	 
+
+  </div>
+</div>	 

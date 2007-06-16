@@ -32,24 +32,24 @@
   border-bottom: none;
   text-indent: 10px;
   border: 1px solid #111;
-  color: #700;
+  color: #800;
   font-family: Arial, Verdana, Helvetica, sans-serif;
   background: url(/planb/images/grad_bar.png) repeat-x left bottom;
 }
 #page div.section h1 a {
-  color: #276188;
+  color: #267BB4;
   text-decoration: none;
 }
 #page div.section h1 a:visited {
-  color: #276188;
+  color: #267BB4;
   text-decoration: none;
 }
 #page div.section h1 a:hover {
-  color: #276188;
+  color: #267BB4;
   text-decoration: underline;
 }
 #page div.section h1 a:visited:hover {
-  color: #276188;
+  color: #267BB4;
   text-decoration: underline;
 }
 #page div.section a {
@@ -79,7 +79,8 @@
 #page div.subsection {
   padding-top: 5px;
   padding-bottom: 15px;
-  background-color: #222;
+  background: url(/planb/images/subsection-foot.gif) repeat-x left bottom;
+  background-color: #2B2B2B;
 }
 #page div.subsection p {
   color: #999;

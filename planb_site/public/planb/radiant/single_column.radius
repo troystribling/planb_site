@@ -6,7 +6,7 @@
     <link href="/rss/" rel="alternate" title="RSS" type="application/rss+xml" />
     <link rel="stylesheet" type="text/css" href="/planb/css/single_column.css" />
     <link rel="stylesheet" type="text/css" href="/planb/css/site.css" />
-    <r:snippet name="favicon" />
+    <link rel="shortcut icon" href="/favicon.ico" />	  
   </head>
   <body>
     <div id="navigation-wrapper">
@@ -21,7 +21,7 @@
     </div>
     <div id="page">
       <r:content />
-      <r:content part="footer" inherit="true" />
+      <r:snippet name="footer" />
     </div>
   </body>
 </html>

@@ -146,6 +146,10 @@ div.image-box {
   margin-right: 0px;
   font-size: 1.75em;
 }
+/******* code-sample style *******/
+.code-sample {
+  font-size: 1.25em;
+}
 /******* footer style *******/
 #footer {
   color: #000;
