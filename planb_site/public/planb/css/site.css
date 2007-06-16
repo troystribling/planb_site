@@ -68,27 +68,13 @@ h3 {
   padding-right: 35px;
   padding-top: 5px;
   font-size: 2.5em;
-  font-weight: bold;
+  font-weight: lighter;
   font-style: italic;
   font-family: Arial, Verdana, Helvetica, sans-serif;
   color: #267DB8;
   letter-spacing: -1px;
   border-bottom: none;
   background: none;
-}
-/******* table definition style *******/
-.definition {
-  padding-top: 10px;;
-  font-size: 1.1em;
-}
-.term {
-  padding-left: 15px;
-  padding-top: 10px;;
-  padding-bottom: 0px;
-  padding-right: 25px;
-  font-weight: bold;
-  font-size: 1.1em;
-  font-family: Arial, Verdana, Helvetica, sans-serif;
 }
 /******* navigation style *******/
 #navigation-wrapper {
@@ -106,7 +92,7 @@ h3 {
   text-align: left;
 }
 #navigation strong {
-  color: #A00;
+  color: #900;
 }
 #navigation a {
   color: #AAA;
@@ -159,31 +145,6 @@ div.image-box {
   margin-left: 0px;
   margin-right: 0px;
   font-size: 1.75em;
-}
-/******* text_box style *******/
-#page div.text-box{
-  float: left;
-  width: 175px;
-  margin-left: 0px;
-  margin-right: 25px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-#page div.text-box p {
-  font-size: 1em;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-}
-#page div.text-box h1 {
-  font-size: 1.5em;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  letter-spacing: 0px;
-  font-size: 1.3em;
 }
 /******* footer style *******/
 #footer {
