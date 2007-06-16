@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+#
+# description: typo manages typo
+#
+apps = [
+  {:app => 'planb_blog'},
+]
+
+default_options = {
+  :app_dir => '/var/www/rails',
+}
+
+if ['stop', 'restart'].include? ARGV.first
+  apps.each do |app|
+    options = default_options.merge(app)
+    path = File.join options[:app_dir], options[:app]
+    puts "Stopping #{path}..." 
+    `typo stop #{path}`
+  end
+end
+
+if ['start', 'restart'].include? ARGV.first
+  apps.each do |app|
+    options = default_options.merge(app)
+    path = File.join options[:app_dir], options[:app]
+    puts "Starting #{options[:app]}" 
+    `typo start #{path}`
+  end
+end
+
+unless ['start', 'stop', 'restart'].include? ARGV.first
+    puts "Usage: typo {start|stop|restart}" 
+    exit
+end
+

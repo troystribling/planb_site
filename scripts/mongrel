@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+#
+# mongrel Startup script for Mongrel by Tim Morgan, modified by bmihelac
+#
+# description: mongrel manages Mongrel
+#
+
+# this would add one mongrels for these two apps on 
+# ports 8000 and 8001, mephisto would be started in production
+apps = [
+  {:app => 'planb_site'},
+]
+
+default_port = 8000
+default_options = {
+  :app_dir => '/var/www/rails',
+  :environment => 'production'
+}
+
+if ['stop', 'restart'].include? ARGV.first
+  apps.each do |app|
+    options = default_options.merge(app)
+    path = File.join options[:app_dir], options[:app]
+    puts "Stopping #{path}..." 
+    `mongrel_rails stop -c #{path} -P log/mongrel.pid`
+  end
+end
+
+if ['start', 'restart'].include? ARGV.first
+  apps.each do |app|
+    options = default_options.merge(app)
+    path = File.join options[:app_dir], options[:app]
+    port = options[:port] || default_port
+    puts "Starting #{options[:app]} on #{port}..." 
+    `mongrel_rails start -d -p #{port} -e #{options[:environment]} -c #{path} -P log/mongrel.pid`
+    default_port = port + 1
+  end
+end
+
+unless ['start', 'stop', 'restart'].include? ARGV.first
+    puts "Usage: mongrel {start|stop|restart}" 
+    exit
+end
+
