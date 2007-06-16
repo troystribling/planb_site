@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title><%=h page_title %></title>
+  <%= page_header %>
+  <%= stylesheet_link_tag "/stylesheets/theme/planb" %>
+  <%= stylesheet_link_tag "/stylesheets/theme/local" %>
+  <link rel="shortcut icon" href="/favicon.ico" />	  
+</head>
+<body>
+  <div id="navigation-wrapper">
+    <div id="navigation">
+      <ul>
+      <li><a href="http://research.inplanb.com">projects</a></li>
+      <li><a href="http://plans.inplanb.com"><strong>planning</strong></a></li> 
+      <li><a href="http://research.inplanb.com/about">about</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="container">
+	  <div id="inner_container">
+
+		  <div id="header">
+			  <div id="logo">
+			  </div>
+		  </div>
+		  			  	  
+		  <div id="content-wrapper">
+  		  <div id="content">
+
+          <div class="clear">
+           &nbsp
+          </div>
+
+    			<div id="main">
+    			  <%= @content_for_layout %>
+    			  <%= javascript_tag "show_dates_as_local_time()" %>
+    			</div>
+
+  			  <div id="sidebar">
+  				  <div id="search-container">
+  					  <div id="search"><%= render :partial => "shared/search" %></div>	
+  				  </div>	  
+  				  <div id="search-results"></div>
+  				    <%= observe_field "q", 
+  					    :frequency => 1, 
+  					    :url => { :controller => "live", :action => "search" }, 
+  					    :loading => "Element.show('search_spinner')",
+  					    :complete => "Element.hide('search_spinner')",
+  					    :update => "search-results" -%>  	
+  				    <%= render_sidebars %>
+  				    <%= link_to image_tag("powered.gif"),  "http://typo.leetsoft.com/", {:class => "powered" } %>
+  				</div>
+
+          <div class="clear">
+           &nbsp
+          </div>
+
+  		  </div>
+  		</div>
+  		
+      <div id="footer">
+        <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+        <p>Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.</p>
+      </div>
+		  
+	  </div>
+	</div>
+</body>
+</html>
