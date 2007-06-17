@@ -177,7 +177,22 @@ body {
   	padding: 0px;
   	color: #2A81BB;
   	text-indent: 5px;
-  	border-bottom: 1px solid #000000;
+  	border-bottom: none;
+	}
+
+  .post h3 {
+    font-family: "Arial narrow", Verdana, Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 1.15em;
+    font-weight: bold;
+    text-indent: 1px;
+    border: none;
+    color: #BBB;
+    border-bottom: 2px solid #000;
+    background: none;
 	}
 	
   .post h2 a {
@@ -194,6 +209,7 @@ body {
   .post p {
   	text-align: left;
     font-size: 0.9em;
+  	margin-top:  5px;
   	margin-left:  10px;
   	margin-right: 10px;
 	}
@@ -202,6 +218,7 @@ body {
   	font-size: 75%;
   	text-align: right;
   	margin-right: 10px;
+  	margin-top: 10px;
 	}
 	
   p.auth {
@@ -218,6 +235,59 @@ body {
  	  border: 1px solid #000000;
  	}
  	
+  /*+-------------------------------------------+
+    |   		     post highlight style 			    |
+    +-------------------------------------------+*/
+  div.highlight-wrapper {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  
+  div.highlight {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #111;
+    color: #888;
+  }
+  
+  div.highlight p {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    font-weight: normal;
+  }
+  
+  div.highlight h1 {
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 1.15em;
+    font-weight: normal;
+  }
+  
+  div.highlight a {
+    color: #1F72A8;
+    text-decoration: none;
+  }
+  
+  div.highlight a:visited {
+    color: #1F72A8;
+    text-decoration: none;
+  }
+  
+  div.highlight a:hover {
+    color: #1F72A8;
+    text-decoration: underline;
+  }
+  
+  div.highlight a:visited:hover {
+    color: #1F72A8;
+    text-decoration: underline;
+  }
+ 
  /*+-------------------------------------------+
   |   			      COMMENTS						         |
   +-------------------------------------------+*/
@@ -264,8 +334,9 @@ body {
   }
  		
   #sidebar ul li { 
- 	  background: url(../../images/theme/bullet.gif) 0 45% no-repeat;
- 	  padding-left: 21px;
+ 	  background: url(../../images/theme/black-list-bullet.png) 0 45% no-repeat;
+ 	  padding-left: 20px;
+ 	  font-size: 0.9em;
  	}
  	 
   #flickr div img {
@@ -424,7 +495,7 @@ body {
   }
 
  /*+-------------------------------------------+
-   |   		          	navigation style 						         |
+   |   		     navigation style 			       	 |
    +-------------------------------------------+*/
   #navigation-wrapper {
     color: #AAA;
@@ -434,36 +505,44 @@ body {
     background: url(../../images/theme/grad-bar.png) repeat-x left top;
     height: 35px;
   }
+
   #navigation {
     margin-left: auto;
     margin-right: auto;
     width: 750px;
     text-align: left;
   }
+
   #navigation strong {
     color: #900;
   }
+
   #navigation a {
     color: #AAA;
     text-decoration: none;
   }
+
   #navigation a:visited {
     color: #AAA;
     text-decoration: none;
   }
+
   #navigation a:hover {
     color: #AAA;
     text-decoration: none;
   }
+
   #navigation a:visited:hover {
     color: #AAA;
     text-decoration: none;
   }
+
   #navigation ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
+
   #navigation li {
     display: inline;
     padding: 0px;
@@ -472,7 +551,111 @@ body {
     margin-right: 10px;
     font-size: 1.30em;
     font-weight: normal;
-    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     letter-spacing: -1px;
   }
+
+ /*+-------------------------------------------+
+   |   		     table definition style       	 |
+   +-------------------------------------------+*/
+  table.definitions {
+    width: 482px;
+    margin-left: 3px;
+  }
+  td.term {
+    padding-left: 10px;
+    padding-top: 5px;;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    font-weight: bold;
+    color: #9B8903;
+    font-size: 0.9em;
+    background-color: #111;
+  }
+  td.definition {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;;
+    padding-bottom: 5px;
+    font-size: 0.9em;
+    font-weight: normal;
+    background-color: #111;
+    color: #888;
+  }
+  table.definitions p {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.0em;
+  }
+     
+ /*+-------------------------------------------+
+   |   		     code style       			       	 |
+   +-------------------------------------------+*/
+  .typocode_ruby .normal {}
+  .typocode_ruby .comment { color: #005; font-style: italic; }
+  .typocode_ruby .keyword { color: #A00; font-weight: bold; }
+  .typocode_ruby .method { color: #077; }
+  .typocode_ruby .class { color: #074; }
+  .typocode_ruby .module { color: #050; }
+  .typocode_ruby .punct { color: #CCC; font-weight: bold; }
+  .typocode_ruby .symbol { color: #099; }
+  .typocode_ruby .string { color: #944; background: #FFE; }
+  .typocode_ruby .char { color: #F07; }
+  .typocode_ruby .ident { color: #777; }
+  .typocode_ruby .constant { color: #07F; }
+  .typocode_ruby .regex { color: #B66; background: #FEF; }
+  .typocode_ruby .number { color: #F99; }
+  .typocode_ruby .attribute { color: #7BB; }
+  .typocode_ruby .global { color: #7FB; }
+  .typocode_ruby .expr { color: #227; }
+  .typocode_ruby .escape { color: #277; }
+  .typocode_xml .normal {}
+  .typocode_xml .namespace { color: #B66; font-weight: bold; }
+  .typocode_xml .tag { color: #F88; }
+  .typocode_xml .comment { color: #005; font-style: italic; }
+  .typocode_xml .punct { color: #447; font-weight: bold; }
+  .typocode_xml .string { color: #944; }
+  .typocode_xml .number { color: #F99; }
+  .typocode_xml .attribute { color: #BB7; }
+  .typocode_yaml .normal {}
+  .typocode_yaml .document { font-weight: bold; color: #07F; }
+  .typocode_yaml .type { font-weight: bold; color: #05C; }
+  .typocode_yaml .key { color: #F88; }
+  .typocode_yaml .comment { color: #005; font-style: italic; }
+  .typocode_yaml .punct { color: #447; font-weight: bold; }
+  .typocode_yaml .string { color: #944; }
+  .typocode_yaml .number { color: #F99; }
+  .typocode_yaml .time { color: #F99; }
+  .typocode_yaml .date { color: #F99; }
+  .typocode_yaml .ref { color: #944; }
+  .typocode_yaml .anchor { color: #944; }
   
+  .typocode {
+    background-color:#111;
+    padding: 0px;
+    margin: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
+  .typocode pre {
+    padding: 0px;
+    margin: 0px;
+    background: transparent;
+    font-family: monospace;
+    overflow:auto;
+  }
+  
+  
+  .typocode .lineno {
+    text-align: right;
+  /*  color: #B00;*/
+    font-family: monospace;
+    padding-right: 1em;
+  }
+  
+  code {
+    font-size:120%;
+  }
+     
