@@ -1,4 +1,3 @@
-/******* global style *******/
 a {
   color: #A00;
   text-decoration: none;
@@ -145,10 +144,6 @@ div.image-box {
   margin-left: 0px;
   margin-right: 0px;
   font-size: 1.75em;
-}
-/******* code-sample style *******/
-.code-sample {
-  font-size: 1.25em;
 }
 /******* footer style *******/
 #footer {

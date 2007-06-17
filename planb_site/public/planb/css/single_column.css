@@ -5,6 +5,7 @@
   width: 750px;
   text-align: left;
 }
+
 /******* page section style *******/
 #page div.section-wrapper {
   background: url(/planb/images/single_column_top.png) no-repeat left top;
@@ -23,6 +24,9 @@
   margin-bottom: 10px;
   font-size: 1.1em;
   font-weight: normal;
+}
+#page div.section code {
+  font-size: 1.4em;
 }
 #page div.section h1 {
   margin-left: 25px;
@@ -68,13 +72,22 @@
   color: #267DB8;
   text-decoration: underline;
 }
+
 /******* page subsection style *******/
-#page div.subsection-wrapper {
+#page div.subsection-attached {
   width: 700px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 5px;
   padding-bottom: 20px;
+}
+#page div.subsection-float {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  background: url(/planb/images/subsection-head.gif) repeat-x left top;
 }
 #page div.subsection {
   padding-top: 5px;
@@ -102,26 +115,92 @@
   font-weight: lighter;
   text-indent: 0px;
   border: none;
-  color: #CCC;
+  color: #BBB;
   border-bottom: 2px solid #000;
   background: none;
 }
-/******* table definition style *******/
-.definitions {
-  width: 685px;
-  padding-left: 15px;
+
+/******* section list style *******/
+#page div.section ul {
+  list-style-type: none;
+  list-style-image: url(/planb/images/black-list-bullet.png);
+}
+#page div.section li {
+  font-size: 1.1em;
 }
 
-.definition {
+/******* contact table style *******/
+.contact {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.termination {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 5px;;
   padding-bottom: 5px;
   font-size: 1.2em;
-  font-weight: normal;
-  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-weight: bold;
   background-color: #111;
+  color: #9B8903;
+}
+.addr{
+  padding-left: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  font-weight: normal;
   color: #888;
+  font-size: 1.2em;
+  background-color: #111;
+}
+#page table.contact p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.0em;
+}
+
+/******* bigraphic table style *******/
+.biographic {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bio-item {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #9B8903;
+  background-color: #111;
+}
+.bio-data {
+  padding-left: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  font-size: 1.2em;
+  color: #888;
+  background-color: #111;
+}
+#page table.biographic p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.0em;
+}
+
+/******* definition table style *******/
+.definitions {
+  width: 685px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .term {
   padding-left: 15px;
@@ -131,9 +210,60 @@
   font-weight: bold;
   color: #9B8903;
   font-size: 1.2em;
-  font-family: Arial, Verdana, Helvetica, sans-serif;
   background-color: #111;
 }
+.definition {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: normal;
+  background-color: #111;
+  color: #888;
+}
+#page table.definitions p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.0em;
+}
+
+/******* project status table *******/
+.project-status {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.project {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: #111;
+  color: #888;
+}
+.status {
+  padding-left: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  font-weight: normal;
+  color: #888;
+  font-size: 1.2em;
+  background-color: #111;
+}
+#page table.project-status p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.0em;
+}
+
 /******* highlight style *******/
 #page div.highlight-wrapper {
   width: 670px;
@@ -161,4 +291,20 @@
   margin-right: 15px;
   font-size: 1.15em;
   font-weight: normal;
+}
+#page div.highlight a {
+  color: #1F72A8;
+  text-decoration: none;
+}
+#page div.highlight a:visited {
+  color: #1F72A8;
+  text-decoration: none;
+}
+#page div.highlight a:hover {
+  color: #1F72A8;
+  text-decoration: underline;
+}
+#page div.highlight a:visited:hover {
+  color: #1F72A8;
+  text-decoration: underline;
 }

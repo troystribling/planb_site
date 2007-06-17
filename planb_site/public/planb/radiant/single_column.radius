@@ -20,7 +20,11 @@
       </div>
     </div>
     <div id="page">
-      <r:content />
+      <div class="section-wrapper">
+        <div class="section">
+          <r:content />
+        </div>
+      </div>
       <r:snippet name="footer" />
     </div>
   </body>
