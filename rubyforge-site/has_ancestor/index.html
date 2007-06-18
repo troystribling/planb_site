@@ -1,0 +1,196 @@
+<h1>Project</h1>
+<div class="subsection-attached">
+  <div class="subsection">
+    <h1>Description</h1>
+    <p>
+      has_ancestor is a Ruby on Rails plug-in that adds two class methods to ActiveRecord::Base 
+      that allow specification of inheritance relations between ActiveRecord models. With           
+      the method has_ancestor an ancestor relation is declared between a descendant model and its ancestor and with the 
+      method has_descendants a descendant relation is declared between an          
+      ancestor model and its descendants. Once ancestor and descendant relations are declared between models the models interact 
+      as would be expected from class inheritance, ancestor 
+      instance and class methods may be called from the descendant model, this permits access to ancestor attributes from the 
+      descendant model, and polymorphic methods implemented on both 
+      ancestor and descendant may be called from the ancestor.
+    </p>
+   </div>
+</div>	 
+<div class="subsection-float">
+  <div class="subsection">
+    <h1>Links</h1>
+    <ul>
+      <li><a href="http://rubyforge.org/projects/has-ancestor/">RubyForge project page</a></li>
+      <li><a href="http://plans.inplanb.com/articles/2007/06/15/construct-model-abstractions-with-has_ancestor">
+           Construct Model Abstractions with has_ancestor</a>
+      </li>
+    </ul>
+   </div>
+</div>	 
+
+<h1>Install</h1>
+<div class="subsection-attached">
+  <div class="subsection">
+    <p>
+      has_ancestor is a Ruby on Rails plugin that is installed in the <code class="code-sample">vendor/plugins</code> 
+      directory of a Rails project. The source code may be obtained in any the ways listed below.
+    </p>
+    <div class="highlight-wrapper">
+      <div class="highlight">
+        <p>Download tar file from <a href="http://rubyforge.org/projects/has-ancestor/">RubyForge project page</a>.</p>
+      </div>
+    </div>
+    <div class="highlight-wrapper">
+      <div class="highlight">
+         <p>
+            With svn checkout into vendor/plugins directory of your project,<br>
+            <p><code>svn co svn://rubyforge.org/var/svn/has-ancestor/tags/rel_0_0_0</code></p>
+         </p>
+      </div>
+    </div>
+    <div class="highlight-wrapper">
+      <div class="highlight">
+        <p>
+          Use the Rails plugin installer, <br>
+          <p><code>script/plugin install svn://rubyforge.org/var/svn/has-ancestor/tags/rel_0_0_0</code></p>
+        </p>
+      </div>
+    </div>    
+  </div>
+</div>
+	 
+<h1>Use</h1>
+<div class="subsection-attached">
+  <div class="subsection">
+    <p>See <a href="http://plans.inplanb.com/articles/2007/06/15/construct-model-abstractions-with-has_ancestor">
+       Construct Model Abstractions with has_ancestor</a> for a discussion of an implementation using has_ancestor.</p>
+   </div>
+</div>   
+<div class="subsection-float">
+  <div class="subsection">
+    <h1><code>ActiveRecord::Base</code> class methods</h1>
+    <p>The following methods are inserted into <code>ActiveRecord::Base</code>.</p>
+    <p>
+      <table class="definitions">
+        <tr>
+          <td class="term">has_descendants</td>
+          <td class="definition">
+            <p>Declare a model has descendants.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term">has_ancestor(:named=>:model)</td>
+          <td class="definition">
+            <p>Declare a model ancestor named <code>:model</code>.</p>
+          </td>
+        </tr>
+      </table>
+    </p>
+  </div>
+</div>	 
+
+<div class="subsection-float">
+  <div class="subsection">
+    <h1>ancestor and descendant instance methods</h1>
+    <p>
+      If either has_ancestor or has_descendant is called in a <code>ActiveRecord::Base</code> model the following instance methods 
+      will be available to the model.
+    </p>
+    <p>
+      <table class="definitions">
+        <tr>
+          <td class="term"><code>ancestor</code></td>
+          <td class="definition">
+            <p>Return ancestor model instance. If model has no ancestor return <code><strong>nil</strong></code>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>descendant</code></td>
+          <td class="definition">
+            <p>Return descendant model instance. If model has no descendant return <code><strong>nil</strong></code>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>descendant_of?(:model)</code></td>
+          <td class="definition">
+            Returns <strong><code>true</code></strong> if specified model is a descendant of model and 
+            <strong><code>false</code></strong> if not.
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>to_descendant([:model])</code></td>
+          <td class="definition">
+            <p>
+               Return descendant model if specified and throw <code>Planb::InvalidType</code> if model is not a descendant. 
+               If model is not specified return model 
+               at root of inheritance hierarchy.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </p>
+  </div>
+</div>	 
+
+<div class="subsection-float">
+  <div class="subsection">
+    <h1>descendant instance methods</h1>
+    <p>
+      If has_ancestor is called in a <code>ActiveRecord::Base</code> model the following instance methods will be 
+      available to the model.
+    </p>
+    <p>
+      <table class="definitions">
+        <tr>
+          <td class="term"><code>descendant_initialize</code></td>
+          <td class="definition">
+            <p>
+              <code>has_ancestor</code> adds an implementation of initialize to a descendant model. If an 
+              implementation is provided in a descendant model it will replace this version causing the model to be improperly 
+              initialized. 
+              descendant_initialize is provided as a replacement for initialize. Any required model initialization my be performed in 
+              this method.
+            </p>  
+          </td>
+        </tr>
+      </table>
+    </p>
+  </div>
+</div>	 
+
+<h1>Road Map</h1>
+<div class="subsection-attached">
+  <div class="subsection">
+    <div class="highlight-wrapper">
+      <div class="highlight">
+        <p>
+          A class implementation of <code>descendant_of?</code>.  
+        </p>
+      </div>
+    </div>
+    <div class="highlight-wrapper">
+      <div class="highlight">
+        <p>
+          Support in a generated query method specification of match conditions for attributes in different models in the 
+          inheritance hierarchy. For example in the current release if attribute <code>name</code> is in the ancestor model and the 
+          attribute <code>location</code> is in the descendant model a query performed from the descendant model that specifies a match 
+          condition on both <code>name</code> and <code>location</code> (e.g., <code>find_all_by_name_and_location</code>) will raise 
+          <code>NoMethodError</code>.      
+        </p>
+      </div>
+    </div>
+    <div class="highlight-wrapper">
+      <div class="highlight">
+        <p>
+          Support for a generated query method that will only return instances of ancestors that are ancestors of instances of the 
+          descendant model on which the query was called 
+          if a match condition on an ancestor model attribute is specified that also matches instances of descendant models of a 
+          different class that have the same ancestor. 
+          For example in the current release if attribute <code>name</code> is in the ancestor model and the ancestor 
+          has two descendant models <code>a_descendant</code> and <code>b_descendant</code> and some instances of the two descendant 
+          models have the same value of <code>name</code> a call to <code>ADescendat.find_all_by_name('Troy')</code> will return 
+          instances of the ancestor model that are ancestor of both <code>a_descendant</code> and <code>b_descendant</code>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>	 

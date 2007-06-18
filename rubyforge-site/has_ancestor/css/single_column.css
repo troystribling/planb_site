@@ -1,0 +1,310 @@
+/******* page style *******/
+#page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 750px;
+  text-align: left;
+}
+
+/******* page section style *******/
+#page div.section-wrapper {
+  background: url(/planb/images/single_column_top.png) no-repeat left top;
+  background-color: #000;
+  color: #AAA;
+}
+#page div.section {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: url(/planb/images/single_column_bottom.png) no-repeat left bottom;
+}
+#page div.section p {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  font-weight: normal;
+}
+#page div.section code {
+  font-size: 1.4em;
+}
+#page div.section h1 {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  border-bottom: none;
+  text-indent: 10px;
+  border: 1px solid #111;
+  color: #800;
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  background: url(/planb/images/grad_bar.png) repeat-x left bottom;
+}
+#page div.section h1 a {
+  color: #267BB4;
+  text-decoration: none;
+}
+#page div.section h1 a:visited {
+  color: #267BB4;
+  text-decoration: none;
+}
+#page div.section h1 a:hover {
+  color: #267BB4;
+  text-decoration: underline;
+}
+#page div.section h1 a:visited:hover {
+  color: #267BB4;
+  text-decoration: underline;
+}
+#page div.section a {
+  color: #267DB8;
+  text-decoration: none;
+}
+#page div.section a:visited {
+  color: #267DB8;
+  text-decoration: none;
+}
+#page div.section a:hover {
+  color: #267DB8;
+  text-decoration: underline;
+}
+#page div.section a:visited:hover {
+  color: #267DB8;
+  text-decoration: underline;
+}
+
+/******* page subsection style *******/
+#page div.subsection-attached {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+#page div.subsection-float {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  background: url(/planb/images/subsection-head.gif) repeat-x left top;
+}
+#page div.subsection {
+  padding-top: 5px;
+  padding-bottom: 15px;
+  background: url(/planb/images/subsection-foot.gif) repeat-x left bottom;
+  background-color: #2B2B2B;
+}
+#page div.subsection p {
+  color: #999;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+#page div.subsection p strong {
+  font-size: 1.0em;
+  font-weight: normal;
+}
+#page div.subsection h1 {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+  margin-bottom: 1px;
+  font-size: 1.5em;
+  font-weight: lighter;
+  text-indent: 0px;
+  border: none;
+  color: #BBB;
+  border-bottom: 2px solid #000;
+  background: none;
+}
+
+/******* section list style *******/
+#page div.section ul {
+  list-style-type: none;
+  list-style-image: url(/planb/images/black-list-bullet.png);
+}
+#page div.section li {
+  font-size: 1.1em;
+}
+
+/******* contact table style *******/
+.contact {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.termination {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: #111;
+  color: #9B8903;
+}
+.addr{
+  padding-left: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  font-weight: normal;
+  color: #888;
+  font-size: 1.2em;
+  background-color: #111;
+}
+#page table.contact p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.0em;
+}
+
+/******* bigraphic table style *******/
+.biographic {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bio-item {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #9B8903;
+  background-color: #111;
+}
+.bio-data {
+  padding-left: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  font-size: 1.2em;
+  color: #888;
+  background-color: #111;
+}
+#page table.biographic p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.0em;
+}
+
+/******* definition table style *******/
+.definitions {
+  width: 685px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.term {
+  padding-left: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  font-weight: bold;
+  color: #9B8903;
+  font-size: 1.2em;
+  background-color: #111;
+}
+.definition {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: normal;
+  background-color: #111;
+  color: #888;
+}
+#page table.definitions p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.0em;
+}
+
+/******* project status table *******/
+.project-status {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.project {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: #111;
+  color: #888;
+}
+.status {
+  padding-left: 15px;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  font-weight: normal;
+  color: #888;
+  font-size: 1.2em;
+  background-color: #111;
+}
+#page table.project-status p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.0em;
+}
+
+/******* highlight style *******/
+#page div.highlight-wrapper {
+  width: 670px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#page div.highlight {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background-color: #111;
+  color: #888;
+}
+#page div.highlight p {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+  font-weight: normal;
+}
+#page div.highlight h1 {
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 1.15em;
+  font-weight: normal;
+}
+#page div.highlight a {
+  color: #1F72A8;
+  text-decoration: none;
+}
+#page div.highlight a:visited {
+  color: #1F72A8;
+  text-decoration: none;
+}
+#page div.highlight a:hover {
+  color: #1F72A8;
+  text-decoration: underline;
+}
+#page div.highlight a:visited:hover {
+  color: #1F72A8;
+  text-decoration: underline;
+}
