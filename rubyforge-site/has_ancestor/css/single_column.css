@@ -8,14 +8,14 @@
 
 /******* page section style *******/
 #page div.section-wrapper {
-  background: url(/planb/images/single_column_top.png) no-repeat left top;
+  background: url(/images/single_column_top.png) no-repeat left top;
   background-color: #000;
   color: #AAA;
 }
 #page div.section {
-  padding-top: 30px;
+  padding-top: 45px;
   padding-bottom: 30px;
-  background: url(/planb/images/single_column_bottom.png) no-repeat left bottom;
+  background: url(/images/single_column_bottom.png) no-repeat left bottom;
 }
 #page div.section p {
   margin-left: 25px;
@@ -38,7 +38,7 @@
   border: 1px solid #111;
   color: #800;
   font-family: Arial, Verdana, Helvetica, sans-serif;
-  background: url(/planb/images/grad_bar.png) repeat-x left bottom;
+  background: url(/images/grad_bar.png) repeat-x left bottom;
 }
 #page div.section h1 a {
   color: #267BB4;
@@ -87,12 +87,12 @@
   margin-right: auto;
   padding-top: 5px;
   padding-bottom: 20px;
-  background: url(/planb/images/subsection-head.gif) repeat-x left top;
+  background: url(/images/subsection-head.gif) repeat-x left top;
 }
 #page div.subsection {
   padding-top: 5px;
   padding-bottom: 15px;
-  background: url(/planb/images/subsection-foot.gif) repeat-x left bottom;
+  background: url(/images/subsection-foot.gif) repeat-x left bottom;
   background-color: #2B2B2B;
 }
 #page div.subsection p {
@@ -123,7 +123,7 @@
 /******* section list style *******/
 #page div.section ul {
   list-style-type: none;
-  list-style-image: url(/planb/images/black-list-bullet.png);
+  list-style-image: url(/images/black-list-bullet.png);
 }
 #page div.section li {
   font-size: 1.1em;

@@ -53,7 +53,7 @@ h3 {
   padding-top: 0px;
   padding-bottom: 0px;
   height: 50px;
-  background: url(/planb/images/plan_b_research_banner.png) no-repeat center top;
+  background: url(/images/plan_b_research_banner.png) no-repeat center top;
 }
 #banner {
   margin-left: auto;
@@ -79,7 +79,7 @@ h3 {
 #navigation-wrapper {
   color: #AAA;
   background-color: #000;
-  background: url(/planb/images/grad_bar.png) repeat-x left top;
+  background: url(/images/grad_bar.png) repeat-x left top;
   padding-top: 0px;
   padding-bottom: 10px;
   height: 35px;
@@ -151,6 +151,7 @@ div.image-box {
   float: left;
   font-size: 85%;
   margin-top: 10px;
+  margin-bottom: 20px;
   width: 100%;
 }
 #footer p {
