@@ -308,7 +308,7 @@ body {
   +-------------------------------------------+*/
   
   #sidebar h3 {
-    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
  		color: #AAA;
  		font-weight: bold;
  		font-size: 100%;
@@ -431,7 +431,7 @@ body {
   .pullquote {
 		width: 30%;
 		float:right;
-    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
 		color: #666;
 		margin:10px;
 		background: url(../../images/theme/q-close.gif) no-repeat 70% 100% !important;
