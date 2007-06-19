@@ -13,8 +13,8 @@
   color: #AAA;
 }
 #page div.section {
-  padding-top: 45px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background: url(/images/single_column_bottom.png) no-repeat left bottom;
 }
 #page div.section p {
