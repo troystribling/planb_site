@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>RSpec results</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <style type="text/css">
+  body {
+    margin: 0; 
+    padding: 0;
+    background: #fff;
+    font-size: 80%;
+  }
+  </style>
+</head>
+<body>
+<div class="rspec-report">
+  <script type="text/javascript">
+    // <![CDATA[
+function moveProgressBar(percentDone) {
+  document.getElementById("rspec-header").style.width = percentDone +"%";
+}
+function makeRed(element_id) {
+  document.getElementById(element_id).style.background = '#C40D0D';
+    document.getElementById(element_id).style.color = '#FFFFFF'; 
+  }
+    
+  function makeYellow(element_id) {
+    if (element_id == "rspec-header" && document.getElementById(element_id).style.background != '#C40D0D')
+    {
+      document.getElementById(element_id).style.background = '#FAF834';
+      document.getElementById(element_id).style.color = '#000000'; 
+    }
+    else
+    {
+      document.getElementById(element_id).style.background = '#FAF834';
+      document.getElementById(element_id).style.color = '#000000';
+    }
+  }
+
+    // ]]>
+  </script>
+  <style type="text/css">
+#rspec-header {
+  background: #65C400; color: #fff;
+}
+
+.rspec-report h1 {
+  margin: 0px 10px 0px 10px;
+  padding: 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  font-size: 1.8em;
+}
+
+#summary {
+  margin: 0; padding: 5px 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  text-align: right;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+#summary p {
+  margin: 0 0 0 2px;
+}
+
+#summary #totals {
+  font-size: 1.2em;
+}
+
+.behaviour {
+  margin: 0 10px 5px;
+  background: #fff;
+}
+
+dl {
+  margin: 0; padding: 0 0 5px;
+  font: normal 11px "Lucida Grande", Helvetica, sans-serif;
+}
+
+dt {
+  padding: 3px;
+  background: #65C400;
+  color: #fff;
+  font-weight: bold;
+}
+
+dd {
+  margin: 5px 0 5px 5px;
+  padding: 3px 3px 3px 18px;
+}
+
+dd.spec.passed {
+  border-left: 5px solid #65C400;
+  border-bottom: 1px solid #65C400;
+  background: #DBFFB4; color: #3D7700;
+}
+
+dd.spec.failed {
+  border-left: 5px solid #C20000;
+  border-bottom: 1px solid #C20000;
+  color: #C20000; background: #FFFBD3;
+}
+
+dd.spec.not_implemented {
+  border-left: 5px solid #FAF834;
+  border-bottom: 1px solid #FAF834;
+  background: #FCFB98; color: #131313;
+}
+
+.backtrace {
+  color: #000;
+  font-size: 12px;
+}
+
+a {
+  color: #BE5C00;
+}
+
+/* Ruby code, style similar to vibrant ink */
+.ruby {
+  font-size: 12px;
+  font-family: monospace;
+  color: white;
+  background-color: black;
+  padding: 0.1em 0 0.2em 0;
+}
+
+.ruby .keyword { color: #FF6600; }
+.ruby .constant { color: #339999; }
+.ruby .attribute { color: white; }
+.ruby .global { color: white; }
+.ruby .module { color: white; }
+.ruby .class { color: white; }
+.ruby .string { color: #66FF00; }
+.ruby .ident { color: white; }
+.ruby .method { color: #FFCC00; }
+.ruby .number { color: white; }
+.ruby .char { color: white; }
+.ruby .comment { color: #9933CC; }
+.ruby .symbol { color: white; }
+.ruby .regex { color: #44B4CC; }
+.ruby .punct { color: white; }
+.ruby .escape { color: white; }
+.ruby .interp { color: white; }
+.ruby .expr { color: white; }
+
+.ruby .offending { background-color: gray; }
+.ruby .linenum {
+	width: 75px;
+	padding: 0.1em 1em 0.2em 0;
+	color: #000000;
+	background-color: #FFFBD3;
+}
+
+  </style>
+
+<div id="rspec-header">
+  <h1>RSpec Results</h1>
+
+  <div id="summary">
+    <p id="duration">&nbsp;</p>
+    <p id="totals">&nbsp;</p>
+  </div>
+</div>
+
+<div class="results">
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_1">database queries for a model where model does not have an ancestor and does not have descendants</dt>
+    <script type="text/javascript">moveProgressBar('0.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('0.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model attribute</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_2">database queries for a model where model has descendants and does not have an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('1.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('1.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find descendant model by specification of descendant model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('2.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model attribute</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_3">database queries for a model where model has an ancestor and does not have descendants</dt>
+    <script type="text/javascript">moveProgressBar('2.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('3.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find ancestor model by specification of ancestor model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('3.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model attribute</span></dd>
+    <script type="text/javascript">moveProgressBar('4.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of ancestor model attribute</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_4">database queries for a model where model has an ancestor and has descendants</dt>
+    <script type="text/javascript">moveProgressBar('4.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('5.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find ancestor model by specification of ancestor model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('5.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find descendant model by specification of descendant model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('6.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model attribute</span></dd>
+    <script type="text/javascript">moveProgressBar('6.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of ancestor model attribute</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_5">database queries for a model where model has an ancestor and is a descendant of a model that has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('7.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('7.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find ancestor model by specification of ancestor model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('8.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find ancestor's ancestor model by specification of ancestor's ancestor model primary key</span></dd>
+    <script type="text/javascript">moveProgressBar('8.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of model attribute</span></dd>
+    <script type="text/javascript">moveProgressBar('9.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of ancestor model attribute</span></dd>
+    <script type="text/javascript">moveProgressBar('9.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find model by specification of  ancestor's ancestor model attribute</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_6">database queries for all models of a specified type where the models have no ancestor and no descendants</dt>
+    <script type="text/javascript">moveProgressBar('10.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find models by specification of model attribute</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_7">database queries for all models of a specified type where the models have no ancestor and have descendants</dt>
+    <script type="text/javascript">moveProgressBar('10.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find models by specification of model attribute</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_8">database queries for all models of a specified type where the models have an ancestor and have no descendants</dt>
+    <script type="text/javascript">moveProgressBar('11.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find models by specification of model attribute</span></dd>
+    <script type="text/javascript">moveProgressBar('11.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find models by specification of ancestor model attribute</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_9">database queries for all models of a specified type where the models have no descendants and have an ancestor has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('12.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find models by specification of model attribute</span></dd>
+    <script type="text/javascript">moveProgressBar('12.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find models by specification of ancestor attribute</span></dd>
+    <script type="text/javascript">moveProgressBar('13.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should find models by specification of ancestor's ancestor attribute</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_10">delegation of instance method call for a model that has no descendants and has no ancestor</dt>
+    <script type="text/javascript">moveProgressBar('13.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_11">delegation of instance method call for a model that has descendants and has no ancestor</dt>
+    <script type="text/javascript">moveProgressBar('14.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the model</span></dd>
+    <script type="text/javascript">moveProgressBar('14.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the descendant model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_12">delegation of instance method call for a model that has no descendants and has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('15.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the model</span></dd>
+    <script type="text/javascript">moveProgressBar('15.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the ancestor model when the method is not implemented on the model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_13">delegation of instance method call for a model that has descendants and has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('16.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the model</span></dd>
+    <script type="text/javascript">moveProgressBar('16.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the ancestor model when the method is implemented only on the ancestor</span></dd>
+    <script type="text/javascript">moveProgressBar('17.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the descendant model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_14">delegation of instance method call that delgates calls to its ancestor in the method implementation</dt>
+    <script type="text/javascript">moveProgressBar('17.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method implementations in model and ancestor when called from model with a single ancestor</span></dd>
+    <script type="text/javascript">moveProgressBar('18.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method implementations on model and an all ancestors when called from model with an ancestor that has an ancestor</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_15">delgated instance method call with an implementations that takes arguments</dt>
+    <script type="text/javascript">moveProgressBar('18.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to implement delegated methods that take non-block arguments</span></dd>
+    <script type="text/javascript">moveProgressBar('19.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to implement delegated methods that take block arguments</span></dd>
+    <script type="text/javascript">moveProgressBar('19.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to implement delegated methods that take both non-block and block arguments</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_16">delegation of class method call for a model that has no descendants and has no ancestor</dt>
+    <script type="text/javascript">moveProgressBar('20.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_17">delegation of class method call for a model that has descendants and has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('20.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the model</span></dd>
+    <script type="text/javascript">moveProgressBar('21.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the descendant model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_18">delegation of class method call for a model that has no descendants and has an ancestor that has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('21.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the model</span></dd>
+    <script type="text/javascript">moveProgressBar('22.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the ancestor model when the method is implemented only on the ancestor</span></dd>
+    <script type="text/javascript">moveProgressBar('22.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the descendant model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_19">implementation of class method 'method_delegation_to_ancestor'</dt>
+    <script type="text/javascript">moveProgressBar('23.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method implementations in model and ancestor when called from model with an ancestor</span></dd>
+    <script type="text/javascript">moveProgressBar('23.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method implementations on model and an all ancestors when called from model with an ancestor that has an ancestor</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_20">delgated class method call with an implementaion that takes arguments</dt>
+    <script type="text/javascript">moveProgressBar('24.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to implement delegated methods that take non-block arguments</span></dd>
+    <script type="text/javascript">moveProgressBar('24.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to implement delegated methods that take block arguments</span></dd>
+    <script type="text/javascript">moveProgressBar('25.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to implement delegated methods that take both non-block and block arguments</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_21">call of a polymorphic method from a model instance that has no descendants and has no ancestor</dt>
+    <script type="text/javascript">moveProgressBar('25.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_22">call of a polymorphic method from a model instance that has descendants and has no ancestor</dt>
+    <script type="text/javascript">moveProgressBar('26.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented only on the model</span></dd>
+    <script type="text/javascript">moveProgressBar('26.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the descendant model when the method is implemented on the descendant model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_23">call of a polymorphic method from a model instance that has no descendants and has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('27.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the model</span></dd>
+    <script type="text/javascript">moveProgressBar('27.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the ancestor model when the method is not implemented on the model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_24">call of a polymorphic method from a model instance that has descendants and has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('28.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the model when the method is implemented on the model and not on the descendant</span></dd>
+    <script type="text/javascript">moveProgressBar('28.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the ancestor model when the method is implemented only on the ancestor</span></dd>
+    <script type="text/javascript">moveProgressBar('29.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the descendant model when the method is implemented on the descendant model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_25">call of a polymorphic method, from a model instance that has descendants, that delgates calls to its ancestor in the method implementation </dt>
+    <script type="text/javascript">moveProgressBar('29.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should call the method on the the leaf and every other implemenation in the hirarchy if all implemenations delegate to their ancestor</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_26">call of a polymorphic method from a model instance with an implementation that takes arguments</dt>
+    <script type="text/javascript">moveProgressBar('30.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to implement polymorphic methods that take non-block arguments</span></dd>
+    <script type="text/javascript">moveProgressBar('30.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to implement polymorphic methods that take block arguments</span></dd>
+    <script type="text/javascript">moveProgressBar('31.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to implement polymorphic methods that take both non-block and block arguments</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_27">deletion from database of model with no ancestor and no descendants</dt>
+    <script type="text/javascript">moveProgressBar('31.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to delete model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_28">deletion from database of model that has descendants and no ancestor</dt>
+    <script type="text/javascript">moveProgressBar('32.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to delete model</span></dd>
+    <script type="text/javascript">moveProgressBar('32.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not model delete model descendant when model is deleted</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_29">deletion from database of model that has an ancestor and no descendants</dt>
+    <script type="text/javascript">moveProgressBar('33.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to delete model</span></dd>
+    <script type="text/javascript">moveProgressBar('33.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should delete model ancestor when model is deleted</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_30">deletion from database of model that has descendants and has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('34.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to delete model</span></dd>
+    <script type="text/javascript">moveProgressBar('34.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not delete model descendant when model is deleted</span></dd>
+    <script type="text/javascript">moveProgressBar('35.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should delete model ancestor when model is deleted</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_31">deletion from database of model that has no descendants and has an ancestor has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('35.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to delete model</span></dd>
+    <script type="text/javascript">moveProgressBar('36.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should delete model ancestor when model is deleted</span></dd>
+    <script type="text/javascript">moveProgressBar('36.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should delete model ancestor's ancestor when model is deleted</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_32">retrieval of descendant model from ancestor model instance when descendent is leaf in inheritance hierarchy</dt>
+    <script type="text/javascript">moveProgressBar('37.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return descendant model when request has no target model specified</span></dd>
+    <script type="text/javascript">moveProgressBar('37.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return descendant model when request has descendant specified as traget model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_33">retrieval of descendant model from its own instance when model has no descendants or ancestors</dt>
+    <script type="text/javascript">moveProgressBar('38.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return itself when request has no target model specified</span></dd>
+    <script type="text/javascript">moveProgressBar('38.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return itself when request has model specified as target model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_34">retrieval of descendant model from own instance  when descendant is leaf in inheritance hierarchy</dt>
+    <script type="text/javascript">moveProgressBar('39.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return itself when request has no target model specified</span></dd>
+    <script type="text/javascript">moveProgressBar('39.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return itself when request has model specified as target model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_35">retrieval of descendant model from own instance when descendant is not leaf in inheritance hierarchy</dt>
+    <script type="text/javascript">moveProgressBar('40.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return itself when when request model specified as traget model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_36">retrieval of descendant model from ancestor's ancestor model instance when descendant is leaf in inheritance hierarchy</dt>
+    <script type="text/javascript">moveProgressBar('40.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return leaf descendant model when request has no target model specified</span></dd>
+    <script type="text/javascript">moveProgressBar('41.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return descendant model when request has descendant specified as target model</span></dd>
+    <script type="text/javascript">moveProgressBar('41.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return ancestor model when request has ancestor specified as target model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_37">error conditions resulting from retrieval of descendant model from ancestor model instance</dt>
+    <script type="text/javascript">moveProgressBar('42.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should raise an exception when target model is not in the inheritance hierarchy with ancestor as root</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_38">implementation of instance method 'method_on_parent_model'</dt>
+    <script type="text/javascript">moveProgressBar('42.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('43.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on  child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('43.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on  grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_39">implementation of instance method 'method_on_descendant_child_model'</dt>
+    <script type="text/javascript">moveProgressBar('44.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('44.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('45.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_40">implementation of instance method 'method_on_child_model'</dt>
+    <script type="text/javascript">moveProgressBar('45.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('46.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('46.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_41">implementation of instance method 'method_on_descendant_grandchild_model'</dt>
+    <script type="text/javascript">moveProgressBar('47.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('47.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('48.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_42">implementation of instance method 'method_delegation_to_ancestor'</dt>
+    <script type="text/javascript">moveProgressBar('48.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('49.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('49.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_43">implementation of instance method 'method_with_non_block_arguments'</dt>
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('50.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('50.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_44">implementation of instance method 'method_with_block_argument'</dt>
+    <script type="text/javascript">moveProgressBar('51.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('51.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('52.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_45">implementation of instance method 'method_with_block_argument_and_non_block_argument'</dt>
+    <script type="text/javascript">moveProgressBar('52.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('53.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('53.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_46">implementation of class method 'method_on_parent_model'</dt>
+    <script type="text/javascript">moveProgressBar('54.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('54.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on  child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('55.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on  grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_47">implementation of class method 'method_on_child_model'</dt>
+    <script type="text/javascript">moveProgressBar('55.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('56.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on  child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('56.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on  grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_48">implementation of class method 'method_on_grandchild_model'</dt>
+    <script type="text/javascript">moveProgressBar('57.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('57.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on  child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('58.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on  grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_49">implementation of class method 'method_delegation_to_ancestor'</dt>
+    <script type="text/javascript">moveProgressBar('58.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('59.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('59.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_50">implementation of class method 'method_with_non_block_arguments'</dt>
+    <script type="text/javascript">moveProgressBar('60.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('60.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('61.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_51">implementation of class method 'method_with_block_argument'</dt>
+    <script type="text/javascript">moveProgressBar('61.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('62.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('62.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_52">implementation of class method 'method_with_block_argument_and_non_block_argument'</dt>
+    <script type="text/javascript">moveProgressBar('63.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should implement method on parent_model</span></dd>
+    <script type="text/javascript">moveProgressBar('63.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement method on child_model</span></dd>
+    <script type="text/javascript">moveProgressBar('64.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not implement on grandchild_model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_53">descendant initialization</dt>
+    <script type="text/javascript">moveProgressBar('64.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be called on construction of decsendant models</span></dd>
+    <script type="text/javascript">moveProgressBar('65.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should accept constructor arguments</span></dd>
+    <script type="text/javascript">moveProgressBar('65.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should ignore model initialization agruments</span></dd>
+    <script type="text/javascript">moveProgressBar('66.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should accept arguments when model attributes are also specified</span></dd>
+    <script type="text/javascript">moveProgressBar('66.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should not prohibit initialization of model attributes</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_54">discovery of descendant model from model instance</dt>
+    <script type="text/javascript">moveProgressBar('67.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible if model has descendants is not a leaf in inheritance hierarchy</span></dd>
+    <script type="text/javascript">moveProgressBar('67.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be nil if model has descendants but is a leaf in inheritance hierarchy</span></dd>
+    <script type="text/javascript">moveProgressBar('68.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be nil if model does not have descendants</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_55">discovery of ancestor model from model instance</dt>
+    <script type="text/javascript">moveProgressBar('68.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible if model has an ancestor</span></dd>
+    <script type="text/javascript">moveProgressBar('69.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be nill if model does not have an ancestor</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_56">validation from model instance of model ancestor</dt>
+    <script type="text/javascript">moveProgressBar('69.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to determine if immediate ancestor is of a specified class</span></dd>
+    <script type="text/javascript">moveProgressBar('70.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to determine if immediate ancestor's ancestor is of a specified class</span></dd>
+    <script type="text/javascript">moveProgressBar('70.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should raise exception if model specified is not an ancestor</span></dd>
+    <script type="text/javascript">moveProgressBar('71.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should raise exception if model has no ancestor</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_57">discovery from model instance of model inheritance hierarchy</dt>
+    <script type="text/javascript">moveProgressBar('71.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to determine the class of direct ancestor</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_58">item_purchase attributes</dt>
+    <script type="text/javascript">moveProgressBar('72.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute indicating purchase is closed</span></dd>
+    <script type="text/javascript">moveProgressBar('72.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute describing item</span></dd>
+    <script type="text/javascript">moveProgressBar('73.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying item unit cost</span></dd>
+    <script type="text/javascript">moveProgressBar('73.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying item unit count</span></dd>
+    <script type="text/javascript">moveProgressBar('74.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying item cost</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_59">item_purchase model relations</dt>
+    <script type="text/javascript">moveProgressBar('74.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">it should have stock_item_purchase as a descendant</span></dd>
+    <script type="text/javascript">moveProgressBar('75.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">it should have contract_item_purchase as a descendant</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_60">contract_item_purchase attributes</dt>
+    <script type="text/javascript">moveProgressBar('75.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute indicating purchase is closed</span></dd>
+    <script type="text/javascript">moveProgressBar('76.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute describing item</span></dd>
+    <script type="text/javascript">moveProgressBar('76.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying item unit cost</span></dd>
+    <script type="text/javascript">moveProgressBar('77.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying item unit count</span></dd>
+    <script type="text/javascript">moveProgressBar('77.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying item cost</span></dd>
+    <script type="text/javascript">moveProgressBar('78.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying contract length</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_61">stock_item_purchase attributes</dt>
+    <script type="text/javascript">moveProgressBar('78.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute indicating purchase is closed</span></dd>
+    <script type="text/javascript">moveProgressBar('79.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute describing item</span></dd>
+    <script type="text/javascript">moveProgressBar('79.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying item unit cost</span></dd>
+    <script type="text/javascript">moveProgressBar('80.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying item unit count</span></dd>
+    <script type="text/javascript">moveProgressBar('80.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying item cost</span></dd>
+    <script type="text/javascript">moveProgressBar('81.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should have attribute specifying if item is in inventory</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_62">closing item purchases</dt>
+    <script type="text/javascript">moveProgressBar('81.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should compute total cost as product of unit count and unit cost and close purchase for item_purchase</span></dd>
+    <script type="text/javascript">moveProgressBar('82.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should compute total cost as product of unit count and unit cost and close purchase for stock_item_purchase</span></dd>
+    <script type="text/javascript">moveProgressBar('82.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should compute total cost as product of contract length, unit count and unit cost and close purchase for contract_item_purchase</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_63">closing item purchases from an ancestor model</dt>
+    <script type="text/javascript">moveProgressBar('83.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should close stock_item_purchase when called from item_purchase ancestor</span></dd>
+    <script type="text/javascript">moveProgressBar('83.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should close contract_item_purchase when called from item_purchase ancestor</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_64">closing all open purchased items</dt>
+    <script type="text/javascript">moveProgressBar('84.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be possible to close descendants of item purchase from the descendant item_purchase instance</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_65">save model to database that has no descendants and has no ancestor</dt>
+    <script type="text/javascript">moveProgressBar('84.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">model be able to save model</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_66">save model to database that has no descendants but has ancestor</dt>
+    <script type="text/javascript">moveProgressBar('85.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to save model</span></dd>
+    <script type="text/javascript">moveProgressBar('85.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">ancestor model should be saved when model is saved</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_67">save model to database that has no descendants and has an ancestor that has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('86.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to save model</span></dd>
+    <script type="text/javascript">moveProgressBar('86.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">ancestor model should be saved when model is saved</span></dd>
+    <script type="text/javascript">moveProgressBar('87.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">ancestor's ancestor model should be saved when model is saved</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_68">callback executed before database save of any model instance in an inheritance hierarchy</dt>
+    <script type="text/javascript">moveProgressBar('87.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should execute callback implemented on model with no ancestor or descendant</span></dd>
+    <script type="text/javascript">moveProgressBar('88.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should execute callback implemented on model that has descendants but no ancestor on model save</span></dd>
+    <script type="text/javascript">moveProgressBar('88.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should execute callback implemented on model that has descendants but no ancestor on descendant model save</span></dd>
+    <script type="text/javascript">moveProgressBar('89.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should execute callback implemented on model that has ancestor and has descendants on model save</span></dd>
+    <script type="text/javascript">moveProgressBar('89.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should execute callback implemented on model that has ancestor and has descendants on descendant model save</span></dd>
+    <script type="text/javascript">moveProgressBar('90.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should execute callback implemented on model that has descendants that have descendants when decsendant's descendant is saved</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_69">conditions under which not all models in inheritance hierarchy are saved</dt>
+    <script type="text/javascript">moveProgressBar('90.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">if a model has descendants a descendant will not be saved if the model is saved</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_70">specification of attributes for a model that has descendants</dt>
+    <script type="text/javascript">moveProgressBar('91.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify model attributes on creation</span></dd>
+    <script type="text/javascript">moveProgressBar('91.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify model attributes after creation</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_71">specification of attributes for a model that has descendants and has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('92.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify model attributes on creation</span></dd>
+    <script type="text/javascript">moveProgressBar('92.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify ancestor model attributes on creation</span></dd>
+    <script type="text/javascript">moveProgressBar('93.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify model attributes after creation</span></dd>
+    <script type="text/javascript">moveProgressBar('93.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify ancestor attributes after creation</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_72">specification of attributes for a model that has an ancestor and is a descendant of a model that has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('94.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify attributes on creation</span></dd>
+    <script type="text/javascript">moveProgressBar('94.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify ancestor attributes on creation</span></dd>
+    <script type="text/javascript">moveProgressBar('95.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify ancestor's ancestor attributes on creation</span></dd>
+    <script type="text/javascript">moveProgressBar('95.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify attributes after creation</span></dd>
+    <script type="text/javascript">moveProgressBar('96.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify ancestor attributes after creation</span></dd>
+    <script type="text/javascript">moveProgressBar('96.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to specify ancestor's ancestor attributes after creation</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_73">retrieval of all attributes for a model that has descendants</dt>
+    <script type="text/javascript">moveProgressBar('97.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to retrive attributes from model instance</span></dd>
+    <script type="text/javascript">moveProgressBar('97.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to retrive model attributes and descendant attributes from model instance</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_74">retrieval of all attributes for a model that has descendants and has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('98.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to retrive model attributes and ancestor attributes from model instance</span></dd>
+    <script type="text/javascript">moveProgressBar('98.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to retrive model attributes, ancestor attributes and descendant from model instance</span></dd>
+  </dl>
+</div>
+<div class="behaviour">
+  <dl>
+  <dt id="behaviour_75">retrieval of all attributes for a model that has an ancestor and is a descendant of a model that has an ancestor</dt>
+    <script type="text/javascript">moveProgressBar('99.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to retrive model attributes, ancestor attributes and ancestor's ancestor attributes from model instance</span></dd>
+    <script type="text/javascript">moveProgressBar('99.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to retrive model attributes, ancestor attributes and ancestor's ancestor attributes from ancestor model instance</span></dd>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should be able to retrive model attributes, ancestor attributes and ancestor's ancestor attributes from ancestor's ancestor model instance</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>1.019545 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "202 examples, 0 failures";</script>
+</div>
+</div>
+</body>
+</html>

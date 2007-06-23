@@ -124,27 +124,7 @@ h3 {
   font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
   letter-spacing: -1px;
 }
-/******* image_box style *******/
-div.image-box {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-#page div.image-box img {
-  float: left;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 25px;
-}
-#page div.image-box h1 {
-  margin-top: 0px;
-  margin-bottom: 10px;
-  margin-left: 0px;
-  margin-right: 0px;
-  font-size: 1.75em;
-}
+
 /******* footer style *******/
 #footer {
   color: #000;
@@ -179,3 +159,4 @@ div.image-box {
   color: #a00;
   text-decoration: none;
 }
+
