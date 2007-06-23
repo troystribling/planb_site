@@ -171,6 +171,20 @@
   padding-top: 0px;;
   padding-bottom: 0px;
 }
+#page div.biographic h1 {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 1.85em;
+  font-weight: lighter;
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  text-indent: 5px;
+  border: none;
+  color: #BBB;
+  border-bottom: 2px solid #000;
+  background: none;
+}
 #page .biographic img {
   float: left;
   margin-top: 5px;
