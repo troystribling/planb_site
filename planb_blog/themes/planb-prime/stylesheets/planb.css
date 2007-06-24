@@ -234,6 +234,9 @@ body {
  	  margin: 10px 0 0 10px;
  	  border: 1px solid #000000;
  	}
+ 	.post p code {
+    font-size:140%;
+  }
  	
   /*+-------------------------------------------+
     |   		     post highlight style 			    |
@@ -605,7 +608,7 @@ body {
   .typocode_ruby .ident { color: #777; }
   .typocode_ruby .constant { color: #07F; }
   .typocode_ruby .regex { color: #B66; background: #FEF; }
-  .typocode_ruby .number { color: #F99; }
+  .typocode_ruby .number { color: #993; }
   .typocode_ruby .attribute { color: #7BB; }
   .typocode_ruby .global { color: #7FB; }
   .typocode_ruby .expr { color: #227; }
@@ -655,7 +658,7 @@ body {
     padding-right: 1em;
   }
   
-  code {
-    font-size:120%;
+  .typocode code {
+    font-size:100%;
   }
      
