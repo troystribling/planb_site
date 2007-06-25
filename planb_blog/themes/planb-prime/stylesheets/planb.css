@@ -235,7 +235,7 @@ body {
  	  border: 1px solid #000000;
  	}
  	.post p code {
-    font-size:140%;
+    font-size:125%;
   }
  	
   /*+-------------------------------------------+
@@ -638,8 +638,9 @@ body {
     background-color:#111;
     padding: 0px;
     margin: 0px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 15px;
   }
   
   .typocode pre {
@@ -653,7 +654,7 @@ body {
   
   .typocode .lineno {
     text-align: right;
-  /*  color: #B00;*/
+    color: #B00;
     font-family: monospace;
     padding-right: 1em;
   }
