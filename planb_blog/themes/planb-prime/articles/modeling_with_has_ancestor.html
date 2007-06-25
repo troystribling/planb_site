@@ -1,0 +1,119 @@
+<p>
+  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a> is a Ruby on rails plugin that enables the specification 
+  of inheritance relations between ActiveRecord models. Currently in Rails this functionality is only available in
+  <a href="http://wiki.rubyonrails.org/rails/pages/SingleTableInheritance">Single Table Inheritance</a>. 
+  Single Table Inheritance requires that all models in an inheritance hierarchy be in the same table, which is acceptable if the number of
+  models in the hierarchy is small. For inheritance hierarchies that contain a large or unknown number of models more complex 
+  representations of inheritance relations, such as <a href="http://www.martinfowler.com/eaaCatalog/classTableInheritance.html">
+  Class Table Inheritance</a>, are required. has_ancestor provides and impementaion of Class Table Inheritance based on rails 
+  <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>.  
+  In this article an example implementation using has_ancestor will be presented that illustrates the most important features of the plugin. 
+  The example is simple but hopefully not too contrived.
+</p>
+<h3>Define</h3>
+<p>
+  The example is a simple representation of a line item in a purchase. It consists of three implementations of 
+  <code>ActiveRecord::Base</code>. The first class, <code>ItemPurchase</code>, is the root of the inheritance hierarchy and it has two
+  descendant classes, <code>StockItemPurchase</code> and <code>ContractItemPurchase</code>. Below it is seen that
+</p>
+<p>
+<typo:code lang="ruby">
+
+  class CreateHasAncestorModel < ActiveRecord::Migration
+
+    def self.up
+
+      create_table :item_purchases, :force => true, \
+      :primary_key => :item_purchase_id do |t|
+        t.column :item_purchase_descendant_id, :integer
+        t.column :item_purchase_descendant_type, :string
+        t.column :closed, :integer, :default => 0
+        t.column :item, :string
+        t.column :unit_cost, :integer
+        t.column :unit_count, :integer
+        t.column :cost, :integer      
+      end
+     
+      create_table :stock_item_purchases, \
+      :force => true, \
+      :primary_key => :stock_item_purchase_id  do |t|
+        t.column :in_inventory, :integer, :default => 0
+      end
+  
+      create_table :contract_item_purchases, \
+      :force => true, \
+      :primary_key => :contract_item_purchase_id  do |t|
+        t.column :length, :integer
+      end
+      
+    end
+    
+    def self.down
+    
+      drop_table :item_purchases
+      drop_table :stock_item_purchases
+      drop_table :contract_item_purchases
+  
+    end
+    
+  end
+  
+
+</typo:code>
+</p>
+<p>
+<typo:code lang="ruby">
+
+  class ItemPurchase < ActiveRecord::Base
+  
+     has_descendants
+         
+     def close_item_purchase
+       self.cost = self.unit_count * self.unit_cost
+       self.closed = 1      
+     end
+     
+  end
+  
+</typo:code>
+</p>
+<p>
+<typo:code lang="ruby">
+
+  class StockItemPurchase < ActiveRecord::Base
+  
+     has_ancestor :named => :item_purchase
+     
+  end
+  
+</typo:code>
+</p>
+<p>
+<typo:code lang="ruby">
+
+  class ContractItemPurchase < ActiveRecord::Base
+  
+     has_ancestor :named => :item_purchase
+  
+     def close_item_purchase
+       self.cost = self.length * self.unit_count * 
+         self.unit_cost
+       self.closed = 1      
+     end
+     
+  end
+  
+</typo:code>
+</p>
+<h3>Use</h3>
+<p>
+<typo:code lang="ruby">
+
+    ItemPurchase.find_by_closed(0).each do |item|
+      item.to_descendant.close_item_purchase
+      item.to_descendant.save
+    end
+
+
+</typo:code>
+</p>
