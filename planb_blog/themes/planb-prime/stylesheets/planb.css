@@ -167,9 +167,9 @@ body {
   .post h2 {
     font-family: "Arial narrow", Verdana, Arial, Helvetica, sans-serif;
 	  background: #373737 url(../../images/theme/grad-bar.png);
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: normal;
-  	height: 25px;
+  	height: 35px;
   	margin-top: 0px;
   	margin-bottom: 0px;
   	margin-left: 0px;
@@ -192,6 +192,21 @@ body {
     border: none;
     color: #BBB;
     border-bottom: 2px solid #000;
+    background: none;
+	}
+
+  .post h4 {
+    font-family: "Arial narrow", Verdana, Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size: 1.1em;
+    font-weight: normal;
+    text-indent: 1px;
+    border: none;
+    color: #BBB;
+    border-bottom: none;
     background: none;
 	}
 	
@@ -235,7 +250,7 @@ body {
  	  border: 1px solid #000000;
  	}
  	.post p code {
-    font-size:125%;
+    font-size:135%;
   }
  	
   /*+-------------------------------------------+
@@ -561,8 +576,8 @@ body {
    |   		     table definition style       	 |
    +-------------------------------------------+*/
   table.definitions {
-    width: 482px;
-    margin-left: 3px;
+    width: 472px;
+    margin-left: 8px;
   }
   td.term {
     padding-left: 10px;
@@ -603,7 +618,7 @@ body {
   .typocode_ruby .module { color: #050; }
   .typocode_ruby .punct { color: #CCC; font-weight: bold; }
   .typocode_ruby .symbol { color: #099; }
-  .typocode_ruby .string { color: #944; background: #FFE; }
+  .typocode_ruby .string { color: #944;}
   .typocode_ruby .char { color: #F07; }
   .typocode_ruby .ident { color: #777; }
   .typocode_ruby .constant { color: #07F; }
