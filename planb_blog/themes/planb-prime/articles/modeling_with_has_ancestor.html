@@ -5,16 +5,21 @@
   Single Table Inheritance requires that all models in an inheritance hierarchy be in the same table, which is acceptable if the number of
   models in the hierarchy is small. For inheritance hierarchies that contain a large or unknown number of models more complex 
   representations of inheritance relations, such as <a href="http://www.martinfowler.com/eaaCatalog/classTableInheritance.html">
-  Class Table Inheritance</a>, are required. has_ancestor provides and impementaion of Class Table Inheritance based on rails 
-  <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>.  
-  In this article an example implementation using has_ancestor will be presented that illustrates the most important features of the plugin. 
-  The example is simple but hopefully not too contrived.
+  Class Table Inheritance</a>, are required. has_ancestor provides and implementation of Class Table Inheritance based on rails 
+  <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. This differs from
+  the implementation used in the <a href="http://rubyforge.org/projects/clti/">Class Table Inheritance Plugin</a>, which uses database
+  views. 
+</p>
+<p>  
+  In this article an example implementation of has_ancestor will be presented that illustrates its most important features. 
+  In Release 0.0.0 there are some limitations in usage, which are discussed, but that are not prohibitive.    
 </p>
 <h3>Define</h3>
 <p>
-  The example is a simple representation of a line item in a purchase. It consists of three implementations of 
-  <code>ActiveRecord::Base</code>. The first class, <code>ItemPurchase</code>, is the root of the inheritance hierarchy and it has two
-  descendant classes, <code>StockItemPurchase</code> and <code>ContractItemPurchase</code>. Below it is seen that
+  The example is a simple representation of a line item in a purchase. It consists of three models. 
+  The first, <code>item_purchase</code>, is the root of the inheritance hierarchy. It has two
+  descendant models, <code>stock_item_purchase</code> and <code>contract_item_purchase</code>. The migration for the model
+  is shown below. 
 </p>
 <p>
 <typo:code lang="ruby">
@@ -60,6 +65,17 @@
   
 
 </typo:code>
+</p>
+<p>
+      <table class="definitions">
+        <tr>
+          <td class="term"><code>item_purchase_id</code></td>
+          <td class="definition">
+            <p>Return ancestor model instance. If model has no ancestor return <code><strong>nil</strong></code>.</p>
+          </td>
+        </tr>
+      </table>
+  
 </p>
 <p>
 <typo:code lang="ruby">
@@ -109,6 +125,21 @@
 <p>
 <typo:code lang="ruby">
 
+    stock_item = StockItemPurchase(:item=>'keyboard', :unit_cost=>'300', :unit_count=>'1')
+
+</typo:code>
+</p>
+<p>
+<typo:code lang="ruby">
+
+    stock_item.in_inventory = 1
+    stock_item.closed = 1
+
+</typo:code>
+</p>
+<p>
+<typo:code lang="ruby">
+
     ItemPurchase.find_by_closed(0).each do |item|
       item.to_descendant.close_item_purchase
       item.to_descendant.save
@@ -116,4 +147,7 @@
 
 
 </typo:code>
+</p>
+<h3>Limitations</h3>
+<p>
 </p>
