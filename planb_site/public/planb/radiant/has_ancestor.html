@@ -3,14 +3,15 @@
   <div class="subsection">
     <h1>Description</h1>
     <p>
-      has_ancestor is a Ruby on Rails plug-in that adds two class methods to ActiveRecord::Base 
-      that allow specification of inheritance relations between ActiveRecord models. With           
-      the method has_ancestor an ancestor relation is declared between a descendant model and its ancestor and with the 
-      method has_descendants a descendant relation is declared between an          
-      ancestor model and its descendants. Once ancestor and descendant relations are declared between models the models interact 
-      as would be expected from class inheritance, ancestor 
-      instance and class methods may be called from the descendant model, this permits access to ancestor attributes from the 
-      descendant model, and methods may be implemented to behave polymorphically. 
+      has_ancestor is a Ruby on Rails plug-in that provides an implementation of 
+      <a href="http://www.martinfowler.com/eaaCatalog/classTableInheritance.html">Class Table Inheritance</a> based on 
+      <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Rails Polymorphic Associations</a>. The plugin
+      adds two methods to <code>ActiveRecord::Base</code>, <code>has_ancestor</code> and <code>has_descendants</code>. 
+      With <code>has_descendants</code> a model
+      declares that its attributes and methods are inheritable. With
+      <code>has_ancestor</code> a model declares that it inherits the attributes and methods of the specified model. Once ancestor
+      and descendant relations are declared the models interact as expected from class inheritance, this includes defining methods that 
+      behave in a polymorphic manner.
     </p>
    </div>
 </div>	 
