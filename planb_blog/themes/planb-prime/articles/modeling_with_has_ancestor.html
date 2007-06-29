@@ -261,21 +261,25 @@
 <p>
   <code>ActiveRecord::Base</code> finders work for attributes defined on model and attributes defined on 
   <code>item_purchase</code>. If a finder is called that filters on multiple attributes all attributes must be
-  on the same model. Also, if the find attribute is an attribute on an ancestor model an object of the ancestor
-  type will be returned.
-</p>
+  on the same model. Also, if the find attribute is an attribute on an ancestor model an instance of the ancestor
+  type will be returned. To return an object of the required type <code>to_descendant</code> must be used.
+  It should be noted that the descendant attributes will be retrieved from the database when <code>to_descendant</code> 
+  is called.</p>
 <p>
 <typo:code lang="ruby">
 
-  stock_item = StockItemPurchase.find_by_item('keyboard')
+  stock_item = 
+    StockItemPurchase.find_by_item('keyboard').\
+    to_descendant(:stock_item_purchase)
   stock_items = 
     StockItemPurchase.find_all_by_in_inventory(1)
   stock_items = 
     ItemPurchase.find_all_by_unit_cost_and_item(50, \ 
-    'keyboard')
+    'keyboard').to_descendant(:stock_item_purchase)
 
   contract_item = 
-    ContractItemPurchase.find_by_item('CEO')
+    ContractItemPurchase.find_by_item('CEO').\
+    to_descendant(:contract_item_purchase)
   contract_items = 
     ContractItemPurchase.find_by_length(240)
 
@@ -297,7 +301,8 @@
 </typo:code>
 </p>
 <p>
-  A polymorphic like behavior can be obtained with the <code>to_descendant</code> method. It should be noted that
+  A polymorphic like behavior for method calls can be obtained by calling <code>to_descendant</code> with no arguments. 
+  It should be noted that
   the descendant attributes will be retrieved from the database when <code>to_descendant</code> is called.
 </p>
 <p>
