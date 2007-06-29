@@ -181,12 +181,12 @@ body {
 	}
 
   .post h3 {
-    font-family: "Arial narrow", Verdana, Arial, Helvetica, sans-serif;
-    margin-left: 5px;
-    margin-right: 5px;
+    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
-    font-size: 1.15em;
+    font-size: 1.25em;
     font-weight: bold;
     text-indent: 1px;
     border: none;
@@ -196,17 +196,17 @@ body {
 	}
 
   .post h4 {
-    font-family: "Arial narrow", Verdana, Arial, Helvetica, sans-serif;
+    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-seriff;
     margin-left: 10px;
-    margin-right: 5px;
+    margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 2px;
-    font-size: 1.1em;
+    font-size: 1.15em;
     font-weight: normal;
     text-indent: 1px;
     border: none;
     color: #BBB;
-    border-bottom: none;
+    border-bottom: 1px dotted #000;
     background: none;
 	}
 	
