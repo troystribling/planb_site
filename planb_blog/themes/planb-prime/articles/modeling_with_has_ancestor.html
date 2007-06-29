@@ -6,20 +6,25 @@
   models in the hierarchy is small. For inheritance hierarchies that contain a large or unknown number of models more complex 
   representations of inheritance relations, such as <a href="http://www.martinfowler.com/eaaCatalog/classTableInheritance.html">
   Class Table Inheritance</a>, are required. has_ancestor provides and implementation of Class Table Inheritance based on rails 
-  <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. This differs from
-  the implementation used in the <a href="http://rubyforge.org/projects/clti/">Class Table Inheritance Plugin</a>, which uses database
-  views. 
+  <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. The  
+  implementation used here differs from the one used used in the <a href="http://rubyforge.org/projects/clti/">Class Table Inheritance Plugin</a>, 
+  which is based database views. 
 </p>
 <p>  
-  In this article an example implementation of has_ancestor will be presented that illustrates its most important features. 
-  In Release 0.0.0 there are some limitations in usage, which are discussed, but that are not prohibitive.    
+  In this article an example implementation of models using has_ancestor will be presented. 
+  In Release 0.0.0 there are some limitations in usage, which are discussed, but that are not prohibitive. An 
+  <a href="http://research.inplanb.com/planb/html/item_purchase_spec.html">RSpec report</a> for this example is available and
+  the actual spec implementation is provided with the plugin.   
 </p>
-<h3>Define</h3>
+<h3>Model Migration</h3>
 <p>
   The example is a simple representation of a line item in a purchase. It consists of three models. 
   The first, <code>item_purchase</code>, is the root of the inheritance hierarchy. It has two
   descendant models, <code>stock_item_purchase</code> and <code>contract_item_purchase</code>. The migration for the model
-  is shown below. 
+  is shown below. Note that the
+  <code>primary_key</code> for each model is assigned a non-default value. This is done to avoid name 
+  collisions between models in the inheritance hierarchy. In general the primary key of a model must be of the form
+  <code>#{model}_id</code> where <code>model</code> is the tablelized from of the model class name.
 </p>
 <p>
 <typo:code lang="ruby">
@@ -65,17 +70,99 @@
   
 
 </typo:code>
+<p>The following tables describe the attributes specified for each model.</p>
+</p>
+<p>     
+  <h4>item_purchases</h4>
+  <p>Ancestor model of all item purchase descendants.</p>
+  <table class="definitions">
+    <tr>
+      <td class="term"><code>item_purchase_id</code></td>
+      <td class="definition">
+        <p>Primary key of </br><code>item_purchase</code> object. The column name is changed form its default value to avoid
+        collisions with other models in the hierarchy. In general the primary key of a model must be of the form
+        <code>#{model}_id</code> where <code>model</code> is the tablelized from of the model class name.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="term"><code>item_purchase<br>_descendant_id</code></td>
+      <td class="definition">
+        <p>The primary key of a descendant model. This attribute is required by Rails 
+        <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. Any model
+        which has descendant model relationships must declare this model attribute. 
+        In general the attribute must be of the form
+        <code>#{model}_descendant_id</code> where <code>model</code> is the tablelized from of the model class name.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="term"><code>item_purchase<br>_descendant_type</code></td>
+      <td class="definition">
+        <p>The class name of the descendant model. This attribute is required by Rails 
+        <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. Any model
+        which has descendant model relationships must declare this model attribute. 
+        In general the attribute must be of the form
+        <code>#{model}_descendant_type</code> where <code>model</code> is the tablelized from of the model class name.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="term"><code>closed</code></td>
+      <td class="definition">
+        <p>An integer indicating if the purchase is closed. <code>1</code> indicates the purchase is closed and <code>0</code> indicates 
+        it is open.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="term"><code>unit_cost</code></td>
+      <td class="definition">
+        <p>An integer specifying the unit cost of the purchase.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="term"><code>unit_count</code></td>
+      <td class="definition">
+        <p>An integer specifying the unit count of the purchase.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="term"><code>cost</code></td>
+      <td class="definition">
+        <p>An integer specifying the total cost of the purchase.</p>
+      </td>
+    </tr>
+  </table>
+</p>
+<p>     
+  <h4>stock_item_purchases</h4>
+  <p>A typical stock purchase (e.g., paper, pens, post-its, ...).</p>
+  <table class="definitions">
+    <tr>
+      <td class="term"><code>in_inventory</code></td>
+      <td class="definition">
+        <p>An integer indicating that the purchased item is for inventory or an individual. A value of <code>1</code> indicates
+        the purchase is for inventory and <code>0</code> indicates the purchase is for an individual.</p>
+      </td>
+    </tr>
+  </table>
+</p>
+<p>     
+  <h4>contract_item_purchases</h4>
+  <p>A contract purchase.</p>
+  <table class="definitions">
+    <tr>
+      <td class="term"><code>length</code></td>
+      <td class="definition">
+        <p>An integer indicating the duration of the contract.</p>
+      </td>
+    </tr>
+  </table>
 </p>
 <p>
-      <table class="definitions">
-        <tr>
-          <td class="term"><code>item_purchase_id</code></td>
-          <td class="definition">
-            <p>Return ancestor model instance. If model has no ancestor return <code><strong>nil</strong></code>.</p>
-          </td>
-        </tr>
-      </table>
-  
+<h3>Model Classes</h3>
+<p>
+  In this section the model class definitions are specified. Within the model class definitions 
+  ancestor and descendant associations are declared. Below the <code>item_purchase</code> class is defined.
+  Notice the <code>has_ancestor</code> declaration and the definition of the <code>close_item_purchase</code> method.
+  For this model the cost of a purchased item is product of the <code>unit_cost</code> and <code>unit_count</code>.
 </p>
 <p>
 <typo:code lang="ruby">
@@ -94,6 +181,11 @@
 </typo:code>
 </p>
 <p>
+  The <code>stock_item_purchase</code> class is defined.
+  The ancestor association with <code>item_purchase</code> is specified and since no implementation of <code>close_item_purchase</code> 
+  is given the ancestor implementation will be used. 
+</p>
+<p>
 <typo:code lang="ruby">
 
   class StockItemPurchase < ActiveRecord::Base
@@ -103,6 +195,11 @@
   end
   
 </typo:code>
+</p>
+<p>
+  The <code>contract_item_purchase</code> class is defined.
+  The ancestor association with <code>item_purchase</code> specified but <code>close_item_purchase</code> has a new
+  implementation, namely, the product of the <code>unit_cost</code>, <code>unit_count</code> and contract <code>length</code>.
 </p>
 <p>
 <typo:code lang="ruby">
@@ -123,9 +220,16 @@
 </p>
 <h3>Use</h3>
 <p>
+  In this section use of the model will be described. Below construction of a <code>stock_item_purchase</code>
+  object is illustrated. Note that attributes of the <code>item_purchase</code> ancestor model are specified.
+</p>
+<p>
 <typo:code lang="ruby">
 
-    stock_item = StockItemPurchase(:item=>'keyboard', :unit_cost=>'300', :unit_count=>'1')
+    stock_item = StockItemPurchase.new(\
+      :item=>'keyboard',:unit_cost=>'300',\
+      :unit_count=>'1')
+
 
 </typo:code>
 </p>
@@ -134,6 +238,7 @@
 
     stock_item.in_inventory = 1
     stock_item.closed = 1
+
 
 </typo:code>
 </p>
@@ -150,4 +255,29 @@
 </p>
 <h3>Limitations</h3>
 <p>
+<p>
+<typo:code lang="ruby">
+
+    ItemPurchase.find_all_by_unit_cost_and_item(50, \ 
+      'keyboard')
+
+
+</typo:code>
+</p>
+<p>
+<typo:code lang="ruby">
+
+    ItemPurchase.find_all_by_unit_cost_and_length(50, 100)
+
+
+</typo:code>
+</p>
+<p>
+<typo:code lang="ruby">
+
+    ContractItemPurchase.find_by_unit_cost(50)
+
+
+</typo:code>
+</p>
 </p>
