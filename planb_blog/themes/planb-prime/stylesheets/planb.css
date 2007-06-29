@@ -240,7 +240,7 @@ body {
  	  padding: 0px;
 	  font-size: 75%;
 	  font-weight: bold;
-	  color: #991111;
+	  color: #AA1111;
 	}
 	
   h4.blueblk {
@@ -386,7 +386,7 @@ body {
   #footer {
     color: #000;
     float: left;
-    font-size: 85%;
+    font-size: 75%;
     margin-top: 10px;
   }
   
@@ -532,7 +532,7 @@ body {
   }
 
   #navigation strong {
-    color: #900;
+    color: #A00;
   }
 
   #navigation a {

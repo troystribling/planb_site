@@ -8,13 +8,14 @@
   Class Table Inheritance</a>, are required. has_ancestor provides and implementation of Class Table Inheritance based on rails 
   <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. The  
   implementation used here differs from the one used used in the <a href="http://rubyforge.org/projects/clti/">Class Table Inheritance Plugin</a>, 
-  which is based database views. 
+  which is based on database views. 
 </p>
 <p>  
   In this article an example implementation of models using has_ancestor will be presented. 
   In Release 0.0.0 there are some limitations in usage, which are discussed, but that are not prohibitive. An 
-  <a href="http://research.inplanb.com/planb/html/item_purchase_spec.html">RSpec report</a> for this example is available and
-  the actual spec implementation is provided with the plugin.   
+  <a href="http://research.inplanb.com/planb/html/item_purchase_spec.html" target="_blank">RSpec report</a> for this example is available and
+  the spec implementation is provided with the plugin. See the <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>
+  project page for project information and documentaion. 
 </p>
 <h3>Model Migration</h3>
 <p>
@@ -220,62 +221,122 @@
 </p>
 <h3>Use</h3>
 <p>
-  In this section use of the model will be described. Below construction of a <code>stock_item_purchase</code>
-  object is illustrated. Note that attributes of the <code>item_purchase</code> ancestor model are specified.
+  In this section several examples illustrating use of the model defined in the previous section
+  will be described. 
+</p>
+<p>
+  Construction of <code>stock_item_purchase</code> and <code>contract_item_purchase</code>
+  objects is illustrated. Note that attributes of the <code>item_purchase</code> ancestor model are specified in both
+  constructors and in addition to attributes belonging to the model.
 </p>
 <p>
 <typo:code lang="ruby">
 
-    stock_item = StockItemPurchase.new(\
-      :item=>'keyboard',:unit_cost=>'300',\
-      :unit_count=>'1')
+  stock_item = StockItemPurchase.new(:item=>'keyboard',\
+    :unit_cost=>'300',:unit_count=>'1')
+
+  contract_item = ContractItemPurchase.new(:item=>'CEO',\
+    :unit_cost=>'30000', :unit_count=>'1', length=>180)
+        
+
+</typo:code>
+</p>
+<p>
+  Model setters and getters work for attributes defined on model and attributes defined on <code>item_purchase</code>.
+</p>
+<p>
+<typo:code lang="ruby">
+
+  stock_item.in_inventory = 1
+  stock_item.unit_count = 2
+  last_item = stock_item.item
+
+  contract_item.unit_count = 2
+  contract_item.length = 240
+  last_item = contract_item.item
 
 
 </typo:code>
 </p>
 <p>
+  <code>ActiveRecord::Base</code> finders work for attributes defined on model and attributes defined on 
+  <code>item_purchase</code>. If a finder is called that filters on multiple attributes all attributes must be
+  on the same model. Also, if the find attribute is an attribute on an ancestor model an object of the ancestor
+  type will be returned.
+</p>
+<p>
 <typo:code lang="ruby">
 
-    stock_item.in_inventory = 1
-    stock_item.closed = 1
+  stock_item = StockItemPurchase.find_by_item('keyboard')
+  stock_items = 
+    StockItemPurchase.find_all_by_in_inventory(1)
+  stock_items = 
+    ItemPurchase.find_all_by_unit_cost_and_item(50, \ 
+    'keyboard')
+
+  contract_item = 
+    ContractItemPurchase.find_by_item('CEO')
+  contract_items = 
+    ContractItemPurchase.find_by_length(240)
 
 
 </typo:code>
 </p>
 <p>
+  <code>close_item_purchase</code> called from <code>stock_item_purchase</code> calls the implementation
+  on <code>item_purchase</code> but calls the the model implementation when called from <code>contract_item_purchase</code>. 
+</p>
+<p>
 <typo:code lang="ruby">
 
-    ItemPurchase.find_by_closed(0).each do |item|
-      item.to_descendant.close_item_purchase
-      item.to_descendant.save
-    end
+  stock_item.close_item_purchase
+
+  contract_item.close_item_purchase
+
+
+</typo:code>
+</p>
+<p>
+  A polymorphic like behavior can be obtained with the <code>to_descendant</code> method. It should be noted that
+  the descendant attributes will be retrieved from the database when <code>to_descendant</code> is called.
+</p>
+<p>
+<typo:code lang="ruby">
+
+  ItemPurchase.find_by_closed(0).each do |item|
+    item.to_descendant.close_item_purchase
+    item.to_descendant.save
+  end
 
 
 </typo:code>
 </p>
 <h3>Limitations</h3>
 <p>
+  There are some issues with the current implementation that will be addressed in the future that are illustrated 
+  in the following examples.
+</p>
+<p>
+  If an <code>ActiveRecord::Base</code> find is called that filters on attributes in different models in the inheritance
+  hierarchy a <code>NoMethodError</code> exception will be raised.  
+</p>
 <p>
 <typo:code lang="ruby">
 
-    ItemPurchase.find_all_by_unit_cost_and_item(50, \ 
-      'keyboard')
+  ItemPurchase.find_all_by_unit_cost_and_length(50, 100)
 
 
 </typo:code>
 </p>
 <p>
-<typo:code lang="ruby">
-
-    ItemPurchase.find_all_by_unit_cost_and_length(50, 100)
-
-
-</typo:code>
+  If an <code>ActiveRecord::Base</code> find is called on an ancestor attribute that matches an attribute in some other 
+  descendant that descendant will be returned. The example below will return an <code>item_purchase</code> object that has
+  a <code>stock_item_purchase</code> not a <code>contract_item_purchase</code> object as descendant. This would be completely unexpected. 
 </p>
 <p>
 <typo:code lang="ruby">
 
-    ContractItemPurchase.find_by_unit_cost(50)
+  ContractItemPurchase.find_by_item('keyboard')
 
 
 </typo:code>
