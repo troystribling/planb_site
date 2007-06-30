@@ -388,11 +388,12 @@ body {
     float: left;
     font-size: 75%;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   #footer p {
     margin-top: 5px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
   
   #footer a {
