@@ -3,9 +3,10 @@
   of inheritance relations between ActiveRecord models. Currently in Rails this functionality is only available in
   <a href="http://wiki.rubyonrails.org/rails/pages/SingleTableInheritance">Single Table Inheritance</a>. 
   Single Table Inheritance requires that all models in an inheritance hierarchy be in the same table, which is acceptable if the number of
-  models in the hierarchy is small. For inheritance hierarchies that contain a large or unknown number of models more complex 
+  models in the hierarchy is small. For   stock_item.save
+inheritance hierarchies that contain a large or unknown number of models more complex 
   representations of inheritance relations, such as <a href="http://www.martinfowler.com/eaaCatalog/classTableInheritance.html">
-  Class Table Inheritance</a>, are required. has_ancestor provides and implementation of Class Table Inheritance based on rails 
+  Class Table Inheritance</a>, are required. has_ancestor provides an implementation of Class Table Inheritance based on rails 
   <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. The  
   implementation used here differs from the one used used in the <a href="http://rubyforge.org/projects/clti/">Class Table Inheritance Plugin</a>, 
   which is based on database views. 
@@ -161,8 +162,7 @@
 <h3>Model Classes</h3>
 <p>
   In this section the model class definitions are specified. Within the model class definitions 
-  ancestor and descendant associations are declared. Below the <code>item_purchase</code> class is defined.
-  Notice the <code>has_ancestor</code> declaration and the definition of the <code>close_item_purchase</code> method.
+  ancestor and descendant associations are declared. In the <code>item_purchase</code> class notice the <code>has_ancestor</code> declaration and the definition of the <code>close_item_purchase</code> method.
   For this model the cost of a purchased item is product of the <code>unit_cost</code> and <code>unit_count</code>.
 </p>
 <p>
@@ -182,8 +182,7 @@
 </typo:code>
 </p>
 <p>
-  The <code>stock_item_purchase</code> class is defined below.
-  The ancestor association with <code>item_purchase</code> is specified and since no implementation of <code>close_item_purchase</code> 
+  In the <code>stock_item_purchase</code> class definition the ancestor association with <code>item_purchase</code> is specified and since no implementation of <code>close_item_purchase</code> 
   is given the ancestor implementation will be used. 
 </p>
 <p>
@@ -198,8 +197,8 @@
 </typo:code>
 </p>
 <p>
-  The <code>contract_item_purchase</code> class is defined below.
-  The ancestor association with <code>item_purchase</code> specified but <code>close_item_purchase</code> has a new
+  The <code>contract_item_purchase</code> class definition also contains
+  the ancestor association with <code>item_purchase</code> but <code>close_item_purchase</code> has a new
   implementation, namely, the product of the <code>unit_cost</code>, <code>unit_count</code> and contract <code>length</code>.
 </p>
 <p>
@@ -227,32 +226,37 @@
 <p>
   Construction of <code>stock_item_purchase</code> and <code>contract_item_purchase</code>
   objects is illustrated. Note that attributes of the <code>item_purchase</code> ancestor model are specified in both
-  constructors and in addition to attributes belonging to the model.
+  constructors. Additionally the <code>contract_item_purchase</code> attribute is specified in its constructor.
 </p>
 <p>
 <typo:code lang="ruby">
 
   stock_item = StockItemPurchase.new(:item=>'keyboard',\
     :unit_cost=>300,:unit_count=>1)
+  stock_item.save
 
   contract_item = ContractItemPurchase.new(:item=>'CEO',\
     :unit_cost=>30000, :unit_count=>1, length=>180)
+  contract_item.save
         
 
 </typo:code>
 </p>
 <p>
-  Model setters and getters work for attributes defined on model and attributes defined on <code>item_purchase</code>.
+  Model setters and getters work for attributes defined on the models and attributes defined on <code>item_purchase</code>.
 </p>
 <p>
 <typo:code lang="ruby">
 
   stock_item.in_inventory = 1
   stock_item.unit_count = 2
+  stock_item.save
+  
   last_item = stock_item.item
 
   contract_item.unit_count = 2
   contract_item.length = 240
+  contract_item.save
   last_item = contract_item.item
 
 
@@ -260,10 +264,9 @@
 </p>
 <p>
   <code>ActiveRecord::Base</code> finders work for attributes defined on model and attributes defined on 
-  <code>item_purchase</code>. If a finder is called that filters on multiple attributes all attributes must be
-  on the same model. Also, if the find attribute is an attribute on an ancestor model an instance of the ancestor
-  type will be returned. To return an object of the required type <code>to_descendant</code> must be used.
-  It should be noted that the descendant attributes will be retrieved from the database when <code>to_descendant</code> 
+  <code>item_purchase</code>. One restriction of the current implementation is that a finder that filters on multiple attributes must have all filtered attributes in the same model. Also, if the find attribute is an attribute on an ancestor model an instance of the ancestor
+  type will be returned not an instance of the model on which the find was called. To return an instance of the caller type <code>to_descendant</code> must be used.
+  The descendant attributes will be retrieved from the database when <code>to_descendant</code> 
   is called.</p>
 <p>
 <typo:code lang="ruby">
@@ -336,7 +339,7 @@
 <p>
   If an <code>ActiveRecord::Base</code> find is called on an ancestor attribute that matches an attribute in some other 
   descendant that descendant will be returned. The example below will return an <code>item_purchase</code> object that has
-  a <code>stock_item_purchase</code> not a <code>contract_item_purchase</code> object as descendant. This would be completely unexpected. 
+  a <code>stock_item_purchase</code> descendant not an empty list as expected. 
 </p>
 <p>
 <typo:code lang="ruby">
