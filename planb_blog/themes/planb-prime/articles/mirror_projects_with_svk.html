@@ -1,0 +1,121 @@
+<p>
+  <a href="http://svk.elixus.org/view/HomePage">SVK</a> is a version control system written in Perl that 
+  utilizes <a href="http://subversion.tigris.org/">SVN</a>. SVK adds many features SVN's functionality. 
+  Among them is the ability to synchronize SVN repositories while maintaining commit changelog information. 
+  This article will describe how to configure SVK to to mirror a local development SVN repository to a public read-only 
+  SVN repository such as <a href="http://rubyforge.org/">RubyForge</a>. While SVN provides the ability to synchronize 
+  repositories with svnsync, the destination repository requires a 
+  <a href="http://blog.codefront.net/2007/03/31/setting-up-svnsync-ed-mirrored-svn-repositories-on-ubuntu-part-2-of-2/">
+  modification to <code>pre-revprop-change</code> hook</a> which is usually not possible with a public repository. 
+  SVK does not need this modification, which makes it better suited for this application. Other features of SVK such as the
+  <a href="http://www.bieberlabs.com/wordpress/archives/2004/11/30/using-svk">ability to make copies of repositories, take them 
+  off line and later resynchronize</a> make SVK worth a look. 
+</p>
+<p>
+  The principal information sources used for this article were the <a href="http://svkbook.elixus.org/">SVK Online Book</a> 
+  and <a href="http://www.howtoforge.com/read_only_svn_mirror_with_svk">Creating a Read-Only Mirror of Your SVN Repository with SVK</a>.
+</p>
+<h4>install SVK</h4>
+<p>
+<code>yum</code> can be used to install SVK on Fedora.
+</p>
+<p>
+<typo:code>
+   yum install perl-SVK
+</typo:code>
+</p>
+<h4>configure an SVK depot</h4>
+<p>
+  The depot is the dock for all of the repositories managed by
+  the local SVK installation. Begin by creating a depot with a 
+  default configuration.
+</p>
+<p>
+<typo:code>
+   svk depotmap --init
+</typo:code>
+</p>
+<p>
+  If the user that issued the command is <code>svk</code> the  
+  default configuration will create the depot in the  
+  <code>/home/svk/.svk</code> 
+  directory. To see what just happened list all local depots.
+</p>
+<p>
+<typo:code>
+   svk depotmap --list
+</typo:code>
+</p>
+<p>
+<typo:code>
+  Depot                   Path
+  ============================================================
+  //                      /home/svk/.svk/local
+</typo:code>
+</p>
+<p>
+  In this listing <code>//</code> is the default depot name, which will be used to reference repositories 
+  in the depot in all future SVK commands, and the indicated the path is the default path. It is possible
+  to manage multiple depots by giving them names see the <a href="http://svkbook.elixus.org/">SVK Online Book</a>
+  for more information.
+</p>
+<h4>create SVK mirrors of SVN repositories</h4>
+<p>
+  After creating the depot the SVN repositories to be managed must be mirrored in the depot. First the SVK mirror of the local
+  project repository will be created and then a RubyForge SVK mirror for the project will be created. When creating the SVK mirrors
+  the full name of the mirror, including the mirror depot, and the URL to the SVN repository must be specified.
+</p>
+<p>
+<typo:code>
+  svk mirror //has_ancestor_local http://localhost/svn/has_ancestor
+
+  svk mirror //has_ancestor_rubyforge svn+ssh://user@rubyforge.org/var/svn/has-ancestor
+</typo:code>
+</p>
+<p>
+  List all mirrors to see what just happened.
+<p>
+<p>
+<typo:code>
+  svk mirror --list
+</typo:code>
+</p>
+<p>
+<typo:code>
+  Path                       Source
+  =============================================================================
+  //has_ancestor_local       http://localhost/svn/has_ancestor
+  //has_ancestor_rubyforge   svn+ssh://user@rubyforge.org/var/svn/has-ancestor
+</typo:code>
+</p>
+<p>
+ In this listing <code>//has_ancestor_local</code> and <code>//has_ancestor_rubyforge</code> are the SVK paths to the mirrors,
+ <code>//</code> indicates the containing depot, and <code>http://localhost/svn/has_ancestor</code> and 
+ <code>svn+ssh://user@rubyforge.org/var/svn/has-ancestor</code> are the respective URLs of the mirrored SVN repositories. The
+ SVK mirror paths will be used to reference the mirrors in all SVK commands.
+</p>
+<p>
+  The SVK mirrors must now be initialized by synchronizing with their SVN repositories. Since the RubyForge repository is assumed
+  to be read-only this is the only time synchronization needs to be performed.
+</p>
+<p>
+<typo:code>
+  svk sync //has_ancestor_local
+
+  svk sync //has_ancestor_rubyforge
+</typo:code>
+</p>
+<h4>mirror local SVN repository to public SVN repository</h4>
+<p>
+  SVK is now configured to mirror the <code>//has_ancestor_local</code> to <code>//has_ancestor_rubyforge</code>. The first synchronization
+  must be done manually and subsequent synchronizations may be automated. This is required to cache authentication credentials for
+  <code>http</code> and <code>svn</code>. Caching of credentials is not supported for <code>ssh+svn</code>, which is used by RubyForge, 
+  so public key authentication must be used.
+</p>
+<p>
+<typo:code>
+  svk sync //has_ancestor_local
+  svk smerge --baseless --incremental --verbatim //has_ancestor_local 
+    //has_ancestor_rubyforge
+</typo:code>
+</p>
