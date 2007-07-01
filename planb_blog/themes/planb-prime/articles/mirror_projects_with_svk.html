@@ -68,7 +68,6 @@
 <p>
 <typo:code>
   svk mirror //has_ancestor_local http://localhost/svn/has_ancestor
-
   svk mirror //has_ancestor_rubyforge svn+ssh://user@rubyforge.org/var/svn/has-ancestor
 </typo:code>
 </p>
@@ -101,13 +100,12 @@
 <p>
 <typo:code>
   svk sync //has_ancestor_local
-
   svk sync //has_ancestor_rubyforge
 </typo:code>
 </p>
 <h4>mirror local SVN repository to public SVN repository</h4>
 <p>
-  SVK is now configured to mirror the <code>//has_ancestor_local</code> to <code>//has_ancestor_rubyforge</code>. The first synchronization
+  SVK is now configured to mirror the local repository <code>//has_ancestor_local</code> to remote public respository <code>//has_ancestor_rubyforge</code>. The first synchronization
   must be done manually and subsequent synchronizations may be automated. This is required to cache authentication credentials for
   <code>http</code> and <code>svn</code>. Caching of credentials is not supported for <code>ssh+svn</code>, which is used by RubyForge, 
   so public key authentication must be used.
@@ -115,7 +113,6 @@
 <p>
 <typo:code>
   svk sync //has_ancestor_local
-  svk smerge --baseless --incremental --verbatim //has_ancestor_local 
-    //has_ancestor_rubyforge
+  svk smerge --baseless --incremental --verbatim //has_ancestor_local //has_ancestor_rubyforge
 </typo:code>
 </p>
