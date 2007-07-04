@@ -202,18 +202,32 @@
   padding-top: 5px;;
   padding-bottom: 5px;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #9B8903;
   background-color: #111;
 }
 .bio-data {
   padding-left: 15px;
+  padding-right: 15px;
   padding-top: 5px;;
   padding-bottom: 5px;
-  padding-right: 15px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #888;
   background-color: #111;
+}
+.bio-links {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#page .bio-links p {
+  padding: 0px;
+  margin: 0px;
+}
+#page .bio-links img {
+  padding: 0px;
+  margin: 0px;
+  margin-right: 10px;
 }
 #page table.bio-history p {
   margin-left: 0px;
