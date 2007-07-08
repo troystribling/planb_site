@@ -46,6 +46,7 @@ CREATE TABLE `forums` (
 
 /*!40000 ALTER TABLE `forums` DISABLE KEYS */;
 LOCK TABLES `forums` WRITE;
+INSERT INTO `forums` VALUES (1,'has_ancestor','Installation, use and new features.',1,1,1,'<p>Installation, use and new features.</p>');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `forums` ENABLE KEYS */;
 
@@ -97,6 +98,7 @@ CREATE TABLE `moderatorships` (
 
 /*!40000 ALTER TABLE `moderatorships` DISABLE KEYS */;
 LOCK TABLES `moderatorships` WRITE;
+INSERT INTO `moderatorships` VALUES (1,1,1);
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `moderatorships` ENABLE KEYS */;
 
@@ -149,6 +151,7 @@ CREATE TABLE `posts` (
 
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 LOCK TABLES `posts` WRITE;
+INSERT INTO `posts` VALUES (1,1,1,'<p>\r\nSee has <a href=\"http://research.inplanb.com\">has_ancestor project page</a> for instructions on installation, documentation and road map.\r\n</p>\r\n<p>\r\nSee <a href=\"http://plans.inplanb.com/articles/2007/06/28/construct-model-abstractions-with-has_ancestor\">Construct Model Abstractions with has_ancestor</a> for a tutorial that implements a simple model and illustrates use cases.\r\n</p>','2007-07-08 16:36:19','2007-07-08 16:36:19',1,'<p><br />See has <a href=\"http://research.inplanb.com\">has_ancestor project page</a> for instructions on installation, documentation and road map.<br /></p><br /><p><br />See <a href=\"http://plans.inplanb.com/articles/2007/06/28/construct-model-abstractions-with-has_ancestor\">Construct Model Abstractions with has_ancestor</a> for a tutorial that implements a simple model and illustrates use cases.<br /></p>');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
@@ -194,7 +197,7 @@ CREATE TABLE `sessions` (
 
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 LOCK TABLES `sessions` WRITE;
-INSERT INTO `sessions` VALUES (3,'c497f50272524db072b94df6f815367c','BAh7CzoMdXNlcl9pZGkHOgt0b3BpY3N7ADoPZm9ydW1fcGFnZTA6C2ZvcnVt\nc0AGIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hI\nYXNoewAGOgpAdXNlZHsAOhBsYXN0X2FjdGl2ZXU6CVRpbWUNDtkagAAA8NU=\n','2007-07-08 15:16:37',NULL),(4,'01a1d39c69ca126cb4b04f87bcfd0639','BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo\nSGFzaHsABjoKQHVzZWR7AA==\n','2007-07-08 15:17:51',NULL),(6,'17ce53c828d7e8957ef7d7d3c5485c45','BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo\nSGFzaHsABjoKQHVzZWR7AA==\n','2007-07-08 15:20:29',NULL),(7,'0715bb197fac7515e8886ccacb30b926','BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo\nSGFzaHsABjoKQHVzZWR7AA==\n','2007-07-08 15:24:23',NULL),(9,'1b6562bc945dccde502faab3457b6bcf','BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo\nSGFzaHsABjoKQHVzZWR7AA==\n','2007-07-08 15:28:20',NULL),(10,'3f2e5217a56d3dd7dd51a22082382e27','BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo\nSGFzaHsABjoKQHVzZWR7AA==\n','2007-07-08 15:32:19',NULL),(11,'87d60026bc555ddab4d58c150eb604b8','BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo\nSGFzaHsABjoKQHVzZWR7AA==\n','2007-07-08 15:36:13',NULL),(12,'ed627fcc411b977ed7eaf03f4cd86c81','BAh7BzoPZm9ydW1fcGFnZTAiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6\nOkZsYXNoOjpGbGFzaEhhc2h7AAY6CkB1c2VkewA=\n','2007-07-08 15:48:54',NULL);
+INSERT INTO `sessions` VALUES (2,'5d7467cac95451ef93e3b4349f429bb0','BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo\nSGFzaHsABjoKQHVzZWR7AA==\n','2007-07-08 17:12:44',NULL),(3,'60c4fe23050e8e081a1c8cbc7c1896f9','BAh7BzoPZm9ydW1fcGFnZTAiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6\nOkZsYXNoOjpGbGFzaEhhc2h7AAY6CkB1c2VkewA=\n','2007-07-08 17:26:29',NULL);
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
@@ -230,6 +233,7 @@ CREATE TABLE `topics` (
 
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
 LOCK TABLES `topics` WRITE;
+INSERT INTO `topics` VALUES (1,1,1,'Getting Started with has_ancestor','2007-07-08 16:36:18','2007-07-08 16:36:18',0,1,1,'2007-07-08 16:36:19',0,1,1);
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 
@@ -268,7 +272,7 @@ CREATE TABLE `users` (
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 LOCK TABLES `users` WRITE;
-INSERT INTO `users` VALUES (1,'troy','planb.research@gmail.com','3ee35708aa91327d2b34fdaf86bee86212f6106f','2007-07-08 14:51:06',NULL,1,0,'2007-07-08 15:48:24','Troy Stribling','2007-07-08 15:48:24',NULL,'c1880cee6b37ae1f02b0f56a1f283b51bd08d6ef','2008-07-07 21:48:24',1,NULL,'',NULL),(2,'test','troy.stribling@gmail.com','3ee35708aa91327d2b34fdaf86bee86212f6106f','2007-07-08 14:53:02',NULL,NULL,0,'2007-07-08 14:53:47','Tester','2007-07-08 14:53:31',NULL,'c1ea1f18b5a747f18efebd02126b82edd9ab812e','2008-07-07 20:53:02',1,NULL,'',NULL);
+INSERT INTO `users` VALUES (1,'troy','planb.research@gmail.com','3ee35708aa91327d2b34fdaf86bee86212f6106f','2007-07-08 16:18:54',NULL,1,1,'2007-07-08 17:17:18','Troy Stribling','2007-07-08 16:27:13','research.inplanb.com','6cff32d89c0b55f5f966006261b5e614f32dfe4e','2008-07-07 22:18:59',1,'Founder Plan-B Research.','<p>Founder Plan-B Research.</p>',NULL);
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
