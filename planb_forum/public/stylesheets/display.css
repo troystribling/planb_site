@@ -222,8 +222,8 @@ hr
 {margin:0}
 #footer p.credit
 {
-	float:right;
-	text-align:right;
+	float:left;
+	text-align:left;
 }
 #footer p.credit a.subtle
 {
@@ -456,7 +456,7 @@ p
 {
 	color: #900;
   font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-	font-size: 1.1em;
+	font-size: 1.25em;
   letter-spacing: -1px;
 	font-weight: bold;
 	float:left;
@@ -743,9 +743,9 @@ table.posts tr.spacer td
 	}
 .post .author
 {
-	border-top:2px solid #eee;
+	border:2px solid #bbb;
 	padding:5px 10px;
-	background:#eee;
+	background-color:#eee;
 	font-weight:bold;
 	color:#333;
 	font-size:0.9em;
@@ -788,8 +788,9 @@ table.posts tr.spacer td
 
 .posts .post .body
 {
-	border-top:2px solid #eee;
+	border:2px solid #bbb;
 	font-size:0.9em;
+	background-color: #fff;
 	padding:10px 20px;
 }
 
