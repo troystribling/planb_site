@@ -1,5 +1,11 @@
 <% content_for :right do %>
 
+<a href="http://research.inplanb.com"><h5>Plan-B Research?</h5></a>
+
+<p>
+  Is an open source development effort focused on information modeling. 
+</p>
+
 <% if admin? %>
 <h6><%= 'Admin'[:admin_title] %></h6>
 <p><%= link_to 'Create New Forum'[:create_new_forum], new_forum_path, :class => "utility" %></p>
