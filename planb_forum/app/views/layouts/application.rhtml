@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title><%= "#{h @page_title} - " if @page_title %>Beast</title>
+  <title><%= "#{h @page_title} - " if @page_title %>Forum</title>
   <%= stylesheet_link_tag 'display' %>
   <%= javascript_include_tag "prototype", "effects", "lowpro", "application" %>
 <% unless @feed_icons.blank? -%>
@@ -37,15 +37,12 @@
     <% end %>
     
   </ul>
-
-  <h1><%= link_to 'Beast'[:beast_title], home_path %></h1>
   
 </div>
 
 <div id="container">
-
+<a href="http://research.inplanb.com"><img src="planb/images/plan_b_research_banner.png"></a>         
 <div id="content">
-  
 <%= content_tag 'p', h(flash[:notice]), :class => 'notice' if flash[:notice] %>
 <%= content_tag 'p', h(flash[:error]), :class => 'notice error' if flash[:error] %>
   
@@ -69,7 +66,7 @@
 <p class="disclaim">
 <strong>
   <%
-  footers=["Two's company. Three's a forum. More's a Beast."[:footer_message]
+  footers=[
   ]
   %>
   <%= footers[rand(footers.size)]%>
