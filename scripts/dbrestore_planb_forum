@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /opt/dbbkup
+svn update
+
+mysqladmin -u root -p drop planb_forum_live
+mysqladmin -u root -p create planb_forum_live
+mysql -u root -p planb_forum_live < planb_forum.sql
+
