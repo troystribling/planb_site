@@ -1,66 +1,88 @@
 <p>
-<a href="http://rspec.rubyforge.org/index.html">RSpec</a> is a Ruby 
-<a href="http://en.wikipedia.org/wiki/Behavior_driven_development">
-Behavior Driven Development</a> DSL that has received a lot of attention. 
-This article will present a method of extending its functionality that includes adding 
-custom <a href="http://rspec.rubyforge.org/documentation/expectations.html">matchers</a>, 
-adding methods that are within scope of all <code>describe</code> blocks in a project and specifying 
-configuration data that can be made available to all specs in a project. 
+  <a href="http://rspec.rubyforge.org/index.html">RSpec</a> is a Ruby 
+  <a href="http://en.wikipedia.org/wiki/Behavior_driven_development">
+  Behavior Driven Development</a> DSL that has received a lot of   
+  attention. 
+  This article will present a method of extending its functionality 
+  that includes adding 
+  custom <a    
+  href="http://rspec.rubyforge.org/documentation/expectations.html">
+  matchers</a>, 
+  adding methods that are within scope of all <code>describe</code>
+  blocks in a project and specifying 
+  configuration data that can be made available to all specs in a
+  project. 
 </p>
 <p>
-Both 
-<a href="http://www.ibrasten.com/articles/2007/6/1/effectively-communicating-your-expectations">Brasten Sager</a> and 
-<a href="http://opensoul.org/2007/4/18/rspec-model-should-be_valid">Brandon Keepers</a> describe how to add 
-custom matchers by extending <code>Spec::Rails::Matchers</code>. It follows that this the method will only be 
-applicable when the the RSpec Rails plugin is installed. The method of adding custom 
-matchers described here will not have this dependency. 
+  Both 
+  <a href="http://www.ibrasten.com/articles/2007/6/1/effectively-communicating-your-expectations">Brasten 
+  Sager</a> and 
+  <a href="http://opensoul.org/2007/4/18/rspec-model-should-be_valid">Brandon 
+  Keepers</a> describe how to add 
+  custom matchers by extending <code>Spec::Rails::Matchers</code> but 
+  this the method will only be 
+  applicable when the the RSpec Rails plugin is installed. The method   
+  of adding custom 
+  matchers described here will not have this dependency. 
 </p>
 <p>
-The basis of the approach described 
-in this article is derived from the method described by   
-<a href="http://blog.nicksieger.com/articles/2007/01/02/customizing-rspec">Nick Sieger</a> for an older version of RSpec. 
-For newer versions of RSpec the names of the modules and classes have changed but the strategy is the same.
+  The basis of the approach described 
+  in this article is derived from the method described by   
+  <a href="http://blog.nicksieger.com/articles/2007/01/02/customizing-rspec">Nick 
+  Sieger</a> for an older version of RSpec. 
+  For newer versions of RSpec the names of the modules and classes have   
+  changed but the strategy is the same.
 </p> 
 <p>
-All of the code examples presented here are from the  
-<a href="http://research.inplanb.com/has_ancestor">has_ancestor</a> Ruby on Rails plugin. 
-Details of the implementation can be found in the source.
+  All of the code examples presented here are from the  
+  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>   
+  Ruby on Rails plugin. 
+  Details of the implementation can be found in the source.
 </p>
 
 <h3>RSpec Extension by Implementation of <code>before_eval</code> in 
 <code>Spec::DSL::Behavior</code></h3>
 <p>
-In the <code>initialize</code> method of 
-<code>Spec::DSL::Behavior</code> a method, <code>before_eval</code>,
-is provided do something before the <code>class_eval</code> of spec. The edited code snip-it is shown below.
-<typo:code lang="ruby">
+  In the <code>initialize</code> method of 
+  <code>Spec::DSL::Behavior</code> a method, <code>before_eval</code>,
+  is provided do something before the <code>class_eval</code> of spec.   
+  The edited code snip-it is shown below.
+  <typo:code lang="ruby">
 
-module Spec
-  module DSL
-    class Behaviour
-      def initialize(*args, &behaviour_block)
-        init_description(*args)
-        init_eval_module
-        before_eval
-        eval_behaviour(&behaviour_block)
-      end
+  module Spec
+    module DSL
+      class Behaviour
+        def initialize(*args, &behaviour_block)
+          init_description(*args)
+          init_eval_module
+          before_eval
+          eval_behaviour(&behaviour_block)
+        end
 
-    protected
+      protected
     
-      def before_eval
-      end
+        def before_eval
+        end
 
+      end
     end
   end
-end
+
 
 </typo:code>
-An implementation of <code>before_eval</code> can <code>class_eval</code> modules that add methods that will be 
-placed within the scope of <code>describe</code> blocks. 
-The following sections will provide examples that implement <code>before_eval</code> to include matchers and other method types.
-</p>
-<h3>Project Setup</h3>
 <p>
+  An implementation of <code>before_eval</code> can   
+  <code>class_eval</code> modules that add methods in the scope of 
+  <code>describe</code> blocks. 
+  The following section will provide examples that implement   
+  <code>before_eval</code> to include matchers and other method types.
+</p>
+<h3>Project Configuration</h3>
+<p>
+  After either installing the Rspec <code>gem</code> or plugin,   
+  bootstrap RSpec by issuing the command below in your 
+  project directory.
+</p>
 <typo:code>
 
 ruby script/generate rspec
@@ -69,8 +91,21 @@ ruby script/generate rspec
 </typo:code>
 </p>
 <p>
-<code>spec_custom_matchers.rb</code>
-</p>
+  A <code>spec</code> directory will be created in your project 
+  directory and in this director <code>spec_helper.rb</code> 
+  will be also created. 
+<p>
+<p>
+  In the <code>spec</code> directory create two more directories
+  <code>matchers</code> and <code>extensions</code>. Place
+  matchers and extensions in these directories. In <code>spec</code> 
+  create the two files <code>spec_custom_matchers.rb</code> 
+  <code>spec_extensions.rb</code> to load matchers and extensions
+  respectively. Below the implementation of these files is shown for 
+  the 
+  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>
+  plugin. 
+<p>
 <p>
 <typo:code>
 
@@ -80,9 +115,8 @@ require File.expand_path("#{dir}/matchers/eql_attributes")
 require File.expand_path("#{dir}/matchers/eql_attribute_value")
 require File.expand_path("#{dir}/matchers/be_implemented")
 
+
 </typo:code>
-</p>
-<code>spec_extensions.rb</code>
 </p>
 <p>
 <typo:code>
@@ -91,28 +125,17 @@ dir = File.dirname(__FILE__)
 
 require File.expand_path("#{dir}/extensions/model_data")
 
-</typo:code>
-</p>
-<p>
-<typo:code>
-
-module PlanB
-  module SpecExtensions
-  end
-end
 
 </typo:code>
 </p>
+  Define matchers in the module
+  <code>PlanB::SpecMatchers</code> and extensions in the 
+  module <code>PlanB::SpecExtensions</code>. Add the following code
+  to <code>spec_helper.rb</code> to load all matchers and extensions 
+  and to provide an implementation of <code>before_eval</code> which
+  includes the matchers and extensions into the scope of all 
+  <code>describe</code> blocks in the project.
 <p>
-<p>
-<typo:code>
-
-module PlanB
-  module SpecMatchers    
-  end
-end
-
-</typo:code>
 </p>
 <p>
 <typo:code>
@@ -122,13 +145,14 @@ require File.dirname(__FILE__) + '/spec_extensions'
 
 class Spec::DSL::Behaviour
   def before_eval
-    @eval_module.include PlanB::SpecExtensions
     @eval_module.include PlanB::SpecMatchers
+    @eval_module.include PlanB::SpecExtensions
   end
 end
 
+
 </typo:code>
-</p>
+</p
 <h3>Custom Matchers</h3>
 <p>
 <typo:code>
