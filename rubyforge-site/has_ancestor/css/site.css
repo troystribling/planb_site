@@ -53,6 +53,7 @@ h3 {
   padding-top: 0px;
   padding-bottom: 0px;
   height: 50px;
+  background: url(/planb/images/plan_b_research_banner.png) no-repeat center top;
 }
 #banner {
   margin-left: auto;
@@ -74,17 +75,11 @@ h3 {
   border-bottom: none;
   background: none;
 }
-#banner a img {
-  border: none;
-}
-#banner a:visited img {
-  border: none;
-}
 /******* navigation style *******/
 #navigation-wrapper {
   color: #AAA;
   background-color: #000;
-  background: url(/images/grad_bar.png) repeat-x left top;
+  background: url(/planb/images/grad_bar.png) repeat-x left top;
   padding-top: 0px;
   padding-bottom: 10px;
   height: 35px;
@@ -125,31 +120,11 @@ h3 {
   margin: 0px;
   margin-right: 10px;
   font-size: 1.65em;
-  font-weight: normal;
+  font-weight: lighter;
   font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
   letter-spacing: -1px;
 }
-/******* image_box style *******/
-div.image-box {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-#page div.image-box img {
-  float: left;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 25px;
-}
-#page div.image-box h1 {
-  margin-top: 0px;
-  margin-bottom: 10px;
-  margin-left: 0px;
-  margin-right: 0px;
-  font-size: 1.75em;
-}
+
 /******* footer style *******/
 #footer {
   color: #000;
@@ -184,3 +159,4 @@ div.image-box {
   color: #a00;
   text-decoration: none;
 }
+

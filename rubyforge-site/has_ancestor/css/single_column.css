@@ -8,14 +8,14 @@
 
 /******* page section style *******/
 #page div.section-wrapper {
-  background: url(/images/single_column_top.png) no-repeat left top;
+  background: url(/planb/images/single_column_top.png) no-repeat left top;
   background-color: #000;
   color: #AAA;
 }
 #page div.section {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background: url(/images/single_column_bottom.png) no-repeat left bottom;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: url(/planb/images/single_column_bottom.png) no-repeat left bottom;
 }
 #page div.section p {
   margin-left: 25px;
@@ -37,8 +37,10 @@
   text-indent: 10px;
   border: 1px solid #111;
   color: #900;
+  font-size: 1.65em;
+  font-weight: lighter;
   font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-  background: url(/images/grad_bar.png) repeat-x left bottom;
+  background: url(/planb/images/grad_bar.png) repeat-x left bottom;
 }
 #page div.section h1 a {
   color: #267BB4;
@@ -87,12 +89,12 @@
   margin-right: auto;
   padding-top: 5px;
   padding-bottom: 20px;
-  background: url(/images/subsection-head.gif) repeat-x left top;
+  background: url(/planb/images/subsection-head.gif) repeat-x left top;
 }
 #page div.subsection {
   padding-top: 5px;
   padding-bottom: 15px;
-  background: url(/images/subsection-foot.gif) repeat-x left bottom;
+  background: url(/planb/images/subsection-foot.gif) repeat-x left bottom;
   background-color: #2B2B2B;
 }
 #page div.subsection p {
@@ -113,8 +115,8 @@
   margin-bottom: 1px;
   font-size: 1.5em;
   font-weight: lighter;
-  text-indent: 0px;
   font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  text-indent: 0px;
   border: none;
   color: #BBB;
   border-bottom: 2px solid #000;
@@ -124,7 +126,7 @@
 /******* section list style *******/
 #page div.section ul {
   list-style-type: none;
-  list-style-image: url(/images/black-list-bullet.png);
+  list-style-image: url(/planb/images/black-list-bullet.png);
 }
 #page div.section li {
   font-size: 1.1em;
@@ -166,9 +168,35 @@
 
 /******* bigraphic table style *******/
 .biographic {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0px;;
+  padding-bottom: 0px;
+}
+#page div.biographic h1 {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 1.75em;
+  font-weight: lighter;
+  font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+  text-indent: 5px;
+  border: none;
+  color: #BBB;
+  border-bottom: 2px solid #000;
+  background: none;
+}
+#page .biographic img {
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+.bio-history {
+  float: right;
   width: 450px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .bio-item {
   padding-left: 15px;
@@ -176,20 +204,34 @@
   padding-top: 5px;;
   padding-bottom: 5px;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #9B8903;
   background-color: #111;
 }
 .bio-data {
   padding-left: 15px;
+  padding-right: 15px;
   padding-top: 5px;;
   padding-bottom: 5px;
-  padding-right: 15px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #888;
   background-color: #111;
 }
-#page table.biographic p {
+.bio-links {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#page .bio-links p {
+  padding: 0px;
+  margin: 0px;
+}
+#page .bio-links img {
+  padding: 0px;
+  margin: 0px;
+  margin-right: 10px;
+}
+#page table.bio-history p {
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 10px;
@@ -245,7 +287,7 @@
   font-size: 1.2em;
   font-weight: bold;
   background-color: #111;
-  color: #888;
+  color: #9B8903;
 }
 .status {
   padding-left: 15px;
