@@ -1,0 +1,58 @@
+<p>
+Testing a Rails plugin requires that it be implemented in a test application. <a href="http://www.pluginaweek.org/2006/11/24/plugin-tip-of-the-week-testing-your-plugins-the-right-way/" target="blank">PluginAWeek</a> describes how to accomplish this 
+by embedding a test application in the plugin. Building on this, here <a href="http://rspec.rubyforge.org/index.html" target="blank">RSpec</a> is installed in the test application so that <a href="http://en.wikipedia.org/wiki/Behavior_driven_development" target="blank">Behavior Driven Development</a> may be used for plugin development.
+</p>
+<p>
+  All of the code examples presented here are from the  
+  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>   
+  Ruby on Rails plugin. 
+</p>
+<h3>Install</h3>
+<p>
+  Begin by building a Rails test application as described in <a href="http://www.pluginaweek.org/2006/11/24/plugin-tip-of-the-week-testing-your-plugins-the-right-way/" target="blank">PluginAWeek</a>. 
+  Install both the <a href="http://rspec.rubyforge.org/documentation/rails/install.html" target="blank">RSpec and Rspec Rails</a> plugins in the test 
+application.
+</p>
+<p>
+<typo:code>
+
+ruby script/plugin install svn://rubyforge.org/var/svn/rspec/tags/CURRENT/rspec
+ruby script/plugin install svn://rubyforge.org/var/svn/rspec/tags/CURRENT/rspec_on_rails
+
+
+</typo:code>
+</p>
+<p>
+  Next, bootstrap Rspec.
+</p>
+<p>
+<typo:code>
+
+  ruby script/generate rspec
+
+
+</typo:code>
+</p>
+
+<h3>Configure</h3>
+<p>
+  There are two ways to configure RSpec. In one of the 
+  configurations specs are run from <code>$RAILS_ROOT</code> 
+  of the test application in the other specs are run from
+  the top level directory of the plugin. The first 
+  configuration would not differ from using RSpec in a normal Rails
+  application. The second configuration will be described in the 
+  remainder of this section.
+</p>
+<p>
+</p>
+<p>
+<typo:code>
+
+
+</typo:code>
+</p>
+<h3>Use</h3>
+<p>
+</p>
+
