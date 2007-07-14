@@ -1,16 +1,52 @@
 <p>
 <a href="http://rspec.rubyforge.org/index.html">RSpec</a> is a Ruby 
-<a href="http://en.wikipedia.org/wiki/Behavior_driven_development">Behavior Driven Development</a> DSL. 
-In this article methods of extending the functionality of RSpec will be described. 
-This includes adding both custom <a href="http://rspec.rubyforge.org/documentation/expectations.html">matchers</a> and methods within 
-the scope of RSpec <code>describe</code> blocks. Both 
+<a href="http://en.wikipedia.org/wiki/Behavior_driven_development">
+Behavior Driven Development</a> DSL. This article will present a method of extending its functionality that includes each of the following; adding custom <a href="http://rspec.rubyforge.org/documentation/expectations.html">matchers</a>, adding methods that are within scope of all <code>describe</code> blocks in a project and loading configuration data that can be made available to all specs in a project. 
+</p>
+<p>
+Both 
 <a href="http://www.ibrasten.com/articles/2007/6/1/effectively-communicating-your-expectations">Brasten Sager</a> and 
 <a href="http://opensoul.org/2007/4/18/rspec-model-should-be_valid">Brandon Keepers</a> describe how to add 
-custom matchers by extending <code>Spec::Rails::Matchers</code>. Neither described their configuration, RSpec gem or plugin, 
-nor exactly what was done to place the matchers within the scope of the <code>describe</code> block.
-Also, this extension method will only be applicable when the the RSpec Rails plugin is used. The method of adding custom 
-matchers described here will not have a dependency on <code>Spec::Rails::Matchers</code>. The basis of the method 
-used in this article is derived from that of 
+custom matchers by extending <code>Spec::Rails::Matchers</code>. It follows that this the method will only be applicable when the the RSpec Rails plugin is installed. The method of adding custom 
+matchers described here will not have this dependency. 
+</p>
+<p>
+The basis of the approach described 
+in this article is derived from the method described by   
 <a href="http://blog.nicksieger.com/articles/2007/01/02/customizing-rspec">Nick Sieger</a> for an older version of RSpec. 
 For newer versions of RSpec the names of the modules and classes have changed but the strategy is the same.
 </p> 
+<p>
+All of the code examples presented here are from the  
+<a href="http://research.inplanb.com/has_ancestor">has_ancestor</a> Ruby on Rails plugin. Details of the implementation can be found in the source.
+</p>
+
+<h3>RSpec Extension by Implementation of <code>before_eval</code> in 
+<code>Spec::DSL::Behavior</code></h3>
+<p>
+In the <code>initialize</code> method of 
+<code>Spec::DSL::Behavior</code> a method, <code>before_eval</code>,
+is provided do something before the <code>class_eval</code> of spec. The edited code snip-it is shown below.
+<typo:code lang="ruby">
+module Spec
+  module DSL
+    class Behaviour
+      def initialize(*args, &behaviour_block)
+        init_description(*args)
+        init_eval_module
+        before_eval
+        eval_behaviour(&behaviour_block)
+      end
+
+    protected
+    
+      def before_eval
+      end
+
+    end
+  end
+end
+</typo:code>
+An implementation of <code>before_eval</code> can <code>include</code>
+modules that add methods that will be available within the scope of a <code>describe</code> block. The following sections will provide examples that implement <code>before_eval</code> to include matchers and other types of methods.
+</p>
