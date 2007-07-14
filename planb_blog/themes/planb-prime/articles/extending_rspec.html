@@ -6,7 +6,7 @@
   This article will present a method of extending its functionality 
   that includes adding 
   custom <a    
-  href="http://rspec.rubyforge.org/documentation/expectations.html">
+  href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html">
   matchers</a>, 
   adding methods that are within scope of all <code>describe</code>
   blocks in a project and specifying 
@@ -45,9 +45,13 @@
 <p>
   In the <code>initialize</code> method of 
   <code>Spec::DSL::Behavior</code> a method, <code>before_eval</code>,
-  is provided do something before the <code>class_eval</code> of spec.   
-  The edited code snip-it is shown below.
-  <typo:code lang="ruby">
+  is provided do something before the <code>class_eval</code> of specs.   
+  The code providing this functionality in 
+  <code>lib/spec/dsl/behavior.rb</code> 
+  from the RSpec plugin is shown.
+</p>
+<p> 
+ <typo:code lang="ruby">
 
   module Spec
     module DSL
@@ -70,22 +74,24 @@
 
 
 </typo:code>
+</p>
 <p>
   An implementation of <code>before_eval</code> can   
   <code>class_eval</code> modules that add methods in the scope of 
   <code>describe</code> blocks. 
-  The following section will provide examples that implement   
+  The following section will provide an example that implements   
   <code>before_eval</code> to include matchers and other method types.
 </p>
 <h3>Project Configuration</h3>
 <p>
-  After either installing the Rspec <code>gem</code> or plugin,   
-  bootstrap RSpec by issuing the command below in your 
-  project directory.
+  After either installing the 
+  <a href="http://rspec.rubyforge.org/download.html">Rspec  
+  <code>gem</code> or plugin</a>
+  bootstrap RSpec.
 </p>
 <typo:code>
 
-ruby script/generate rspec
+  ruby script/generate rspec
 
 
 </typo:code>
@@ -97,68 +103,106 @@ ruby script/generate rspec
 <p>
 <p>
   In the <code>spec</code> directory create two more directories
-  <code>matchers</code> and <code>extensions</code>. Place
-  matchers and extensions in these directories. In <code>spec</code> 
+  <code>matchers</code> and <code>extensions</code> to place custom
+  matchers and extensions. In <code>spec</code> 
   create the two files <code>spec_custom_matchers.rb</code> 
-  <code>spec_extensions.rb</code> to load matchers and extensions
-  respectively. Below the implementation of these files is shown for 
+  <code>spec_extensions.rb</code> to load custom matchers and 
+  extensions
+  respectively. The implementation of these files is shown for 
   the 
   <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>
-  plugin. 
+  plugin below. 
 <p>
 <p>
-<typo:code>
+<typo:code lang="ruby">
 
-dir = File.dirname(__FILE__)
+  dir = File.dirname(__FILE__)
 
-require File.expand_path("#{dir}/matchers/eql_attributes")
-require File.expand_path("#{dir}/matchers/eql_attribute_value")
-require File.expand_path("#{dir}/matchers/be_implemented")
+  require File.expand_path("#{dir}/matchers/eql_attributes")
+  require File.expand_path("#{dir}/matchers/eql_attribute_value")
+  require File.expand_path("#{dir}/matchers/be_implemented")
 
 
 </typo:code>
 </p>
 <p>
-<typo:code>
+<typo:code lang="ruby">
 
-dir = File.dirname(__FILE__)
+  dir = File.dirname(__FILE__)
 
-require File.expand_path("#{dir}/extensions/model_data")
+  require File.expand_path("#{dir}/extensions/model_data")
 
 
 </typo:code>
 </p>
-  Define matchers in the module
+<p>
+  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a> 
+  defines custom matchers in the module
   <code>PlanB::SpecMatchers</code> and extensions in the 
-  module <code>PlanB::SpecExtensions</code>. Add the following code
-  to <code>spec_helper.rb</code> to load all matchers and extensions 
-  and to provide an implementation of <code>before_eval</code> which
-  includes the matchers and extensions into the scope of all 
+  module <code>PlanB::SpecExtensions</code>. The following code is 
+  added to <code>spec_helper.rb</code> to load all custom matchers and 
+  extensions and to provide an implementation of 
+  <code>before_eval</code>, which
+  <code>class_evals</code> the matchers and extensions in 
+  the scope of all 
   <code>describe</code> blocks in the project.
-<p>
 </p>
 <p>
-<typo:code>
+<typo:code lang="ruby">
 
-require File.dirname(__FILE__) + '/spec_custom_matchers'
-require File.dirname(__FILE__) + '/spec_extensions'
+  require File.dirname(__FILE__) + '/spec_custom_matchers'
+  require File.dirname(__FILE__) + '/spec_extensions'
 
-class Spec::DSL::Behaviour
-  def before_eval
-    @eval_module.include PlanB::SpecMatchers
-    @eval_module.include PlanB::SpecExtensions
+  class Spec::DSL::Behaviour
+    def before_eval
+      @eval_module.include PlanB::SpecMatchers
+      @eval_module.include PlanB::SpecExtensions
+    end
   end
-end
 
 
 </typo:code>
-</p
+</p>
 <h3>Custom Matchers</h3>
 <p>
-<typo:code>
+  Rspec <a    
+  href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html">
+  matchers</a> specify the expectations of spec. They play the role
+  of <code>assert</code> in <code>Test::Unit</bode>. Rspec provides
+  matchers that allow you to write specs like,
+</p>
+<p>
+<typo:code lang="ruby">
+   it "should find model by specification of model primary key" do
+    ParentModel.find(@p.id).should eql(@p)
+  end
+</typo:code>
+</p>
+<p>
+ here <code>eql</code> is a matcher provided by RSpec that tests
+ for equality between the left-hand-side of <code>should</code> and
+ its argument.
+</p>
+<p>
+  An example of a
+  custom matcher from 
+  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>  
+  is shown. This matcher tests for equality between a specified 
+  a specified attribute in a list of models and a specified value. 
+  All custom 
+  matchers must implement <code>matches?</code>,
+  <code>failure_message</code> and <code>description</code>. Also,
+  an implementation of the matcher method called in specs must 
+  must be provided and implemented to create a matcher object. 
+  In this example
+  the matcher method is <code>eql_attribute_value</code>. In a 
+  following section an example using this matcher will be provided.
+</p>
+<p>
+<typo:code lang="ruby">
 
-module PlanB
-  module SpecMatchers    
+  module PlanB
+    module SpecMatchers    
 
       class EqlAttributeValue  #:nodoc:
     
@@ -196,32 +240,38 @@ module PlanB
         EqlAttributeValue.new(*exp)
       end
    
+    end
   end
-end
+
+
 </typo:code>
 </p>
   
-<h3>Specifying Configuration Data</h3>
+<h3>An RSpec Extension</h3>
 <p>
-<typo:code>
+<typo:code lang="ruby">
 
-class Spec::DSL::Configuration
-  attr_accessor :model_data  
-end
-
-module PlanB
-  module SpecExtensions
-    def model_data
-      Spec::Runner.configuration.model_data
-    end  
+  class Spec::DSL::Configuration
+    attr_accessor :model_data  
   end
-end
+
+  module PlanB
+    module SpecExtensions
+      def model_data
+        Spec::Runner.configuration.model_data
+      end  
+    end
+  end
+
+
 </typo:code>
 </p>
-<h1>Using Extensions</h1>
+<h1>Using The Custom Matcher and Extension</h1>
 <p>
-<typo:code>
-GrandchildModel.find_all_by_child_model_attr(model_data['GRANDCHILD_MODEL']['child_model_attr']).should 
+<typo:code lang="ruby">
+  GrandchildModel.find_all_by_child_model_attr(model_data['GRANDCHILD_MODEL']['child_model_attr']).should 
       eql_attribute_value(:child_model_attr, model_data['GRANDCHILD_MODEL']['child_model_attr']) 
 </typo:code>
+
+
 </p>
