@@ -458,7 +458,7 @@ p
   font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	font-size: 1.25em;
   letter-spacing: -1px;
-	font-weight: bold;
+  font-weight: lighter;
 	float:left;
 	margin-left:10px;
 }
