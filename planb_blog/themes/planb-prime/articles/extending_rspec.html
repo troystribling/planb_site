@@ -1,13 +1,18 @@
 <p>
 <a href="http://rspec.rubyforge.org/index.html">RSpec</a> is a Ruby 
 <a href="http://en.wikipedia.org/wiki/Behavior_driven_development">
-Behavior Driven Development</a> DSL. This article will present a method of extending its functionality that includes each of the following; adding custom <a href="http://rspec.rubyforge.org/documentation/expectations.html">matchers</a>, adding methods that are within scope of all <code>describe</code> blocks in a project and loading configuration data that can be made available to all specs in a project. 
+Behavior Driven Development</a> DSL that has received a lot of attention. 
+This article will present a method of extending its functionality that includes adding 
+custom <a href="http://rspec.rubyforge.org/documentation/expectations.html">matchers</a>, 
+adding methods that are within scope of all <code>describe</code> blocks in a project and specifying 
+configuration data that can be made available to all specs in a project. 
 </p>
 <p>
 Both 
 <a href="http://www.ibrasten.com/articles/2007/6/1/effectively-communicating-your-expectations">Brasten Sager</a> and 
 <a href="http://opensoul.org/2007/4/18/rspec-model-should-be_valid">Brandon Keepers</a> describe how to add 
-custom matchers by extending <code>Spec::Rails::Matchers</code>. It follows that this the method will only be applicable when the the RSpec Rails plugin is installed. The method of adding custom 
+custom matchers by extending <code>Spec::Rails::Matchers</code>. It follows that this the method will only be 
+applicable when the the RSpec Rails plugin is installed. The method of adding custom 
 matchers described here will not have this dependency. 
 </p>
 <p>
@@ -18,7 +23,8 @@ For newer versions of RSpec the names of the modules and classes have changed bu
 </p> 
 <p>
 All of the code examples presented here are from the  
-<a href="http://research.inplanb.com/has_ancestor">has_ancestor</a> Ruby on Rails plugin. Details of the implementation can be found in the source.
+<a href="http://research.inplanb.com/has_ancestor">has_ancestor</a> Ruby on Rails plugin. 
+Details of the implementation can be found in the source.
 </p>
 
 <h3>RSpec Extension by Implementation of <code>before_eval</code> in 
@@ -28,6 +34,7 @@ In the <code>initialize</code> method of
 <code>Spec::DSL::Behavior</code> a method, <code>before_eval</code>,
 is provided do something before the <code>class_eval</code> of spec. The edited code snip-it is shown below.
 <typo:code lang="ruby">
+
 module Spec
   module DSL
     class Behaviour
@@ -46,7 +53,151 @@ module Spec
     end
   end
 end
+
 </typo:code>
-An implementation of <code>before_eval</code> can <code>include</code>
-modules that add methods that will be available within the scope of a <code>describe</code> block. The following sections will provide examples that implement <code>before_eval</code> to include matchers and other types of methods.
+An implementation of <code>before_eval</code> can <code>class_eval</code> modules that add methods that will be 
+placed within the scope of <code>describe</code> blocks. 
+The following sections will provide examples that implement <code>before_eval</code> to include matchers and other method types.
+</p>
+<h3>Project Setup</h3>
+<p>
+<typo:code>
+
+ruby script/generate rspec
+
+
+</typo:code>
+</p>
+<p>
+<code>spec_custom_matchers.rb</code>
+</p>
+<p>
+<typo:code>
+
+dir = File.dirname(__FILE__)
+
+require File.expand_path("#{dir}/matchers/eql_attributes")
+require File.expand_path("#{dir}/matchers/eql_attribute_value")
+require File.expand_path("#{dir}/matchers/be_implemented")
+
+</typo:code>
+</p>
+<code>spec_extensions.rb</code>
+</p>
+<p>
+<typo:code>
+
+dir = File.dirname(__FILE__)
+
+require File.expand_path("#{dir}/extensions/model_data")
+
+</typo:code>
+</p>
+<p>
+<typo:code>
+
+module PlanB
+  module SpecExtensions
+  end
+end
+
+</typo:code>
+</p>
+<p>
+<p>
+<typo:code>
+
+module PlanB
+  module SpecMatchers    
+  end
+end
+
+</typo:code>
+</p>
+<p>
+<typo:code>
+
+require File.dirname(__FILE__) + '/spec_custom_matchers'
+require File.dirname(__FILE__) + '/spec_extensions'
+
+class Spec::DSL::Behaviour
+  def before_eval
+    @eval_module.include PlanB::SpecExtensions
+    @eval_module.include PlanB::SpecMatchers
+  end
+end
+
+</typo:code>
+</p>
+<h3>Custom Matchers</h3>
+<p>
+<typo:code>
+
+module PlanB
+  module SpecMatchers    
+
+      class EqlAttributeValue  #:nodoc:
+    
+        def initialize(*exp)
+          @mod_attr = exp[0]
+          @attr_val = exp[1]
+        end
+    
+        def matches?(mods)
+          @mods = mods
+          result = @mods.find do |m|
+            @attr_val != m.send(@mod_attr)
+          end
+          result.nil? && mods.size > 1 ? true : false
+        end
+        
+        def failure_message
+          error_msg = "Model attribute value error\n"
+          error_msg = "Number of models is '#{@mods.size}' expecting more than 1\n"
+          @mods.each do |m|
+             mod_val = m.send(@mod_attr)
+             error_msg << "-for model '#{m.class.name}'\n" 
+             error_msg << "  attribute value '#{mod_val}' for '#{@mod_attr.to_s}' expecting '#{@attr_val}'\n" 
+          end
+          error_msg
+        end
+  
+        def description
+          "eql attribute values"
+        end
+  
+      end
+    
+      def eql_attribute_value(*exp)
+        EqlAttributeValue.new(*exp)
+      end
+   
+  end
+end
+</typo:code>
+</p>
+  
+<h3>Specifying Configuration Data</h3>
+<p>
+<typo:code>
+
+class Spec::DSL::Configuration
+  attr_accessor :model_data  
+end
+
+module PlanB
+  module SpecExtensions
+    def model_data
+      Spec::Runner.configuration.model_data
+    end  
+  end
+end
+</typo:code>
+</p>
+<h1>Using Extensions</h1>
+<p>
+<typo:code>
+GrandchildModel.find_all_by_child_model_attr(model_data['GRANDCHILD_MODEL']['child_model_attr']).should 
+      eql_attribute_value(:child_model_attr, model_data['GRANDCHILD_MODEL']['child_model_attr']) 
+</typo:code>
 </p>
