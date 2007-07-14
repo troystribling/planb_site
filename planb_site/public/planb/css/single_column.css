@@ -37,6 +37,8 @@
   text-indent: 10px;
   border: 1px solid #111;
   color: #900;
+  font-size: 1.65em;
+  font-weight: lighter;
   font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
   background: url(/planb/images/grad_bar.png) repeat-x left bottom;
 }
@@ -176,7 +178,7 @@
   margin-right: 0px;
   margin-top: 0px;
   margin-bottom: 10px;
-  font-size: 1.85em;
+  font-size: 1.75em;
   font-weight: lighter;
   font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
   text-indent: 5px;
