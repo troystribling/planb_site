@@ -1,0 +1,3 @@
+#!/bin/bash
+svk sync //planb-site_mirror
+svk smerge --baseless --incremental --verbatim //planb-site_mirror //planb-site_local
