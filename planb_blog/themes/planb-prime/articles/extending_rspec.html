@@ -305,12 +305,14 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
 <p>
   Custom Matchers and Extensions may be placed in a Rails 
   vendor plugin so that they may be easily reused in other 
-  projects. To do this place the </code>require</code> 
-  statements in <code>spec_custom_matchers.rb</code> and
-  <code>spec_extensions.rb</code> in the plugin
-  <code>init.rb</code>, place Matchers and Extensions
-  in the plugin <code>lib</code> directory and add the following
-  code to <code>spec_helper.rb</code>.
+  projects. To do this place the Matchers and Extensions
+  in the plugin <code>lib</code> directory, the 
+  </code>require</code> statements in 
+  <code>spec_custom_matchers.rb</code> and
+  <code>spec_extensions.rb</code> should be moved to the plugin
+  <code>init.rb</code> and changed to reference the matcher and extension code
+  in the new location. Finally, add the following
+  code to the project <code>spec_helper.rb</code>.
 </p>
 <p>
 <typo:code lang="ruby">
