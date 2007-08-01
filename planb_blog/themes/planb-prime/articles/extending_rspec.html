@@ -105,8 +105,8 @@
   <code>matchers</code> and <code>extensions</code>, to place custom
   matchers and extensions. In <code>spec</code> 
   create the two files, <code>spec_custom_matchers.rb</code> 
-  <code>spec_extensions.rb</code>, to load custom matchers and 
-  extensions. The implementation of these files used by the 
+  and <code>spec_extensions.rb</code>, to load custom matchers 
+  and extensions. The implementation of these files used by the 
   <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>
   plugin is shown below. 
 </p>
@@ -160,6 +160,7 @@
 
 </typo:code>
 </p>
+
 <h3>Custom Matchers</h3>
 <p>
   Rspec <a    
@@ -300,6 +301,34 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
 
 </typo:code>
 </p>
+<h3>Put Custom Matchers and Extensions in a Vendor Plugin</h3>
+<p>
+  Custom Matchers and Extensions may be placed in a Rails 
+  vendor plugin so that they may be easily reused in other 
+  projects. To do this place the </code>require</code> 
+  statements in <code>spec_custom_matchers.rb</code> and
+  <code>spec_extensions.rb</code> in the plugin
+  <code>init.rb</code>, place Matchers and Extensions
+  in the plugin <code>lib</code> directory and add the following
+  code to <code>spec_helper.rb</code>.
+</p>
+<p>
+<typo:code lang="ruby">
+
+ class Spec::DSL::Behaviour
+    def before_eval
+      @eval_module.include PlanB::SpecMatchers
+      @eval_module.include PlanB::SpecExtensions
+    end
+  end
+
+
+</typo:code>
+</p>
+
+
+</p>
+
 <h3>Using The Custom Matcher and Extension</h3>
 <p>
   A example illustrating the use of the custom matcher and extension 
@@ -318,4 +347,3 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
 
 
 </p>
-
