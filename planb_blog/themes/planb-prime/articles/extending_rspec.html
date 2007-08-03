@@ -195,7 +195,9 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
 <p> 
   All custom 
   matchers must implement <code>matches?</code>,
-  <code>failure_message</code> and <code>description</code>. Also,
+  <code>failure_message</code>, 
+  <code>negative_failure_message</code> and   
+  <code>description</code>. Also,
   an implementation of the matcher method called in specs must 
   be provided that creates the matcher object. 
   In this example
@@ -232,6 +234,10 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
              error_msg << "  attribute value '#{mod_val}' for '#{@mod_attr.to_s}' expecting '#{@attr_val}'\n" 
           end
           error_msg
+        end
+  
+        def negative_failure_message
+          failure_message
         end
   
         def description
