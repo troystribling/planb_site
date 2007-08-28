@@ -69,7 +69,7 @@
 <h3>Create SVK Mirrors of SVN Repositories</h3>
 <p>
   After creating the depot the SVN repositories to be managed must be mirrored in the depot. Here the term mirror refers to the 
-  linkage between the SVK depot and the SVN repository. First the SVK mirror of the local
+  copy in the SVK depot of the SVN repository. First the SVK mirror of the local
   project repository will be created and then a RubyForge SVK mirror. When creating the SVK mirrors
   the full name of the mirror, including the mirror depot, and the URL to the SVN repository must be specified.
 </p>
@@ -104,8 +104,7 @@
 <p>
  In this listing the items under Path, <code>//project_local</code> and <code>//project_rubyforge</code>, 
  are the SVK paths to the mirrors,
- <code>//</code> indicates the containing depot, and the items under Source are the respective URLs of the mirrored SVN repositories. The
- SVK mirror paths will be used to reference the mirrors in all SVK commands.
+ <code>//</code> indicates the containing depot, and the items under Source are the respective URLs of the mirrored SVN repositories. 
 </p>
 <p>
   The SVK mirrors must now be initialized by synchronizing with their SVN repositories. Since the RubyForge repository is assumed
@@ -123,9 +122,9 @@
 <p>
   SVK is now configured to mirror the local repository <code>//project_local</code> to remote public repository <code>//project_rubyforge</code>. 
   Here when the term mirror is used it is referring to the process of duplicating the local repository in the public repository.
-  The first synchronization of the remote repository with the local respoistory must be done manually. 
-  Subsequent synchronizations may be automated. This is required to cache authentication credentials for
-  <code>http</code> and <code>svn</code>. Caching of credentials is not supported for <code>ssh+svn</code>, which is used by RubyForge, 
+  The first synchronization of the remote repository with the local repository must be done manually. 
+  This is required to cache authentication credentials for
+  <code>http</code> and <code>svn</code>. Subsequent synchronizations may be automated. Caching of credentials is not supported for <code>ssh+svn</code>, which is used by RubyForge, 
   so public key authentication must be used. 
 </p>
 <p>
@@ -151,5 +150,5 @@
   the SVK synchronization commands. 
   <a href="http://www.howtoforge.com/read_only_svn_mirror_with_svk"  target="blank">Creating a Read-Only Mirror of Your SVN Repository 
   with SVK</a> describes how to do this for Debian Linux where SVN is accessed over <code>http</code>. It seems straight forward to extend the solution
-  to Redhat Linux for <code>http</code> access and to both for access though <code>svn</code>. 
+  to Redhat Linux for <code>http</code> access and to both Linux dialects for access through <code>svn</code>. 
 </p>

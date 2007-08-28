@@ -167,7 +167,8 @@
 href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank">
   matchers</a> specify the expectations of a spec. They play the 
   role
-  of <code>assert</code> in <code>Test::Unit</code>. Rspec provides
+  of the match condition in <code>Test::Unit</code>  
+  <code>assert</code> statements. Rspec provides
   matchers that allow you to write specs like,
 </p>
 <p>
@@ -181,7 +182,8 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
 </typo:code>
 </p>
 <p>
- here <code>eql</code> is a matcher provided by RSpec that tests
+ here <code>eql</code> is a matcher, generated 
+ from <code>eql?</code>, that tests
  for equality between its argument and the left-hand-side of 
  <code>should</code>. 
 </p>
@@ -198,8 +200,8 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
   <code>failure_message</code>, 
   <code>negative_failure_message</code> and   
   <code>description</code>. Also,
-  an implementation of the matcher method called in specs must 
-  be provided that creates the matcher object. 
+  an implementation of the matcher method called from specs must 
+  be provided, which creates the matcher object. 
   In this example
   the matcher method is <code>eql_attribute_value</code>. In a 
   following section an example using this matcher will be provided.
