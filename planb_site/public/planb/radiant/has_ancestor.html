@@ -45,7 +45,7 @@
       <div class="highlight">
          <p>
             With svn checkout into vendor/plugins directory of your project,<br>
-            <p><code>svn co svn://rubyforge.org/var/svn/has-ancestor/tags/rel_0_0_0</code></p>
+            <p><code>svn co svn://rubyforge.org/var/svn/has-ancestor/tags/rel_0_1_2</code></p>
          </p>
       </div>
     </div>
@@ -53,10 +53,14 @@
       <div class="highlight">
         <p>
           Use the Rails plugin installer, <br>
-          <p><code>script/plugin install svn://rubyforge.org/var/svn/has-ancestor/tags/rel_0_0_0</code></p>
+          <p><code>script/plugin install svn://rubyforge.org/var/svn/has-ancestor/tags/rel_0_1_2</code></p>
         </p>
       </div>
-    </div>    
+    </div>  
+     <p>
+      After installing the plugin the specs can be run by typing <code>rake spec</code> in the installaintion directory. The database 
+      connection is configured in <code>test/rails_root/config/database.yml</code>.
+     </p>      
   </div>
 </div>
 	 
@@ -128,10 +132,109 @@
             </p>
           </td>
         </tr>
+        <tr>
+          <td class="term"><code>has_ancestor?</code></td>
+          <td class="definition">
+            <p>
+              Return <code>true</code> if model has an ancestor <code>false</code> otherwise.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>has_descendants?</code></td>
+          <td class="definition">
+            <p>
+              Return <code>true</code> if model has descendants <code>false</code> otherwise.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>class_hierarchy</code></td>
+          <td class="definition">
+            <p>
+              Returns an array containing the class of the model on which the method was called and the class all of its ancestor models.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>columns_hash_hierarchy</code></td>
+          <td class="definition">
+            <p>
+              Returns the result of <code>ActiveRecord#columns_hash<code> executed on all models in the inheritance hierarchy.
+            </p>
+          </td>
+        </tr>
       </table>
     </p>
   </div>
 </div>	 
+
+<div class="subsection-float">
+  <div class="subsection">
+    <h1>ancestor and descendant class methods</h1>
+    <p>
+      If either <code>has_ancestor</code> or <code>has_descendant</code> is called in a <code>ActiveRecord::Base</code> model the following 
+      class methods will be available to the model.
+    </p>
+    <p>
+      <table class="definitions">
+        <tr>
+          <td class="term"><code>find_by_model</code></td>
+          <td class="definition">
+            <p>
+              Executes <code>ActiveRecord#find<code> over the database tables defined by the model on which the method was called and the
+              database tables of all its ancestor models. All options accepted by 
+              <a href="http://edgedocs.planetargon.org/classes/ActiveRecord/Base.html#M002494"><code>ActiveRecord#find<code></a> are accepted 
+              by <code>find_by_model<code>.
+            </p>
+          </td>
+        </tr>
+          <td class="term"><code>find_by_attribute(attribute_value)</code></td>
+          <td class="definition">
+            <p>
+              Any calls of the form <code>find_by_attribute</code>, where <code>attribute</code> is an attribute of the model on which
+              the method was called or an attribute of any ancestor model, will return the first model instance for which attribute
+              matches the specied attribute_value.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>has_ancestor?</code></td>
+          <td class="definition">
+            <p>
+              Return <code>true</code> if model has an ancestor <code>false</code> otherwise.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>has_descendants?</code></td>
+          <td class="definition">
+            <p>
+              Return <code>true</code> if model has descendants <code>false</code> otherwise.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>class_hierarchy</code></td>
+          <td class="definition">
+            <p>
+              Returns an array containing the class of the model on which the method was called and the class all of its ancestor models.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>columns_hash_hierarchy</code></td>
+          <td class="definition">
+            <p>
+              Returns the result of <code>ActiveRecord#columns_hash<code> executed on all models in the inheritance hierarchy.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </p>
+  </div>
+</div>	 
+
 
 <div class="subsection-float">
   <div class="subsection">
@@ -146,11 +249,19 @@
           <td class="term"><code>descendant_initialize</code></td>
           <td class="definition">
             <p>
-              <code>has_ancestor</code> adds an implementation of initialize to a descendant model. If an 
+              <code>has_ancestor</code> adds an implementation of <code>initialize</code> to a descendant model. If an 
               implementation is provided in a descendant model it will replace this version causing the model to be improperly 
-              initialized. 
-              descendant_initialize is provided as a replacement for initialize. Any required model initialization my be performed in 
-              this method.
+              initialized. <code>descendant_initialize</code> is provided as a replacement for <code>initialize</code> for descendant models.
+            </p>  
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>descendant_method_missing</code></td>
+          <td class="definition">
+            <p>
+              <code>has_ancestor</code> adds an implementation of <code>method_missing</code> to a descendant model. If an 
+              implementation is provided in a descendant model it will replace this version causing the model to not function properly. 
+              <code>descendant_method_missing</code> is provided as a replacement for <code>method_missing</code> for descendant models. 
             </p>  
           </td>
         </tr>
@@ -164,43 +275,5 @@
         </tr>
       </table>
     </p>
-  </div>
-</div>	 
-
-<h1>Road Map</h1>
-<div class="subsection-attached">
-  <div class="subsection">
-    <div class="highlight-wrapper">
-      <div class="highlight">
-        <p>
-          A class implementation of <code>descendant_of?</code>.  
-        </p>
-      </div>
-    </div>
-    <div class="highlight-wrapper">
-      <div class="highlight">
-        <p>
-          Support in a generated query method specification of match conditions for attributes in different models in the 
-          inheritance hierarchy. For example in the current release if attribute <code>name</code> is in the ancestor model and the 
-          attribute <code>location</code> is in the descendant model a query performed from the descendant model that specifies a match 
-          condition on both <code>name</code> and <code>location</code> (e.g., <code>find_all_by_name_and_location</code>) will raise 
-          <code>NoMethodError</code>.      
-        </p>
-      </div>
-    </div>
-    <div class="highlight-wrapper">
-      <div class="highlight">
-        <p>
-          Support for a generated query method that will only return instances of ancestors that are ancestors of instances of the 
-          descendant model on which the query was called 
-          if a match condition on an ancestor model attribute is specified that also matches instances of descendant models of a 
-          different class that have the same ancestor. 
-          For example in the current release if attribute <code>name</code> is in the ancestor model and the ancestor 
-          has two descendant models <code>a_descendant</code> and <code>b_descendant</code> and some instances of the two descendant 
-          models have the same value of <code>name</code> a call to <code>ADescendat.find_all_by_name('Troy')</code> will return 
-          instances of the ancestor model that are ancestor of both <code>a_descendant</code> and <code>b_descendant</code>.
-        </p>
-      </div>
-    </div>
   </div>
 </div>	 
