@@ -1,19 +1,19 @@
 <p>
-  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a> is a Ruby on rails plugin that enables the specification 
+  <a href="http://research.inplanb.com/has_ancestor" target="_blank">has_ancestor</a> is a Ruby on rails plugin that enables the specification 
   of inheritance relations between ActiveRecord models. Currently in Rails this functionality is only available in
-  <a href="http://wiki.rubyonrails.org/rails/pages/SingleTableInheritance">Single Table Inheritance</a>. 
+  <a href="http://wiki.rubyonrails.org/rails/pages/SingleTableInheritance" target="_blank">Single Table Inheritance</a>. 
   Single Table Inheritance requires that all models in an inheritance hierarchy be in the same table, which is acceptable if the number of
   models in the hierarchy is small. For inheritance hierarchies that contain a large or unknown number of models more complex 
-  representations of inheritance relations, such as <a href="http://www.martinfowler.com/eaaCatalog/classTableInheritance.html">
+  representations of inheritance relations, such as <a href="http://www.martinfowler.com/eaaCatalog/classTableInheritance.html" target="_blank">
   Class Table Inheritance</a>, are required. <code>has_ancestor</code> provides an implementation of Class Table Inheritance based on rails 
-  <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. The  
-  implementation described here differs from the one used used in the <a href="http://rubyforge.org/projects/clti/">Class Table Inheritance Plugin</a>, 
+  <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations" target="_blank">Polymorphic Associations</a>. The  
+  implementation described here differs from the one used used in the <a href="http://rubyforge.org/projects/clti/" target="_blank">Class Table Inheritance Plugin</a>, 
   which is based on database views. 
 </p>
 <p>  
   In this article an example implementation of models using <code>has_ancestor</code> will be presented. An 
   <a href="http://research.inplanb.com/planb/html/item_purchase_spec.html" target="_blank">RSpec report</a> for this example is available and
-  the spec implementation is provided with the plugin. See the <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>
+  the spec implementation is provided with the plugin. See the <a href="http://research.inplanb.com/has_ancestor" target="_blank">has_ancestor</a>
   project page for project information and documentation. 
 </p>
 <h3>Model Migration</h3>
@@ -88,7 +88,7 @@
       <td class="term"><code>item_purchase<br>_descendant_id</code></td>
       <td class="definition">
         <p>The primary key of a descendant model. This attribute is required by Rails 
-        <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. Any model
+        <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations" target="_blank">Polymorphic Associations</a>. Any model
         which has descendant model relationships must declare this model attribute. 
         In general the attribute must be of the form
         <code>#{model}_descendant_id</code> where <code>model</code> is the tablelized from of the model class name.</p>
@@ -98,7 +98,7 @@
       <td class="term"><code>item_purchase<br>_descendant_type</code></td>
       <td class="definition">
         <p>The class name of the descendant model. This attribute is required by Rails 
-        <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. Any model
+        <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations" target="_blank">Polymorphic Associations</a>. Any model
         which has descendant model relationships must declare this model attribute. 
         In general the attribute must be of the form
         <code>#{model}_descendant_type</code> where <code>model</code> is the tablelized from of the model class name.</p>
@@ -241,7 +241,8 @@
 </typo:code>
 </p>
 <p>
-  Model setters and getters work for attributes defined on the models and attributes defined on <code>item_purchase</code>.
+  Model setters and getters work for attributes defined on the models and attributes defined on the ancestor model 
+  <code>item_purchase</code>.
 </p>
 <p>
 <typo:code lang="ruby">
@@ -255,6 +256,7 @@
   contract_item.unit_count = 2
   contract_item.length = 240
   contract_item.save
+  
   last_item = contract_item.item
 
 
@@ -278,7 +280,7 @@
   contract_item = 
     ContractItemPurchase.find_by_item('CEO')
   contract_items = 
-    ContractItemPurchase.find_by_length(240)
+    ContractItemPurchase.find_all_by_length(240)
   contract_items = 
     ContractItemPurchase.find_by_item_and_length('CEO', 240)
 

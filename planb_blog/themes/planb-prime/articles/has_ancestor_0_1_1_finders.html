@@ -1,0 +1,87 @@
+<p>
+The most notable addition to release 0.1.1 of 
+<a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> is support for finders that 
+transparently allow construction of database queries that span a model inheritance hierarchy. 
+This article will focus on use of these finders. 
+A more general discussion of using <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> 
+to construct data models can be found in 
+<a href="http://plans.inplanb.com/articles/2007/06/28/construct-model-abstractions-with-has_ancestor" target="_blank">
+Construct Model Abstractions with has_ancestor</a>.
+</p>
+
+<h3>Description of Models</h3>
+<p>
+This section will describe the models that will be use in examples in the following sections. First, the migration
+for the models is shown followed by the class definitions.
+</p>
+<p>
+<typo:code lang="ruby">
+
+  class CreateHasAncestorModel < ActiveRecord::Migration
+
+    def self.up
+
+      create_table :parent_models, :force => true, :primary_key => :parent_model_id do |t|
+        t.column :parent_model_descendant_id, :integer
+        t.column :parent_model_descendant_type, :string
+        t.column :parent_model_string, :string, :default => 'aString'
+        t.column :parent_model_integer, :integer, :default => 0
+      end
+     
+      create_table :child_models, :force => true, :primary_key => :child_model_id  do |t|
+        t.column :child_model_descendant_id, :integer
+        t.column :child_model_descendant_type, :string
+        t.column :child_model_string, :string, :default => 'aString'
+        t.column :child_model_integer, :integer, :default => 0
+      end
+    
+      create_table :grandchild_models, :force => true, :primary_key => :grandchild_model_id  do |t|
+        t.column :grandchild_model_string, :string, :default => 'aString'
+        t.column :grandchild_model_integer, :integer, :default => 0
+      end
+        
+    end
+    
+    def self.down
+      
+      drop_table :parent_models
+      drop_table :child_models
+      drop_table :grandchild_models
+    
+    end
+    
+  end
+  
+</typo:code>
+</p>
+<p>
+<typo:code lang="ruby">
+
+  ########################################
+  class ParentModel < ActiveRecord::Base
+  
+     has_descendants
+     
+  end
+  
+  ########################################
+  class ChildModel < ActiveRecord::Base
+
+   has_descendants
+   has_ancestor :named => :parent_model    
+  
+  end
+  
+  ########################################
+  class GrandchildModel < ActiveRecord::Base
+
+   has_ancestor :named => :child_model  
+  
+  end
+    
+</typo:code>
+</p>
+<p>
+In the class defintions notice that <code>ChildModel</code> has a descendant relation with <code>ParentModel</code>
+and that <code>GrandchildModel</code> has a descendant relation with <code>ChildModel</code>.
+</p>
