@@ -3,20 +3,18 @@
   of inheritance relations between ActiveRecord models. Currently in Rails this functionality is only available in
   <a href="http://wiki.rubyonrails.org/rails/pages/SingleTableInheritance">Single Table Inheritance</a>. 
   Single Table Inheritance requires that all models in an inheritance hierarchy be in the same table, which is acceptable if the number of
-  models in the hierarchy is small. For   stock_item.save
-inheritance hierarchies that contain a large or unknown number of models more complex 
+  models in the hierarchy is small. For inheritance hierarchies that contain a large or unknown number of models more complex 
   representations of inheritance relations, such as <a href="http://www.martinfowler.com/eaaCatalog/classTableInheritance.html">
-  Class Table Inheritance</a>, are required. has_ancestor provides an implementation of Class Table Inheritance based on rails 
+  Class Table Inheritance</a>, are required. <code>has_ancestor</code> provides an implementation of Class Table Inheritance based on rails 
   <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingPolymorphicAssociations">Polymorphic Associations</a>. The  
-  implementation used here differs from the one used used in the <a href="http://rubyforge.org/projects/clti/">Class Table Inheritance Plugin</a>, 
+  implementation described here differs from the one used used in the <a href="http://rubyforge.org/projects/clti/">Class Table Inheritance Plugin</a>, 
   which is based on database views. 
 </p>
 <p>  
-  In this article an example implementation of models using has_ancestor will be presented. 
-  In Release 0.0.0 there are some limitations in usage, which are discussed, but that are not prohibitive. An 
+  In this article an example implementation of models using <code>has_ancestor</code> will be presented. An 
   <a href="http://research.inplanb.com/planb/html/item_purchase_spec.html" target="_blank">RSpec report</a> for this example is available and
   the spec implementation is provided with the plugin. See the <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>
-  project page for project information and documentaion. 
+  project page for project information and documentation. 
 </p>
 <h3>Model Migration</h3>
 <p>
@@ -263,28 +261,26 @@ inheritance hierarchies that contain a large or unknown number of models more co
 </typo:code>
 </p>
 <p>
-  <code>ActiveRecord::Base</code> finders work for attributes defined on model and attributes defined on 
-  <code>item_purchase</code>. One restriction of the current implementation is that a finder that filters on multiple attributes must have all filtered attributes in the same model. Also, if the find attribute is an attribute on an ancestor model an instance of the ancestor
-  type will be returned not an instance of the model on which the find was called. To return an instance of the caller type <code>to_descendant</code> must be used.
-  The descendant attributes will be retrieved from the database when <code>to_descendant</code> 
-  is called.</p>
+</p>
+<p>
+  Queries can be constructed as expected even when attributes are on different models in the inheritance hierarchy.
+</p>
 <p>
 <typo:code lang="ruby">
 
   stock_item = 
-    StockItemPurchase.find_by_item('keyboard').\
-    to_descendant(:stock_item_purchase)
+    StockItemPurchase.find_by_item('keyboard')
   stock_items = 
     StockItemPurchase.find_all_by_in_inventory(1)
   stock_items = 
-    ItemPurchase.find_all_by_unit_cost_and_item(50, \ 
-    'keyboard').to_descendant(:stock_item_purchase)
+    ItemPurchase.find_all_by_item_and_in_inventory('keyboard', 1)
 
   contract_item = 
-    ContractItemPurchase.find_by_item('CEO').\
-    to_descendant(:contract_item_purchase)
+    ContractItemPurchase.find_by_item('CEO')
   contract_items = 
     ContractItemPurchase.find_by_length(240)
+  contract_items = 
+    ContractItemPurchase.find_by_item_and_length('CEO', 240)
 
 
 </typo:code>
@@ -305,8 +301,7 @@ inheritance hierarchies that contain a large or unknown number of models more co
 </p>
 <p>
   A polymorphic like behavior for method calls can be obtained by calling <code>to_descendant</code> with no arguments. 
-  It should be noted that
-  the descendant attributes will be retrieved from the database when <code>to_descendant</code> is called.
+  It should be noted that descendant attributes will be retrieved from the database when <code>to_descendant</code> is called.
 </p>
 <p>
 <typo:code lang="ruby">
@@ -318,35 +313,4 @@ inheritance hierarchies that contain a large or unknown number of models more co
 
 
 </typo:code>
-</p>
-<h3>Limitations</h3>
-<p>
-  There are some issues with the current implementation that will be addressed in the future that are illustrated 
-  in the following examples.
-</p>
-<p>
-  If an <code>ActiveRecord::Base</code> find is called that filters on attributes in different models in the inheritance
-  hierarchy a <code>NoMethodError</code> exception will be raised.  
-</p>
-<p>
-<typo:code lang="ruby">
-
-  ItemPurchase.find_all_by_unit_cost_and_length(50, 100)
-
-
-</typo:code>
-</p>
-<p>
-  If an <code>ActiveRecord::Base</code> find is called on an ancestor attribute that matches an attribute in some other 
-  descendant that descendant will be returned. The example below will return an <code>item_purchase</code> object that has
-  a <code>stock_item_purchase</code> descendant not an empty list as expected. 
-</p>
-<p>
-<typo:code lang="ruby">
-
-  ContractItemPurchase.find_by_item('keyboard')
-
-
-</typo:code>
-</p>
 </p>
