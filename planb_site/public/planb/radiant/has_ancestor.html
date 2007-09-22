@@ -179,26 +179,6 @@
     <p>
       <table class="definitions">
         <tr>
-          <td class="term"><code>find_by_model</code></td>
-          <td class="definition">
-            <p>
-              Executes <code>ActiveRecord#find<code> over the database tables defined by the model on which the method was called and the
-              database tables of all its ancestor models. All options accepted by 
-              <a href="http://edgedocs.planetargon.org/classes/ActiveRecord/Base.html#M002494"><code>ActiveRecord#find<code></a> are accepted 
-              by <code>find_by_model<code>.
-            </p>
-          </td>
-        </tr>
-          <td class="term"><code>find_by_attribute(attribute_value)</code></td>
-          <td class="definition">
-            <p>
-              Any calls of the form <code>find_by_attribute</code>, where <code>attribute</code> is an attribute of the model on which
-              the method was called or an attribute of any ancestor model, will return the first model instance for which attribute
-              matches the specied attribute_value.
-            </p>
-          </td>
-        </tr>
-        <tr>
           <td class="term"><code>has_ancestor?</code></td>
           <td class="definition">
             <p>
@@ -227,6 +207,45 @@
           <td class="definition">
             <p>
               Returns the result of <code>ActiveRecord#columns_hash<code> executed on all models in the inheritance hierarchy.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>find_by_model</code></td>
+          <td class="definition">
+            <p>
+              Executes <code>ActiveRecord#find<code> over the database tables defined by the model on which the method was called and the
+              database tables of all its ancestor models. All options accepted by 
+              <a href="http://edgedocs.planetargon.org/classes/ActiveRecord/Base.html#M002494"><code>ActiveRecord#find<code></a> are accepted 
+              by <code>find_by_model<code>. An instance or instances of the class on which the method was called are returned.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>find_by_attribute(attribute_value)</code></td>
+          <td class="definition">
+            <p>
+              Any calls of the form <code>find_by_attribute</code>, where <code>attribute</code> is an attribute of the model on which
+              the method was called or an attribute of any ancestor model, will return the first instance of class that 
+              matches the specified <code>attribute_value</code>. It is also possible to construct queries in which match conditions for
+              attributes are joined by any number of logical ands up to one less than the number attributes in the hierarchy. For two
+              attributes the method will have the form <code>find_by_attribute1_and_attribute2(attribute1_value, attribute2_value)</code> 
+              where <code>attribute1</code> and <code>attribute2</code> are any two distinct attributes belonging to the class or any 
+              ancestor of the class on which the method was called. In a similar manner queries for more than two attributes may be constructed.    
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="term"><code>find_all_by_attribute(attribute_value)</code></td>
+          <td class="definition">
+            <p>
+              Any calls of the form <code>find_all_by_attribute</code>, where <code>attribute</code> is an attribute of the model on which
+              the method was called or an attribute of any ancestor model, will return all instances of class that 
+              match the specified <code>attribute_value</code>. It is also possible to construct queries in which match conditions for
+              attributes are joined by any number of logical ands up to one less than the number attributes in the hierarchy. For two
+              attributes the method will have the form <code>find_all_by_attribute1_and_attribute2(attribute1_value, attribute2_value)</code> 
+              where <code>attribute1</code> and <code>attribute2</code> are any two distinct attributes belonging to the class or any 
+              ancestor of the class on which the method was called. In a similar manner queries for more than two attributes may be constructed.
             </p>
           </td>
         </tr>
