@@ -1,17 +1,25 @@
 <p>
 The most notable addition to release 0.1.1 of 
 <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> is support for finders that 
-transparently allow construction of database queries that span a model inheritance hierarchy. 
-This article will focus on use of these finders. 
-A more general discussion of using <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> 
+transparently allow construction of database queries that span the inheritance hierarchy.
+A new class method, <code>find_by_model</code>, which both <code>has_ancestor</code> and 
+<code>has_descendants</code> add to a model, constructs queries in which conditions may be specified on any attribute in the 
+model inheritance hierarchy. Also new are dynamic finders, 
+<a href="http://blog.hasmanythrough.com/2006/8/13/how-dynamic-finders-work"  target="_blank">similar in form
+to those provide by Rails</a>, but unlike the Rails dynamic finders, which are restricted to attributes belonging to a single
+model, attributes supported by the <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> dynamic finders
+may be on any model in the inheritance hierarchy.
+</p>
+<p>
+A more general discussion of using <a href="http://research.inplanb.com/has_ancestor" target="_blank">has_ancestor</a> 
 to construct data models can be found in 
 <a href="http://plans.inplanb.com/articles/2007/06/28/construct-model-abstractions-with-has_ancestor" target="_blank">
-Construct Model Abstractions with has_ancestor</a>.
+Construct Model Abstractions With has_ancestor</a>.
 </p>
-
-<h3>Description of Models</h3>
+</p>
+<h3>Example Models</h3>
 <p>
-This section will describe the models that will be use in examples in the following sections. First, the migration
+This section will describe the models that will be used in examples in the following sections. First, the migration
 for the models is shown followed by the class definitions.
 </p>
 <p>
@@ -52,6 +60,7 @@ for the models is shown followed by the class definitions.
     
   end
   
+  
 </typo:code>
 </p>
 <p>
@@ -79,9 +88,96 @@ for the models is shown followed by the class definitions.
   
   end
     
+    
 </typo:code>
 </p>
 <p>
-In the class defintions notice that <code>ChildModel</code> has a descendant relation with <code>ParentModel</code>
+In the class definitions notice that <code>ChildModel</code> has a descendant relation with <code>ParentModel</code>
 and that <code>GrandchildModel</code> has a descendant relation with <code>ChildModel</code>.
+</p>
+
+<h3><code>find_by_model</code></h3>
+<p>
+  The class method <code>find_by_model</code> will be added to any model that calls either <code>has_ancestor</code>
+  or <code>has_descendants</code> and accepts all options supported by 
+  <a href="http://api.rubyonrails.com/classes/ActiveRecord/Base.html#M000992" target="_blank"><code>ActiveRecord::Base#find</code></a>.
+  <code>find_by_model</code> works by automatically generating <code>:joins</code> for the foriegn key references of 
+  all ancestors of the class on which the method was called. The generated <code>joins:</code> option along with any other specified
+  options are then passed to <code>ActiveRecord::Base#find</code>. Because of this all options accepted by <code>ActiveRecord::Base#find</code>
+  are also accepted by <code>find_by_model</code>. Since a join over multiple tables is performed, the table supporting the attribute must be specified 
+  when the attribute is referenced in options.
+  This is illustrated in following examples of queries that return the first match of a specified value of 
+  <code>ParentModel#parent_model_string</code>.
+</p>
+<p>
+<typo:code lang="ruby">
+
+  # returns a model of class ParentModel
+  mod = ParentModel.find_by_model(:first, :conditions => "parent_models.parent_model_string = 'value'")
+  mod.class.eql?(ParentModel) # returns true
+  
+  # returns a model of class ChildModel
+  mod = ChildModel.find_by_model(:first, :conditions => "parent_models.parent_model_string = 'value'")
+  mod.class.eql?(ChildModel) # returns true
+      
+  # returns a model of class GrandchildModel
+  mod = GrandchildModel.find_by_model(:first, :conditions => "parent_models.parent_model_string = 'value'")
+  mod.class.eql?(GrandchildModel) # returns true
+
+
+</typo:code>
+</p>
+<p>
+Note that the references to <code>parent_model_string</code> are of the form <code>parent_models.parent_model_string</code> and that the
+class of the result of the query matches the class on which the method was called, namely, when called from <code>ParentModel</code>
+a <code>ParentModel</code> is returned, when called from <code>ChildModel</code> a <code>ChildModel</code> is returned and
+when called from <code>GrandchildModel</code> a <code>GrandchildModel</code>.
+</p>
+<p>
+Queries that return all models matching a specified value of <code>parent_models.parent_model_string</code> can be constructed by 
+using the <code>:all</code> option.
+</p>
+<p>
+<typo:code lang="ruby">
+
+  # returns a model of class ParentModel
+  mods = ParentModel.find_by_model(:all, :conditions => "parent_models.parent_model_string = 'value'")
+  mods.each {|m| m.class.eql?(ParentModel)} # returns true for each model
+  
+  # returns a model of class ChildModel
+  mods = ChildModel.find_by_model(:all, :conditions => "parent_models.parent_model_string = 'value'")
+  mods.each {|m| m.class.eql?(ChildModel)} # returns true for each model
+      
+  # returns a model of class GrandchildModel
+  mods = GrandchildModel.find_by_model(:all, :conditions => "parent_models.parent_model_string = 'value'")
+  mods.each {|m| m.class.eql?(GrandchildModel)} # returns true for each model
+
+
+</typo:code>
+</p>
+<p>
+It is also possible to construct queries that that match values multiple attributes even when the attributes are supported by
+different models. This is illustrated in the following examples.
+</p>
+<p>
+<typo:code lang="ruby">
+
+  # returns a model of class ChildModel
+  mod = ChildModel.find_by_model(:first, :conditions => "parent_models.parent_model_string = 'parent_value' and child_models.child_model_string = 'child_value'")
+  mod.class.eql?(ChildModel) # returns true
+      
+  # returns a model of class GrandchildModel
+  mod = GrandchildModel.find_by_model(:first, :conditions => "parent_models.parent_model_string = 'parent_value' and child_models.child_model_string = 'child_value'")
+  mod.class.eql?(GrandchildModel) # returns true
+
+
+</typo:code>
+</p>
+<p>
+Note that a query with the <code>:conditions</code> in the example is not possible from <code>ParentModel</code> since 
+<code>ChildModel</code> is not its ancestor. A query for all models that match the specified <code>:condition</code> can be obtained by replacing
+<code>:first</code> with <code>:all</code> in the example above.
+</p>
+<p>
+<code>find_by_model</code> also accepts queries for a model by id just like <code>ActiveRecord::Base#find</code>.
 </p>
