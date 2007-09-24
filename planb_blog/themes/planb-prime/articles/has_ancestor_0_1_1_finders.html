@@ -1,14 +1,14 @@
 <p>
-The most notable addition to release 0.1.1 of 
+The most notable addition to release 0.1.2 of 
 <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> is support for finders that 
 transparently allow construction of database queries that span the inheritance hierarchy.
 A new class method, <code>find_by_model</code>, which both <code>has_ancestor</code> and 
 <code>has_descendants</code> add to a model, constructs queries in which conditions may be specified on any attribute in the 
-model inheritance hierarchy. Also new are dynamic finders, 
+model inheritance hierarchy. Also new are genearted finders, 
 <a href="http://blog.hasmanythrough.com/2006/8/13/how-dynamic-finders-work"  target="_blank">similar in form
-to those provide by Rails</a>, but unlike the Rails dynamic finders, which are restricted to attributes belonging to a single
-model, attributes supported by the <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> dynamic finders
-may be on any model in the inheritance hierarchy.
+to the dynamic finders provided by Rails</a>, but unlike the Rails dynamic finders, which are restricted to attributes belonging to a single
+model, attributes supported by the <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> generated finders
+may be supported by any model in the inheritance hierarchy.
 </p>
 <p>
 A more general discussion of using <a href="http://research.inplanb.com/has_ancestor" target="_blank">has_ancestor</a> 
@@ -156,7 +156,7 @@ using the <code>:all</code> option.
 </typo:code>
 </p>
 <p>
-It is also possible to construct queries that that match values multiple attributes even when the attributes are supported by
+It is also possible to construct queries that match values for multiple attributes even when the attributes are supported by
 different models. This is illustrated in the following examples.
 </p>
 <p>
@@ -181,3 +181,36 @@ Note that a query with the <code>:conditions</code> in the example is not possib
 <p>
 <code>find_by_model</code> also accepts queries for a model by id just like <code>ActiveRecord::Base#find</code>.
 </p>
+<h3>Dynamic Finders</h3>
+<p>
+  Calls to either <code>has_ancestor</code> or <code>has_descendants</code> by a model will add the ability to generate finders
+  to the model. Once the finder is called a new method will be generated and added to the model class. Subsequent calls will use the generated method. 
+  The generated finders are used much like the <a href="http://blog.hasmanythrough.com/2006/8/13/how-dynamic-finders-work"  target="_blank">
+  Rails dynamic finders</a> but the generated finders allow queries to be constructed that reference attributes supported by multiple
+  models in the inheritance hierarchy. In the 0.1.2 release the generated finders are limited to conditions that specify equality between
+  an attribute and its value and multiple attribute match conditions may only be aggregated by logical <code>and</code>. More complex
+  queries will require use of finder options. The following examples illustrate use of generated finders by comparison with the
+  equivalent <code>find_by_model</code> call.
+</p>
+<p>
+<typo:code lang="ruby">
+
+  mod = ParentModel.find_by_model_parent_model_string('value')
+  mod = ParentModel.find_by_model(:first, :conditions => "parent_models.parent_model_string = 'value'")
+  
+  mods = ChildModel.find_all_by_model_parent_model_string('value')
+  mods = ChildModel.find_by_model(:all, :conditions => "parent_models.parent_model_string = 'value'")
+
+  mod = GrandchildModel.find_by_parent_model_string_and_child_model_string('parent_value', 'child_value')
+  mod = GrandchildModel.find_by_model(:first, :conditions => "parent_models.parent_model_string = 'parent_value' and child_models.child_model_string = 'child_value'")
+
+  mods = GrandchildModel.find_all_by_parent_model_string_and_child_model_string('parent_value', 'child_value')
+  mods = GrandchildModel.find_by_model(:all, :conditions => "parent_models.parent_model_string = 'parent_value' and child_models.child_model_string = 'child_value'")
+
+
+</typo:code>
+</p>
+<p>
+  For the generated finders to function as expected there can be no name collisions between attributes in the inheritance hierarchy.
+</p>
+  
