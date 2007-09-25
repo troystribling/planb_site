@@ -8,7 +8,7 @@ model inheritance hierarchy. Also new are genearted finders,
 <a href="http://blog.hasmanythrough.com/2006/8/13/how-dynamic-finders-work"  target="_blank">similar in form
 to the dynamic finders provided by Rails</a>, but unlike the Rails dynamic finders, which are restricted to attributes belonging to a single
 model, attributes supported by the <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> generated finders
-may be supported by any model in the inheritance hierarchy.
+may belong to any model in the inheritance hierarchy.
 </p>
 <p>
 A more general discussion of using <a href="http://research.inplanb.com/has_ancestor" target="_blank">has_ancestor</a> 
@@ -101,8 +101,8 @@ and that <code>GrandchildModel</code> has a descendant relation with <code>Child
   The class method <code>find_by_model</code> will be added to any model that calls either <code>has_ancestor</code>
   or <code>has_descendants</code> and accepts all options supported by 
   <a href="http://api.rubyonrails.com/classes/ActiveRecord/Base.html#M000992" target="_blank"><code>ActiveRecord::Base#find</code></a>.
-  <code>find_by_model</code> works by automatically generating <code>:joins</code> for the foriegn key references of 
-  all ancestors of the class on which the method was called. The generated <code>joins:</code> option along with any other specified
+  <code>find_by_model</code> works by automatically generating <code>:joins</code> between the model on which the method was called and
+  all of its ancestors. The generated <code>joins:</code> option along with any other specified
   options are then passed to <code>ActiveRecord::Base#find</code>. Because of this all options accepted by <code>ActiveRecord::Base#find</code>
   are also accepted by <code>find_by_model</code>. Since a join over multiple tables is performed, the table supporting the attribute must be specified 
   when the attribute is referenced in options.
@@ -175,8 +175,9 @@ different models. This is illustrated in the following examples.
 </p>
 <p>
 Note that a query with the <code>:conditions</code> in the example is not possible from <code>ParentModel</code> since 
-<code>ChildModel</code> is not its ancestor. A query for all models that match the specified <code>:condition</code> can be obtained by replacing
-<code>:first</code> with <code>:all</code> in the example above.
+<code>:conditions</code> contains a <code>ChildModel</code> attribute and <code>ParentModel</code> is not an ancestor <code>ChildModel</code>. 
+A query for all models that match the specified <code>:condition</code> can be obtained by replacing
+<code>:first</code> with <code>:all</code> in the previous examples.
 </p>
 <p>
 <code>find_by_model</code> also accepts queries for a model by id just like <code>ActiveRecord::Base#find</code>.
