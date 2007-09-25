@@ -19,6 +19,8 @@
   <div class="subsection">
     <h1>Links</h1>
     <ul>
+      <li><a href="http://plans.inplanb.com/articles/2007/09/24/has_ancestor-0-1-1-finders" target="_blank">
+          has_ancestor 0.1.2 Finders</a>
       <li><a href="http://plans.inplanb.com/articles/2007/06/28/construct-model-abstractions-with-has_ancestor" target="_blank">
            Construct Model Abstractions With has_ancestor</a>
       </li>
@@ -38,7 +40,7 @@
     </p>
     <div class="highlight-wrapper">
       <div class="highlight">
-        <p>Download tar file from <a href="http://rubyforge.org/projects/has-ancestor/">RubyForge project page</a>.</p>
+        <p>Download tar file from <a href="http://rubyforge.org/projects/has-ancestor/"  target="_blank">RubyForge project page</a>.</p>
       </div>
     </div>
     <div class="highlight-wrapper">
@@ -67,8 +69,11 @@
 <h1>Use</h1>
 <div class="subsection-attached">
   <div class="subsection">
-    <p>See <a href="http://plans.inplanb.com/articles/2007/06/28/construct-model-abstractions-with-has_ancestor">
-       Construct Model Abstractions with has_ancestor</a> for a discussion of an implementation using has_ancestor.</p>
+    <p>See <a href="http://plans.inplanb.com/articles/2007/06/28/construct-model-abstractions-with-has_ancestor" target="_blank">
+       Construct Model Abstractions with has_ancestor</a> for a discussion of an implementation using has_ancestor and
+       <a href="http://plans.inplanb.com/articles/2007/09/24/has_ancestor-0-1-1-finders" target="_blank">
+       has_ancestor 0.1.2 Finders</a> for a discussion of how to use the finders introduced in release 0.1.2.
+    </p>
    </div>
 </div>   
 <div class="subsection-float">
@@ -160,7 +165,7 @@
           <td class="term"><code>columns_hash_hierarchy</code></td>
           <td class="definition">
             <p>
-              Returns the result of <code>ActiveRecord#columns_hash<code> executed on all models in the inheritance hierarchy.
+              Returns the result of <code>ActiveRecord#columns_hash</code> called on all models in the inheritance hierarchy.
             </p>
           </td>
         </tr>
@@ -206,7 +211,7 @@
           <td class="term"><code>columns_hash_hierarchy</code></td>
           <td class="definition">
             <p>
-              Returns the result of <code>ActiveRecord#columns_hash<code> executed on all models in the inheritance hierarchy.
+              Returns the result of <code>ActiveRecord#columns_hash</code> executed on all models in the inheritance hierarchy.
             </p>
           </td>
         </tr>
@@ -214,38 +219,40 @@
           <td class="term"><code>find_by_model</code></td>
           <td class="definition">
             <p>
-              Executes <code>ActiveRecord#find<code> over the database tables defined by the model on which the method was called and the
+              Executes <code>ActiveRecord#find</code> over the database tables defined by the model on which the method was called and the
               database tables of all its ancestor models. All options accepted by 
-              <a href="http://edgedocs.planetargon.org/classes/ActiveRecord/Base.html#M002494"><code>ActiveRecord#find<code></a> are accepted 
-              by <code>find_by_model<code>. An instance or instances of the class on which the method was called are returned.
+              <a href="http://edgedocs.planetargon.org/classes/ActiveRecord/Base.html#M002494"><code>ActiveRecord#find</code></a> are accepted 
+              by <code>find_by_model</code>. An instance or instances of the class on which the method was called are returned.
             </p>
           </td>
         </tr>
         <tr>
-          <td class="term"><code>find_by_attribute(attribute_value)</code></td>
+          <td class="term"><code>find_by_attr(v)</code></td>
           <td class="definition">
             <p>
-              Any calls of the form <code>find_by_attribute</code>, where <code>attribute</code> is an attribute of the model on which
-              the method was called or an attribute of any ancestor model, will return the first instance of class that 
-              matches the specified <code>attribute_value</code>. It is also possible to construct queries in which match conditions for
-              attributes are joined by any number of logical ands up to one less than the number attributes in the hierarchy. For two
-              attributes the method will have the form <code>find_by_attribute1_and_attribute2(attribute1_value, attribute2_value)</code> 
-              where <code>attribute1</code> and <code>attribute2</code> are any two distinct attributes belonging to the class or any 
-              ancestor of the class on which the method was called. In a similar manner queries for more than two attributes may be constructed.    
+              Any calls of the form <code>find_by_attr</code>, where <code>attr</code> is an attribute of the model on which
+              the method was called or an attribute of any ancestor model, will return the first instance of the model that 
+              matches the specified attribute value,<code>v</code>. It is also possible to construct queries in which match conditions for
+              attributes are joined by any number of logical <code>ands</code> up to one less than the number attributes in the hierarchy. 
+              For two attributes the method will have the form <code>find_by_attr1_and_attr2(v1, v2)</code>
+              where <code>attr1</code> and <code>attr2</code> are any two distinct attributes belonging to the class or any 
+              ancestor of the class on which the method was called. 
+              In a similar manner queries for more than two attributes may be constructed.    
             </p>
           </td>
         </tr>
         <tr>
-          <td class="term"><code>find_all_by_attribute(attribute_value)</code></td>
+          <td class="term"><code>find_all_by_attr(v)</code></td>
           <td class="definition">
             <p>
-              Any calls of the form <code>find_all_by_attribute</code>, where <code>attribute</code> is an attribute of the model on which
-              the method was called or an attribute of any ancestor model, will return all instances of class that 
-              match the specified <code>attribute_value</code>. It is also possible to construct queries in which match conditions for
-              attributes are joined by any number of logical ands up to one less than the number attributes in the hierarchy. For two
-              attributes the method will have the form <code>find_all_by_attribute1_and_attribute2(attribute1_value, attribute2_value)</code> 
+              Any calls of the form <code>find_all_by_attr</code>, where <code>attr</code> is an attribute of the model on which
+              the method was called or an attribute of any ancestor model, will return all instances of the model that 
+              match the specified attribute value, <code>v</code>. It is also possible to construct queries in which match conditions for
+              attributes are joined by any number of logical <code>ands</code> up to one less than the number attributes in the hierarchy. 
+              For two attributes the method will have the form <code>find_all_by_attr1_and_attr2(v1, v2)</code>
               where <code>attribute1</code> and <code>attribute2</code> are any two distinct attributes belonging to the class or any 
-              ancestor of the class on which the method was called. In a similar manner queries for more than two attributes may be constructed.
+              ancestor of the class on which the method was called. 
+              In a similar manner queries for more than two attributes may be constructed.
             </p>
           </td>
         </tr>
