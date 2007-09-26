@@ -4,7 +4,7 @@ The most notable addition to release 0.1.3 of
 transparently allow construction of database queries that span the inheritance hierarchy.
 A new class method, <code>find_by_model</code>, which both <code>has_ancestor</code> and 
 <code>has_descendants</code> add to a model, constructs queries in which conditions may be specified on any attribute in the 
-model inheritance hierarchy. Also new are genearted finders, 
+model inheritance hierarchy. Also new are generated finders, 
 <a href="http://blog.hasmanythrough.com/2006/8/13/how-dynamic-finders-work"  target="_blank">similar in form
 to the dynamic finders provided by Rails</a>, but unlike the Rails dynamic finders, which are restricted to attributes belonging to a single
 model, attributes supported by the <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> generated finders
@@ -131,7 +131,8 @@ and that <code>GrandchildModel</code> has a descendant relation with <code>Child
 Note that the references to <code>parent_model_string</code> are of the form <code>parent_models.parent_model_string</code> and that the
 class of the result of the query matches the class on which the method was called, namely, when called from <code>ParentModel</code>
 a <code>ParentModel</code> is returned, when called from <code>ChildModel</code> a <code>ChildModel</code> is returned and
-when called from <code>GrandchildModel</code> a <code>GrandchildModel</code>.
+when called from <code>GrandchildModel</code> a <code>GrandchildModel</code>. It is in this matter that different levels of abstraction of a model
+may be accessed.
 </p>
 <p>
 Queries that return all models matching a specified value of <code>parent_models.parent_model_string</code> can be constructed by 
@@ -174,10 +175,10 @@ different models. This is illustrated in the following examples.
 </typo:code>
 </p>
 <p>
-Note that a query with the <code>:conditions</code> in the example is not possible from <code>ParentModel</code> since 
+Note that a query with the <code>:conditions</code> in the previous example is not possible from <code>ParentModel</code> since 
 <code>:conditions</code> contains a <code>ChildModel</code> attribute and <code>ParentModel</code> is not an ancestor <code>ChildModel</code>. 
 A query for all models that match the specified <code>:condition</code> can be obtained by replacing
-<code>:first</code> with <code>:all</code> in the previous examples.
+<code>:first</code> with <code>:all</code> in the previous examples. 
 </p>
 <p>
 <code>find_by_model</code> also accepts queries for a model by id just like <code>ActiveRecord::Base#find</code>.
@@ -212,7 +213,10 @@ A query for all models that match the specified <code>:condition</code> can be o
 </typo:code>
 </p>
 <p>
-  For the generated finders to function as expected there can be no name collisions between attributes in the inheritance hierarchy. It is
+  For the generated finders to function as expected there can be no name collisions between attributes in the inheritance hierarchy. 
+</p>
+<p>
+  It is
   also possible to specify <code>ActiveRecord::Base#find</code> options in generated finders after specification of attribute values. This is illustrated in the following example.
 </p>
 <p>
