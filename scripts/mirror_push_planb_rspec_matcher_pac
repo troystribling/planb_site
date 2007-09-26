@@ -1,0 +1,4 @@
+#!/bin/bash
+svk sync //planb_rspec_matcher_pac_local
+svk smerge --baseless --incremental --verbatim //planb_rspec_matcher_pac_local //planb_rspec_matcher_pac_mirror
+

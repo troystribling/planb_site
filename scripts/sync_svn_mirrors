@@ -7,4 +7,6 @@ svk sync //planb-site_local
 svk sync //planb-site_mirror
 svk sync //zgomot_local
 svk sync //zgomot_mirror
+svk sync //planb_rspec_matcher_pac_local
+svk sync //planb_rspec_matcher_pac_mirror
 
