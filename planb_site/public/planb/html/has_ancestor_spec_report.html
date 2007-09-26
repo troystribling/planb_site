@@ -1252,26 +1252,8 @@ a {
 <div class="behaviour">
   <dl>
   <dt id="behaviour_93">queries that find all models of a specified type when models have no ancestor</dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('behaviour_93');</script>
     <script type="text/javascript">moveProgressBar('86.1');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">should find all models and return model class for queries from model class</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>Expected:
-  array length=3
-Got:
-  array length=4
-</pre></div>
-        <div class="backtrace"><pre>./test/spec/specs/model_find_all_spec.rb:18:</pre></div>
-    <pre class="ruby"><code><span class="linenum">16</span>  it "should find all models and return model class for queries from model class" do
-<span class="linenum">17</span>    mods = ParentModel.find_by_model(:all)
-<span class="offending"><span class="linenum">18</span>    mods.should have_attributes_with_values([model_data[:parent_model_1], model_data[:parent_model_2], model_data[:parent_model_3]])</span>
-<span class="linenum">19</span>    mods.should be_class(ParentModel)
-<span class="linenum">20</span>  end
-<span class="linenum">21</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">should find all models and return model class for queries from model class</span></dd>
   </dl>
 </div>
 <div class="behaviour">
@@ -1439,8 +1421,8 @@ Got:
     <dd class="spec passed"><span class="passed_spec_name">should be named 'find_by_attribute', match the specified model attribute and return the first model found as model class when called from model class </span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>8.930184 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "360 examples, 1 failure";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>9.087482 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "360 examples, 0 failures";</script>
 </div>
 </div>
 </body>
