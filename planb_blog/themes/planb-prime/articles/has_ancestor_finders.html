@@ -1,5 +1,5 @@
 <p>
-The most notable addition to release 0.1.2 of 
+The most notable addition to release 0.1.3 of 
 <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> is support for finders that 
 transparently allow construction of database queries that span the inheritance hierarchy.
 A new class method, <code>find_by_model</code>, which both <code>has_ancestor</code> and 
@@ -188,7 +188,7 @@ A query for all models that match the specified <code>:condition</code> can be o
   to the model. Once the finder is called a new method will be generated and added to the model class. Subsequent calls will use the generated method. 
   The generated finders are used much like the <a href="http://blog.hasmanythrough.com/2006/8/13/how-dynamic-finders-work"  target="_blank">
   Rails dynamic finders</a> but the generated finders allow queries to be constructed that reference attributes supported by multiple
-  models in the inheritance hierarchy. In the 0.1.2 release the generated finders are limited to conditions that specify equality between
+  models in the inheritance hierarchy. In the 0.1.3 release the generated finders are limited to conditions that specify equality between
   an attribute and its value and multiple attribute match conditions may only be aggregated by logical <code>and</code>. More complex
   queries will require use of finder options. The following examples illustrate use of generated finders by comparison with the
   equivalent <code>find_by_model</code> call.
