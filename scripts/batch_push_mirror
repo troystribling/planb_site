@@ -1,0 +1,9 @@
+#!/bin/bash
+
+date
+/home/svk/bin/mirror_push_act_as_aln
+/home/svk/bin/mirror_push_has_ancestor
+/home/svk/bin/push_planb_site
+/home/svk/bin/push_zgomot
+/home/svk/bin/mirror_push_planb_rspec_matcher_pac
+
