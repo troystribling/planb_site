@@ -1,7 +1,7 @@
 <p>
 The most notable addition to release 0.1.3 of 
 <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> is support for finders that 
-transparently allow construction of database queries that span the inheritance hierarchy.
+implicitly construct database queries that span the inheritance hierarchy.
 A new class method, <code>find_by_model</code>, which both <code>has_ancestor</code> and 
 <code>has_descendants</code> add to a model, constructs queries in which conditions may be specified on any attribute in the 
 model inheritance hierarchy. Also new are generated finders, 
