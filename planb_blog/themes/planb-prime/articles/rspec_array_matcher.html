@@ -6,7 +6,7 @@
   <code>ArrayMatcher</code> provides an implementation of the 
   <a href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html"><code>Spec::Matcher</code></a> interface that allows specification 
   of a match condition between the righthand and lefthand side of <code>should</code> statements that can be applied when either
-  or both the righthand side and leftside are arrays.
+  or both the righthand side and lefthand side are arrays.
 </p>
 <p>
   Consider the matcher <code>have_attributes_with_values</code> from 
@@ -35,8 +35,8 @@
 
 <p>
   In the first example the attributes of a single Model instance are compared with a hash of expected values using the match condition. 
-  In the second example an array of model instances are compared with a hash of expected values. For the entire expression to evaluate as 
-  <strong><code>true</code></strong> a comparison between each Model in <code>mod_array</code> and <code>attr</code> 
+  In the second example an array of Model instances are compared with a hash of expected values. For the entire expression to evaluate as 
+  <strong><code>true</code></strong> a comparison between each Model instance in <code>mod_array</code> and <code>attr</code> 
   must evaluate to <strong><code>true</code></strong> using the match condition. In the third example a Model instance is compared
   with an array of hashes of expected values. For the entire expression to evaluate as 
   <strong><code>true</code></strong> a comparison between the Model and at least one hash in <code>attr_array</code> 
