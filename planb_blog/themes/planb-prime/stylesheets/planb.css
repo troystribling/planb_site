@@ -621,7 +621,7 @@ body {
   .typocode_ruby .symbol { color: #099; }
   .typocode_ruby .string { color: #944;}
   .typocode_ruby .char { color: #F07; }
-  .typocode_ruby .ident { color: #777; }
+  .typocode_ruby .ident { color: #AA9; }
   .typocode_ruby .constant { color: #07F; }
   .typocode_ruby .regex { color: #B66; background: #FEF; }
   .typocode_ruby .number { color: #993; }
