@@ -1,16 +1,97 @@
 <p>
-  While developing the <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> plugin, frequently evaulation
-  of specs involving arrays of obects was required. Situations arose in <code>should</code> evaluations in which arrays were either on 
-  both sides of the evaluation, the right side of the evalutaion or the left side of the evaluation. To solve the problem 
-  <code>ArrayMatcher</code> was developed. <code>ArrayMatcher</code> provides an implementation of the 
-  <a href="http://rspec.rubyforge.org/rdoc/index.html">RSpec matcher</a> interface that allows specification of a scalar match condition
-  when arrays or scalars are specified on either sode of a <code>should</could> condtion in a spec. 
+  The <a href="http://rspec.rubyforge.org/">Specs</a> used by the 
+  <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a> plugin frequently 
+  involve arrays of objects on either or both the lefthand and righthand sides of <code>should</code> evaluations. 
+  <code>ArrayMatcher</code> was developed to simplify writing Specs when this occurs.
+  <code>ArrayMatcher</code> provides an implementation of the 
+  <a href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html"><code>Spec::Matcher</code></a> interface that allows specification 
+  of a match condition between the righthand and lefthand side of <code>should</code> statements that can be applied when either
+  or both the righthand side and leftside are arrays.
 </p>
+<p>
+  Consider the matcher <code>have_attributes_with_values</code> from 
+  <a href="http://research.inplanb.com/has_ancestor"  target="_blank">has_ancestor</a>. <code>have_attributes_with_values</code> implements
+  a match in which a subset of attribute values from a 
+  <a href="http://wiki.rubyonrails.org/rails/pages/ActiveRecord">Rails Model</a> are compared with with a <code>Hash</code> containing attribute names
+  as hash keys and the expected attribute values as hash values. Use of <code>have_attributes_with_values</code> is illustrated in the following examples. 
+  In the examples <code>mod</code> is an instance of a Rails Model,
+  <code>mod_array</code> is an <cod>Array</code> of instances of a Rails Models, <code>attr</code> is a hash containing expected values for some
+  of the model attributes and <code>attr_array</code> is an <cod>Array</code> of hashes containing expected values for some of the model attributes.
 </p>
+<p>
+<typo:code lang="ruby">
+
+  mod.should have_attributes_with_values(attr)
+
+  mod_array.should have_attributes_with_values(attr)
+
+  mod.should have_attributes_with_values(attr_array)
+
+  mod_array.should have_attributes_with_values(attr_array)
+
 
 </typo:code>
 </p>
 
+<p>
+  In the first example the attributes of a single Model instance are compared with a hash of expected values using the match condition. 
+  In the second example an array of model instances are compared with a hash of expected values. For the entire expression to evaluate as 
+  <strong><code>true</code></strong> a comparison between each Model in <code>mod_array</code> and <code>attr</code> 
+  must evaluate to <strong><code>true</code></strong> using the match condition. In the third example a Model instance is compared
+  with an array of hashes of expected values. For the entire expression to evaluate as 
+  <strong><code>true</code></strong> a comparison between the Model and at least one hash in <code>attr_array</code> 
+  must evaluate to <strong><code>true</code></strong> using the match condition. In the final example an array of Model instances is
+  compared with an array of hashes of expected values. For the entire expression to evaluate as 
+  <strong><code>true</code></strong> for each Model in <code>mod_array</code> a hash in <code>attr_array</code> 
+  must exist so that the match condition is <strong><code>true</code></strong>. This
+  requires that the array of Model instances must be the same size as the array of expected values.
+</p>
+<p>
+  The implementation of <code>have_attributes_with_values</code> is shown below. The match condition is implemented by 
+  <code>check_expected(val, expt)</code>, where <code>val</code> is the value to be checked and <code>expt</code> is its expected value. 
+  <code>write_expected</code> and <code>write_value</code> are used to build error messages.
+</p>
+<typo:code lang="ruby">
+
+    class HaveAttributesWithValues < ArrayMatcher
+    
+      def description
+        "match array of hashes"
+      end
+
+      def check_expected(val, expt)
+        expt.detect{|k, v| not v.eql?(val.attributes[k])}.nil? ? true : false
+      end
+        
+      def write_expected(msg, exp, val)
+        super
+        exp.each {|k, v| msg <<  " #{k} => #{v}\n"}
+      end
+      
+      def write_value(msg, exp, val)
+        super
+        exp.each {|k, v| msg <<  " #{k} => #{val.attributes[k]}\n"}
+      end
+    
+    end
+  
+    def have_attributes_with_values(expected)
+      HaveAttributesWithValues.new(expected)
+    end
+ 
+
+</typo:code>
+</p>
+<p>
+  It should also be noted that Specs using the negation of <code>should</code>, <code>should_not</code>, are also supported.
+</p>
+</typo:code>
+</p>
+<p>
+  A listing of <code>ArrayMatcher</code> is given below. The default implementation of <code>check_expected</code> uses
+  <code>eql?</code> for the match condition and the default implementations of <code>write_expected</code> and <code>write_value</code>
+  write message headers.  
+</p>
 </p>
 <typo:code lang="ruby">
 
@@ -103,45 +184,6 @@
       ArrayMatcher.new(expected)
     end
    
-
-</typo:code>
-</p>
-
-</p>
-<typo:code lang="ruby">
-
-    module PlanB
-      
-      module SpecMatchers    
-    
-          class HaveAttributesWithValues < PlanB::SpecMatchers::ArrayMatcher #:nodoc:
-          
-            def description
-              "match array of hashes"
-            end
-    
-            def check_expected(val, expt)
-              expt.detect{|k, v| not v.eql?(val.attributes[k])}.nil? ? true : false
-            end
-              
-            def write_expected(msg, exp, val)
-              super
-              exp.each {|k, v| msg <<  " #{k} => #{v}\n"}
-            end
-            
-            def write_value(msg, exp, val)
-              super
-              exp.each {|k, v| msg <<  " #{k} => #{val.attributes[k]}\n"}
-            end
-          
-          end
-        
-          def have_attributes_with_values(expected)
-            HaveAttributesWithValues.new(expected)
-          end
-       
-      end
-    end
 
 </typo:code>
 </p>
