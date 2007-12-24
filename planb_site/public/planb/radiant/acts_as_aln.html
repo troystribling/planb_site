@@ -6,22 +6,25 @@
       acts_as_aln, or Acts as Abstract Layered Network, is a Ruby on Rails plug-in that provides an infrastructure for construction of enterprise 
       information models. The Abstract Layered
       Network model is inspired by the network information models described in 
-      <a href="http://www.itu.int/rec/T-REC-M.3100/en">ITU M.3100</a>, <a href="http://www.tmforum.org/browse.aspx?catID=1718&linkID=32960">TMF 814</a> and 
-      <a href="http://telecom-info.telcordia.com/ido/AUX/GR_1093_TOC.i02.pdf">Telecordia GR-1093-CORE</a> that attempt to develop detailed object models that describe many of the 
-      attributes and state transitions of communication networks. In this vein <a href="http://www.dmtf.org/standards/cim/">the DMTF Common Information Model</a> 
+      <a href="http://www.itu.int/rec/T-REC-M.3100/en" target="_blank">ITU M.3100</a>, <a href="http://www.tmforum.org/browse.aspx?catID=1718&linkID=32960" target="_blank">TMF 814</a> and 
+      <a href="http://telecom-info.telcordia.com/ido/AUX/GR_1093_TOC.i02.pdf" target="_blank">Telecordia GR-1093-CORE</a> that attempt to develop detailed object models that describe many of the 
+      attributes and state transitions of communication networks. In this vein <a href="http://www.dmtf.org/standards/cim/" target="_blank">the DMTF Common Information Model</a> 
       attempts to develop a model of the enterprise infrastructure. Of the previously stated references only DMTF has documentation
       in the public domain. Instead following the path pursued by these efforts acts_as_aln only considers a few objects, 
-      the relations between the objects and a couple of attribute types, namely, the information that most strongly impacts the structure of an application built on model. 
+      the relations between the objects and a couple of attribute types, namely, the information that most strongly impacts the structure of an application built on the model. 
       This greatly simplifies the information model and extends its domain of applicability. While the other models are limited to communications networks, and enterprise 
       hardware and software in the case of DMTF-CIM because of their detail, acts_as_aln can be applied to these domains and possibly to seemingly unrelated domains such as project management, customer 
       relationship management, human resource management, business intelligence and financial management.
     </p>
    </div>
 </div>	 
+
 <div class="subsection-float">
   <div class="subsection">
     <h1>Links</h1>
     <ul>
+      <li><a href="http://rubyforge.org/projects/acts-as_aln/" target="_blank">RubyForge project page</a></li>
+      <li><a href="http://research.inplanb.com/planb/html/acts_as_aln_spec_report.html" target="_blank">acts_as_aln RSpec Report</a></li>
     </ul>
    </div>
 </div>	 
@@ -29,17 +32,38 @@
 <h1>Install</h1>
 <div class="subsection-attached">
   <div class="subsection">
+    <p>
+      acts_as_aln is a Ruby on Rails plugin that is installed in the <code class="code-sample">vendor/plugins</code> 
+      directory of a Rails project. The source code may be obtained in any the ways listed below.
+    </p>
+    <div class="highlight-wrapper">
+      <div class="highlight">
+        <p>Download tar file from <a href="http://rubyforge.org/projects/acts-as_aln/"  target="_blank">RubyForge project page</a>.</p>
+      </div>
+    </div>
+    <div class="highlight-wrapper">
+      <div class="highlight">
+         <p>
+            With svn checkout into the vendor/plugins directory of your project,<br>
+            <p><code>svn co svn://rubyforge.org/var/svn/acts-as-aln/trunk acts_as_aln</code></p>
+         </p>
+      </div>
+    </div>
+    <div class="highlight-wrapper">
+      <div class="highlight">
+        <p>
+          Use the Rails plugin installer, <br>
+          <p><code>script/plugin install svn://rubyforge.org/var/svn/acts-as-aln/trunk</code></p>
+        </p>
+      </div>
+    </div>  
+     <p>
+      After installing the plugin the specs can be run by typing <code>rake spec</code> in the installation directory. The database 
+      connection is configured in <code>test/rails_root/config/database.yml</code>.
+     </p>      
+     <p>
+      acts_as_aln has a dependency on the plug-in <a href="/has_ancestor">has_ancestor</a>.
+     </p>      
   </div>
 </div>
 	 
-<h1>Use</h1>
-<div class="subsection-attached">
-  <div class="subsection">
-   </div>
-</div>   
-
-<h1>Road Map</h1>
-<div class="subsection-attached">
-  <div class="subsection">
-  </div>
-</div>	 
