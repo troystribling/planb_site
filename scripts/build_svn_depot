@@ -10,5 +10,7 @@ svk mirror //zgomot_mirror svn://inplanb.com/zgomot
 svk mirror //zgomot_local http://localhost/svn/zgomot
 svk mirror //planb_rspec_matcher_pac_local http://localhost/svn/planb_rspec_matcher_pac
 svk mirror //planb_rspec_matcher_pac_mirror svn://inplanb.com/planb_rspec_matcher_pac
-
-
+svk mirror //aws_mirror svn://inplanb.com/aws
+svk mirror //aws_local http://localhost/svn/aws
+svk mirror //aethyr_mirror svn://inplanb.com/aethyr
+svk mirror //aethyr_local http://localhost/svn/aethyr

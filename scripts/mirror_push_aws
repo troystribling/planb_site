@@ -1,0 +1,4 @@
+#!/bin/bash
+svk sync //aws_local
+svk smerge --baseless --incremental --verbatim //aws_local //aws_mirror
+

@@ -6,4 +6,5 @@ date
 /home/svk/bin/push_planb_site
 /home/svk/bin/push_zgomot
 /home/svk/bin/mirror_push_planb_rspec_matcher_pac
-
+/home/svk/bin/mirror_push_aws
+/home/svk/bin/mirror_push_aethyr

@@ -1,5 +1,6 @@
 svk sync //acts_as_aln_local
 svk sync //acts_as_aln_mirror 
+svk sync //acts_as_aln_rubyforge
 svk sync //has_ancestor_local
 svk sync //has_ancestor_mirror
 svk sync //has_ancestor_rubyforge
@@ -9,4 +10,7 @@ svk sync //zgomot_local
 svk sync //zgomot_mirror
 svk sync //planb_rspec_matcher_pac_local
 svk sync //planb_rspec_matcher_pac_mirror
-
+svk sync //aws_local
+svk sync //aws_mirror
+svk sync //aethyr_local 
+svk sync //aethyr_mirror
