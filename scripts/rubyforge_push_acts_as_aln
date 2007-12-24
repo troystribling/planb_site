@@ -1,0 +1,4 @@
+#!/bin/bash
+svk sync //acts_as_aln_local
+svk smerge --baseless --incremental --verbatim //acts_as_aln_local //acts_as_aln_rubyforge
+
