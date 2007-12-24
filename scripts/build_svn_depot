@@ -5,6 +5,7 @@ svk mirror //has_ancestor_local http://localhost/svn/has_ancestor
 svk mirror //has_ancestor_rubyforge svn+ssh://planb@rubyforge.org/var/svn/has-ancestor
 svk mirror //acts_as_aln_mirror svn://inplanb.com/acts_as_aln
 svk mirror //acts_as_aln_local http://localhost/svn/acts_as_aln
+svk mirror //acts_as_aln_rubyforge svn+ssh://planb@rubyforge.org/var/svn/acts-as-aln
 svk mirror //zgomot_mirror svn://inplanb.com/zgomot
 svk mirror //zgomot_local http://localhost/svn/zgomot
 
