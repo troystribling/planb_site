@@ -38,63 +38,18 @@ application.
 </typo:code>
 </p>
 
-<h3>Configure</h3>
+<h3>Implementation</h3>
 <p>
-  There are two ways to configure RSpec. For one 
-  configuration specs are run from <code>$RAILS_ROOT</code> 
-  of the test application. In the other specs are run from
-  the top level directory of the plugin. The first 
-  configuration would not differ from using RSpec in a normal Rails
-  application. The second configuration will be described in the 
-  remainder of this section.
-</p>
-<p>
-  Create a directory called <code>spec</code> in the plugin
-  <code>test</code> 
-  directory. Copy <code>spec_helper.rb</code> from the Rails test
-  application to <code>test/spec</code>. The 
-  modified <code>spec_helper.rb</code> from
-  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a> 
-  is shown.
-</p>
-<p>
-<typo:code>
-
-  ENV["RAILS_ENV"] ||= "test"
-  require "#{File.dirname(__FILE__)}/../rails_root/config/environment.rb"
-  require "#{RAILS_ROOT}/vendor/plugins/01_rspec_on_rails/lib/spec/rails"
-  silence_warnings { RAILS_ENV = ENV['RAILS_ENV'] }
-  ActiveRecord::Migrator.migrate("#{RAILS_ROOT}/db/migrate")
-
-  Spec::Runner.configure do |config|
-    config.use_transactional_fixtures = true
-    config.use_instantiated_fixtures  = false
-    config.fixture_path = File.dirname(__FILE__) + "/../fixtures/"
-  end
-
-
-</typo:code>
-</p>
-<p>
-  Add the following <code>require</code> and 
-  <code>Spec::Rake::SpecTask</code> to the plugin
-  <code>Rakefile</code>
-</p>
-<p>
-<typo:code>
-
-  require 'test/rails_root/vendor/plugins/00_rspec/lib/spec/rake/spectask'
-
-
-</typo:code>
+  Implement specs in the test application <code>spec</code> directory and
+  add the following to the plugin Rakefile.
 </p>
 <p>
 <typo:code>
 
   desc "Run all plugin specs"
   Spec::Rake::SpecTask.new(:spec) do |t|
-    t.spec_files = FileList['test/spec/specs/**/*_spec.rb']
-    t.spec_opts = ['--options', 'test/spec/spec.opts']
+    t.spec_files = FileList['test/rails_root/spec/**/*_spec.rb']
+    t.spec_opts = ['--options', 'test/rails_root/spec/spec.opts']
   end
 
 
@@ -104,7 +59,7 @@ application.
 <h3>Use</h3>
 <p>
   To run the plugin specs issue the following command from the 
-  plugin directory.
+  plugin directory or the test application directory.
 </p>
 <p>
 <typo:code>

@@ -3,15 +3,13 @@
   <a href="http://en.wikipedia.org/wiki/Behavior_driven_development" target="blank">
   Behavior Driven Development</a> DSL that has received a lot of   
   attention. 
-  This article will present a method of extending its functionality 
-  that includes adding 
+  This article will present methods to extend its functionality 
+  that include adding 
   custom <a    
   href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank">
-  matchers</a>, 
+  matchers</a> and 
   adding methods that are within scope of all <code>describe</code>
-  blocks in a project and extending the RSpec
-  configuration class to make custom configuration data available to 
-  all specs in a project. 
+  blocks in a project. 
 </p>
 <p>
   Both 
@@ -25,61 +23,11 @@
   discussed here will not have this dependency. 
 </p>
 <p>
-  The basis of the approach used in this article to extend RSpec
-  is an extension of the method described by   
-  <a href="http://blog.nicksieger.com/articles/2007/01/02/customizing-rspec" target="blank">Nick 
-  Sieger</a> for an older version of RSpec. 
-  For newer versions the names of the modules and classes have   
-  changed but the strategy is the same.
-</p> 
-<p>
   All of the code examples presented here are from the  
-  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>   
+  <a href="http://research.inplanb.com/has_ancestor" target="blank">has_ancestor</a>   
   Ruby on Rails plugin. 
 </p>
 
-<h3><code>before_eval</code> in 
-<code>Spec::DSL::Behavior</code></h3>
-<p>
-  In the <code>initialize</code> method of 
-  <code>Spec::DSL::Behavior</code> a method, <code>before_eval</code>,
-  is provided to do something before the evaluation of specs.   
-  The code providing this functionality in 
-  <code>lib/spec/dsl/behavior.rb</code> 
-  from the RSpec plugin is shown.
-</p>
-<p> 
- <typo:code lang="ruby">
-
-  module Spec
-    module DSL
-      class Behaviour
-        def initialize(*args, &behaviour_block)
-          init_description(*args)
-          init_eval_module
-          before_eval
-          eval_behaviour(&behaviour_block)
-        end
-
-      protected
-    
-        def before_eval
-        end
-
-      end
-    end
-  end
-
-
-</typo:code>
-</p>
-<p>
-  An implementation of <code>before_eval</code> can   
-  <code>include</code> modules that add methods to 
-  the <code>describe</code> block scope. 
-  The following section will provide an example that implements   
-  <code>before_eval</code> to include matchers and other method types.
-</p>
 <h3>Project Configuration</h3>
 <p>
   After either installing the 
@@ -97,18 +45,16 @@
 </p>
 <p>
   A <code>spec</code> directory will be created in your project 
-  directory and in this director <code>spec_helper.rb</code> 
+  directory and in this directory <code>spec_helper.rb</code> 
   will be also created. 
 </p>
 <p>
   In the <code>spec</code> directory create two more directories,
-  <code>matchers</code> and <code>extensions</code>, to place custom
+  <code>matchers</code> and <code>extensions</code>, in which to place custom
   matchers and extensions. In <code>spec</code> 
   create the two files, <code>spec_custom_matchers.rb</code> 
   and <code>spec_extensions.rb</code>, to load custom matchers 
-  and extensions. The implementation of these files used by the 
-  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>
-  plugin is shown below. 
+  and extensions. An example implementation of these files is shown below. 
 </p>
 <p>
 <typo:code lang="ruby">
@@ -133,34 +79,41 @@
 </typo:code>
 </p>
 <p>
-  <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a> 
+  <a href="http://research.inplanb.com/has_ancestor" target="blank">has_ancestor</a> 
   defines custom matchers in the module
   <code>PlanB::SpecMatchers</code> and extensions in the 
-  module <code>PlanB::SpecExtensions</code>. The following code is 
-  added to <code>spec_helper.rb</code> to load all custom matchers and 
-  extensions and to provide an implementation of 
-  <code>before_eval</code>, which will
-  <code>include</code> the matchers and extensions in 
-  the scope of 
-  <code>describe</code> blocks.
+  module <code>PlanB::SpecExtensions</code>. The generated 
+  <code>spec_helper.rb</code> is modified, as shown below, to load 
+  <code>spec_custom_matchers.rb</code> and <code>spec_extensions.rb</code>,
+  the two additional <code>require</code> lines,
+  and to <code>include</code> methods and classes defined in
+  <code>PlanB::SpecMatchers</code> and <code>PlanB::SpecExtensions</code> 
+  into the <code>describe</code> block scope, with the two lines 
+  <code>config.include(PlanB::SpecExtensions)</code> and
+  <code>config.include(PlanB::SpecMatchers)</code>.
 </p>
 <p>
 <typo:code lang="ruby">
 
+  ENV["RAILS_ENV"] = "test"
+  require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+  require 'spec'
+  require 'spec/rails'
+
   require File.dirname(__FILE__) + '/spec_custom_matchers'
   require File.dirname(__FILE__) + '/spec_extensions'
 
-  class Spec::DSL::Behaviour
-    def before_eval
-      @eval_module.include PlanB::SpecMatchers
-      @eval_module.include PlanB::SpecExtensions
-    end
+  Spec::Runner.configure do |config|
+    config.use_transactional_fixtures = true
+    config.use_instantiated_fixtures  = false
+    config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
+    config.include(PlanB::SpecExtensions)
+    config.include(PlanB::SpecMatchers)
   end
 
 
 </typo:code>
 </p>
-
 <h3>Custom Matchers</h3>
 <p>
   Rspec <a    
@@ -193,18 +146,6 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
   <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>  
   plugin is shown. This matcher tests a list of models for 
   equality between a specified attribute and a specified value.
-</p>
-<p> 
-  All custom 
-  matchers must implement <code>matches?</code>,
-  <code>failure_message</code>, 
-  <code>negative_failure_message</code> and   
-  <code>description</code>. Also,
-  an implementation of the matcher method called from specs must 
-  be provided, which creates the matcher object. 
-  In this example
-  the matcher method is <code>eql_attribute_value</code>. In a 
-  following section an example using this matcher will be provided.
 </p>
 <p>
 <typo:code lang="ruby">
@@ -258,33 +199,42 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
 
 </typo:code>
 </p>
+<p> 
+  All custom 
+  matchers should implement <code>matches?</code>,
+  <code>failure_message</code>, 
+  <code>negative_failure_message</code> and   
+  <code>description</code>. Also,
+  an implementation of the matcher method called from specs must 
+  be provided, that creates the matcher object. 
+  In this example
+  the matcher method is <code>eql_attribute_value</code>. In a 
+  following section an example using this matcher will be provided.
+</p>
   
 <h3>An Extension</h3>
 <p>
-  An extension is a method that does not support the matcher 
-  interface, which is added to the scope of all 
-  <code>describe</code> blocks in a project. An example for the 
+  An extension is a non-matcher method added to the scope of all 
+  <code>describe</code> blocks in a project. An example from the 
   <a href="http://research.inplanb.com/has_ancestor">has_ancestor</a>  
   plugin will be described. This extension is used to access data
-  loaded from a configuration file and to make the data available
-  to specs. Below the extension source is 
-  shown. An attribute is added to 
-  <code>Spec::DSL::Configuration</code> to hold the configuration
-  data and a method is added to <code>PlanB::Extensions</code> to 
-  simplify access by delegating to the configuration object.
+  loaded from a configuration file. Below the extension source is 
+  shown. 
 </p>
 <p>
 <typo:code lang="ruby">
 
-  class Spec::DSL::Configuration
-    attr_accessor :model_data  
-  end
-
   module PlanB
     module SpecExtensions
+
+      class ModelData      
+        cattr_accessor :model_data  
+      end
+    
       def model_data
-        Spec::Runner.configuration.model_data
+        ModelData.model_data
       end  
+    
     end
   end
 
@@ -292,9 +242,9 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
 </typo:code>
 </p>
 <p>
-  Below the modifications made to the default implementaion of 
+  The modifications made to the default implementaion of 
   <code>Spec::Runner.configure</code> in <code>spec_helper.rb</code>
-  to load the configuration data are shown. 
+  to load the configuration data are shown below. 
 </p>
 <p>
 <typo:code lang="ruby">
@@ -302,8 +252,11 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
   Spec::Runner.configure do |config|
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures  = false
-    config.fixture_path = File.dirname(__FILE__) + "/../fixtures/"
-    config.model_data = File.open(File.dirname(__FILE__) +  '/../fixtures/test_model.yml') {|yf| YAML::load(yf)}
+    config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
+    config.include(PlanB::SpecExtensions)
+    config.include(PlanB::SpecMatchers)
+    PlanB::SpecExtensions::ModelData.model_data = File.open(File.dirname(__FILE__) + '/fixtures/aln_spec_data.yml') {|yf| YAML::load(yf)}
+    PlanB::SpecExtensions::ModelData.model_data.symbolize_keys!
   end
 
 
@@ -311,25 +264,32 @@ href="http://rspec.rubyforge.org/rdoc/classes/Spec/Matchers.html" target="blank"
 </p>
 <h3>Put Custom Matchers and Extensions in a Vendor Plugin</h3>
 <p>
-  Custom Matchers and Extensions may be placed in a Rails 
+  Custom matchers and extensions may be placed in a Rails 
   vendor plugin so that they may be easily reused in other 
-  projects. To do this place the Matchers and Extensions
-  in the plugin <code>lib</code> directory, the 
-  </code>require</code> statements in 
+  projects. To do this the procedure just described should be modified as 
+  follows. Move the matchers and extensions to the plugin 
+  <code>lib</code> directory, move the 
+  <code>require</code> statements in 
   <code>spec_custom_matchers.rb</code> and
-  <code>spec_extensions.rb</code> should be moved to the plugin
-  <code>init.rb</code> and changed to reference the Matchers and Extensions
-  in the new location. Finally, add the following
-  to the project <code>spec_helper.rb</code>.
+  <code>spec_extensions.rb</code> to the plugin
+  <code>init.rb</code> and change to reference the new location, and, 
+  finally, <code>spec_helper.rb</code> should look like the listing below.
+  See <a href="http://research.inplanb.com/has_ancestor" target="blank">has_ancestor</a> for an example using this approach.
 </p>
 <p>
 <typo:code lang="ruby">
 
- class Spec::DSL::Behaviour
-    def before_eval
-      @eval_module.include PlanB::SpecMatchers
-      @eval_module.include PlanB::SpecExtensions
-    end
+  ENV["RAILS_ENV"] = "test"
+  require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+  require 'spec'
+  require 'spec/rails'
+
+  Spec::Runner.configure do |config|
+    config.use_transactional_fixtures = true
+    config.use_instantiated_fixtures  = false
+    config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
+    config.include(PlanB::SpecExtensions)
+    config.include(PlanB::SpecMatchers)
   end
 
 
