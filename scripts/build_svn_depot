@@ -14,3 +14,4 @@ svk mirror //aws_mirror svn://inplanb.com/aws
 svk mirror //aws_local http://localhost/svn/aws
 svk mirror //aethyr_mirror svn://inplanb.com/aethyr
 svk mirror //aethyr_local http://localhost/svn/aethyr
+svk mirror //aethyr_rubyforge svn+ssh://planb@rubyforge.org/var/svn/aethyr

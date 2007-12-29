@@ -1,0 +1,4 @@
+#!/bin/bash
+svk sync //aethyr_local
+svk smerge --baseless --incremental --verbatim //aethyr_local //aethyr_rubyforge
+
