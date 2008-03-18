@@ -8,7 +8,8 @@
 # this would add one mongrels for these two apps on 
 # ports 8000 and 8001, mephisto would be started in production
 apps = [
-  {:app => 'planb_site'},
+  {:app => 'planb_site', :port => 8000},
+  {:app => 'planb_forum', :port => 8001},
 ]
 
 default_port = 8000
