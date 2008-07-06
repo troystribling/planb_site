@@ -11,4 +11,4 @@ date
 /home/svk/bin/mirror_push_aethyr
 /home/svk/bin/mirror_push_aethyr_agent
 date
-echo "FINISH SYNC"
+echo "STOP SYNC"
