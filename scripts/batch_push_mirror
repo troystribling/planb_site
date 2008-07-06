@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "START SYNC"
 date
 /home/svk/bin/mirror_push_act_as_aln
 /home/svk/bin/mirror_push_has_ancestor
@@ -8,3 +9,6 @@ date
 /home/svk/bin/mirror_push_planb_rspec_matcher_pac
 /home/svk/bin/mirror_push_aws
 /home/svk/bin/mirror_push_aethyr
+/home/svk/bin/mirror_push_aethyr_agent
+date
+echo "FINISH SYNC"
