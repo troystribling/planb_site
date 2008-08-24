@@ -10,5 +10,6 @@ date
 /home/svk/bin/mirror_push_aws
 /home/svk/bin/mirror_push_aethyr
 /home/svk/bin/mirror_push_aethyr_agent
+/home/svk/bin/mirror_push_tweeter_trends
 date
 echo "STOP SYNC"

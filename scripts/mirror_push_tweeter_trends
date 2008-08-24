@@ -1,0 +1,4 @@
+#!/bin/bash
+svk sync //tweeter_trends_local
+svk smerge --baseless --incremental --verbatim //tweeter_trends_local //tweeter_trends_mirror
+
